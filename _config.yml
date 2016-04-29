@@ -13,10 +13,10 @@ atom_path: /atom.xml
 rss_path: /rss.xml
 donate_url:
 
-# Outputting
+# Outputting 分页设置
 permalink: /:year/:month/:day/:title
-paginate_path: /page:num
-paginate: 15
+paginate: 5
+paginate_path: "page:num"
 timezone: Asia/Shanghai
 
 # Handling Reading
@@ -36,7 +36,7 @@ unpublished: false
 
 # Plugins
 whitelist: []
-gems:      []
+gems: [jekyll-paginate]
 
 # Conversion
 markdown:    redcarpet
