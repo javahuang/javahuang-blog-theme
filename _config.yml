@@ -1,14 +1,14 @@
 # Site settings
-title : Jeklly Blog
+title : 进击的大黄
 tagline:
 url:
 author:
-    name:
-    github:
-    email:
+    name: Huang rp
+    github: https://github.com/javahuang
+    email: javahuang.gmail.com
     twitter:
     facebook:
-    weibo:
+    weibo: http://weibo.com/dota88
 atom_path: /atom.xml
 rss_path: /rss.xml
 donate_url:
@@ -22,7 +22,7 @@ timezone: Asia/Shanghai
 # Handling Reading
 safe:         false
 include:      []
-exclude:      [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
+exclude:      [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "deploy.sh"]
 keep_files:   []
 encoding:     "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
@@ -53,8 +53,8 @@ redcarpet:
 
 # comment
 comments:
-  duoshuo:
-    name:
+ duoshuo:
+   name: javahuang
     rcomments:
         num: 8
         avatar: 0

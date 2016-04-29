@@ -2,7 +2,7 @@
 {% assign category_words = site_categories | split:',' | sort %}
 
 <section>
-  <h4>Categories</h4>
+  <h4>分类</h4>
   <ul>
     {% for item in (0..site.categories.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ category_words[item] | strip_newlines }}{% endcapture %}
