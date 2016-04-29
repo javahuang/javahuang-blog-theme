@@ -4,11 +4,11 @@ tagline:
 url:
 author:
     name: Huang rp
-    github: https://github.com/javahuang
+    github: javahuang
     email: javahuang.gmail.com
     twitter:
     facebook:
-    weibo: http://weibo.com/dota88
+    weibo: dota88
 atom_path: /atom.xml
 rss_path: /rss.xml
 donate_url:
@@ -49,7 +49,8 @@ relative_permalinks: false
 
 # Markdown Processors
 redcarpet:
-  extensions: [ "fenced_code_blocks", "hard_wrap","autolink", "tables", "strikethrough", "superscript", "with_toc_data", "highlight", "prettify","no_intra_emphasis"]
+  extensions: [ "fenced_code_blocks", "hard_wrap","autolink", "tables", "strikethrough", "superscript", "highlight", "prettify","no_intra_emphasis"]
+
 
 # comment
 comments:
