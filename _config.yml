@@ -22,7 +22,7 @@ timezone: Asia/Shanghai
 # Handling Reading
 safe:         false
 include:      []
-exclude:      [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "deploy.sh"]
+exclude:      [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "deploy.sh", ".idea"]
 keep_files:   []
 encoding:     "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
@@ -55,7 +55,7 @@ redcarpet:
 comments:
  duoshuo:
    name: javahuang
-    rcomments:
+   rcomments:
         num: 8
         avatar: 0
         time: 0
