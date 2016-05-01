@@ -217,3 +217,18 @@ table tbody tr:hover {
 #pay h4{
 	display:none;
 }
+
+.qrcode {
+	margin: 0 0 10px 10px;
+	float: right;
+}
+@media (min-width: 1200px){
+	.visible-lg {
+		display: block !important;
+	}
+	.visible-lg {
+		display: none !important;
+	}
+}
+
+

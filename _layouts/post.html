@@ -5,10 +5,10 @@ layout: default
           <div class="col-md-12">
             <article class="news-item">
 
-                <h1  class="news-item"> {{ page.title }}  {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}
-                  <time class="small">{{ page.date | date: "%Y.%m.%d" }}</time>
+                <h1  class="news-item text-center"> {{ page.title }}  {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}
+                  <time class="small pull-right">{{ page.date | date: "%Y.%m.%d" }}</time>
                 </h1>
-
+                <div id="code" class="qrcode visible-lg"><canvas width="100" height="100"></canvas></div>
                 <div>
                 {{ content }}
                 </div>
