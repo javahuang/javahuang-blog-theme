@@ -9,6 +9,7 @@
       <script type="text/javascript" src="{{ ASSET_PATH }}/static/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="{{ ASSET_PATH }}/static/js/core.js"></script>
       <script type="text/javascript" src="{{ ASSET_PATH }}/static/js/jquery.qrcode.min.js"></script>
+      <script type="text/javascript" src="{{ ASSET_PATH }}/static/js/showup.js"></script>
       {% if site.comments.duoshuo.name %}
       <!-- duoshuo Begin -->
       <script type="text/javascript">
@@ -25,9 +26,11 @@
       <!-- duoshuo End -->
       {% endif %}
       <script type="text/javascript">
+          <!--验证码-->
           $('#code').qrcode({
               width: 128,
               height: 128,
               text: '{{ ASSET_PATH }}{{ page.url }}'
           });
+
       </script>
