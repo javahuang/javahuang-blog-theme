@@ -222,13 +222,14 @@ table tbody tr:hover {
 	margin: 0 0 10px 10px;
 	float: right;
 }
+.visible-lg {
+	display: none !important;
+}
 @media (min-width: 1200px){
 	.visible-lg {
 		display: block !important;
 	}
-	.visible-lg {
-		display: none !important;
-	}
+
 }
 
 
