@@ -27,10 +27,11 @@
       {% endif %}
       <script type="text/javascript">
           <!--验证码-->
+          var url=window.location.href;
           $('#code').qrcode({
               width: 128,
               height: 128,
-              text: '{{ ASSET_PATH }}{{ page.url }}'
+              text: url
           });
 
       </script>
