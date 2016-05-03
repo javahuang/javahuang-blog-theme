@@ -1,7 +1,7 @@
 # Site settings
 title : 进击的大黄
 tagline:
-url:
+url: http://javahuang.github.io
 author:
     name: Huang rp
     github: javahuang
@@ -61,7 +61,7 @@ comments:
         avatar: 0
         time: 0
         title: 0
-        admin: 0
+        admin: 1
         length: 12
 analytics:
     cnzz:

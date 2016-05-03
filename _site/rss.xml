@@ -3,9 +3,9 @@
   <channel>
     <title>进击的大黄</title>
     <description></description>
-    <link>/rss.xml</link>
-    <lastBuildDate>2016-05-03T19:34:25+08:00</lastBuildDate>
-    <pubDate>2016-05-03T19:34:25+08:00</pubDate>
+    <link>http://javahuang.github.io/rss.xml</link>
+    <lastBuildDate>2016-05-03T21:45:55+08:00</lastBuildDate>
+    <pubDate>2016-05-03T21:45:55+08:00</pubDate>
     <ttl>1800</ttl>
 
     
@@ -81,8 +81,8 @@ expect -c &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;s1&quot;&gt;    interact&lt;/span&gt;
 &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      <link>/2016/04/14/linux-expect/</link>
-      <guid>/2016/04/14/linux-expect/</guid>
+      <link>http://javahuang.github.io/2016/04/14/linux-expect/</link>
+      <guid>http://javahuang.github.io/2016/04/14/linux-expect/</guid>
       <pubDate>2016-04-14T00:00:00+08:00</pubDate>
     </item>
     
@@ -575,8 +575,8 @@ expect -c &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;xxx&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; is str?&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;xxx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;b&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;xxx&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; is str?&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;xxx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      <link>/2016/01/11/python-learning/</link>
-      <guid>/2016/01/11/python-learning/</guid>
+      <link>http://javahuang.github.io/2016/01/11/python-learning/</link>
+      <guid>http://javahuang.github.io/2016/01/11/python-learning/</guid>
       <pubDate>2016-01-11T00:00:00+08:00</pubDate>
     </item>
     
@@ -586,7 +586,7 @@ expect -c &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
 
 &lt;p&gt;之前看到&lt;a href=&quot;http://blog.javachen.com/&quot;&gt;javahen&lt;/a&gt;的博客挺不错的，简洁、清晰，但是一直没深入研究一下,我过去使用了一年的&lt;a href=&quot;http://hrps.me&quot;&gt;博客&lt;/a&gt;，从购买服务器、域名、备案，到软件环境的搭建以及整个博客代码的编写,都是自己一点点弄的。&lt;br&gt;
 代码放倒了&lt;a href=&quot;https://github.com/javahuang/rp&quot;&gt;github&lt;/a&gt;上，博客内容展示部分参考了苏洋的一个个人博客，后台是我自己写的一个cms，用的java+bootstrap+jqueryui，编辑器用的是百度的ueditor，中间缝缝补补了很多小细节。&lt;br&gt;
-这一年里，博客伴随着我也发生了很多有趣的事情，最开始我给博客对&lt;a href=&quot;http://hrps.me/blog/article/talk-is-cheap-show-me-the-code&quot;&gt;鼻子&lt;/a&gt;和&lt;a href=&quot;http://hrps.me/blog/article/%E7%AB%8B%E9%95%BF%E5%BF%97&quot;&gt;王楠&lt;/a&gt;开放了权限，他们只写了几篇博客就再也没上过了，我自己前后也写了116篇，从生活到工作。中间我的操作系统从用了多年的windows换到了macos，IDE从eclipse换到了IDEA，最重要的是我遇到了她，也记录了我们相识后的一些片段。&lt;br&gt;
+这一年里，博客伴着我也发生了很多有趣的事情，最开始我给博客对&lt;a href=&quot;http://hrps.me/blog/article/talk-is-cheap-show-me-the-code&quot;&gt;鼻子&lt;/a&gt;和&lt;a href=&quot;http://hrps.me/blog/article/%E7%AB%8B%E9%95%BF%E5%BF%97&quot;&gt;王楠&lt;/a&gt;开放了权限，他们只写了几篇博客就再也没上过了，我自己前后也写了116篇，从生活到工作。中间我的操作系统从用了多年的windows换到了macos，IDE从eclipse换到了IDEA，最重要的是我遇到了她，也记录了我们相识后的一些片段。&lt;br&gt;
 在使用的过程中，慢慢觉得最开始设计有些问题，首页很多冗余设计，正文地方版面也有点小，分类的也不是很显眼，当然最关键的，是我买的服务器快到期了，一年600多的服务器我却用来部署两个应用实在是大材小用，现在我有了更好的办法。&lt;/p&gt;
 
 &lt;h3&gt;过程&lt;/h3&gt;
@@ -629,8 +629,8 @@ expect -c &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://havee.me/about.html&quot;&gt;Havee&amp;#39;s Space&lt;/a&gt;&lt;/p&gt;
 </description>
-      <link>/2015/05/14/blog-init/</link>
-      <guid>/2015/05/14/blog-init/</guid>
+      <link>http://javahuang.github.io/2015/05/14/blog-init/</link>
+      <guid>http://javahuang.github.io/2015/05/14/blog-init/</guid>
       <pubDate>2015-05-14T00:00:00+08:00</pubDate>
     </item>
     
