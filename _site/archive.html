@@ -156,10 +156,12 @@
           $(function(){
               //解决评论行高和其他不一致的问题
               var a=setInterval(function(){
-                  if(!$.isEmptyObject($(".ds-comment"))){
-                      $(".ds-comment").css("cssText","padding:0px!important");
-                      clearInterval(a);
-                  }
+                  try{
+                      if(!$.isEmptyObject($(".ds-comment"))&&parseInt($(".ds-comment").css("padding").substring(0,1))==6){
+                          $(".ds-comment").css("cssText","padding:0px!important");
+                          clearInterval(a);
+                      }
+                  }catch(e){}
               },200);
           })
       </script>
