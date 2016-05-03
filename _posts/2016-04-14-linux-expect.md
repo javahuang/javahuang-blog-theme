@@ -2,7 +2,7 @@
 layout: post
 title:  "linux-expect"
 keywords: "linux, expect"
-description: "博客搭建的初衷和过程"
+description: "linux expect的学习"
 category: others
 tags: [linux]
 ---
