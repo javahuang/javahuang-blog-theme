@@ -4,26 +4,12 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-05-03T10:58:47+08:00</updated>
+  <updated>2016-05-03T19:25:13+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
   </author>
 
-  
-  <entry>
-    <title>写在开始</title>
-    <link href="/2016/04/30/blog-init/"/>
-    <updated>2016-04-30T00:00:00+08:00</updated>
-    <id>/2016/04/30/blog-init</id>
-    <content type="html">初衷
-
-之前看到javahen的博客挺不错的，简洁、清晰，但是一直没深入研究一下,我过去使用了一年的博客，从前端到后台完全自己写的，代码在 https://github.com/javahuang/rp 上，博客内容展示部分参考了苏洋的一个个人博客，后台是我自己写的一个cms，用的java+bootstrap+jqueryui，自己买的域名，然后买的阿里云服务器，但是在使用过程中，我一直觉得博客展示部分设计的很不友好，正好服务器快到期，不想续费了。
-
-过程
-
-昨天开始边看边学边操作，从markdown，gitpages，到jekyll。开始打算，找个jekyll主题然后自己修改，后来在j...</content>
-  </entry>
   
   <entry>
     <title>linux-expect</title>
@@ -60,6 +46,18 @@ print name, &amp;#39;is who&amp;#39;  # str concat
 
 # escape with \
 pri...</content>
+  </entry>
+  
+  <entry>
+    <title>写在开始</title>
+    <link href="/2015/05/14/blog-init/"/>
+    <updated>2015-05-14T00:00:00+08:00</updated>
+    <id>/2015/05/14/blog-init</id>
+    <content type="html">初衷
+
+之前看到javahen的博客挺不错的，简洁、清晰，但是一直没深入研究一下,我过去使用了一年的博客，从购买服务器、域名、备案，到软件环境的搭建以及整个博客代码的编写,前后花了大概两周闲暇时间。
+代码在 https://github.com/javahuang/rp 上，博客内容展示部分参考了苏洋的一个个人博客，后台是我自己写的一个cms，用的java+bootstrap+jqueryui，编辑器用的是百度的ueditor，中间缝缝补补了很多小细节。
+这一年里，博客伴随着我也发生了很多有趣的事情，最开始我给博客对鼻子和王楠开放了权限，他们写了几篇博客，我自己前后也写了116篇，从生活...</content>
   </entry>
   
 </feed>

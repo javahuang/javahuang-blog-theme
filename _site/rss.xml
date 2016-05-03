@@ -4,35 +4,10 @@
     <title>进击的大黄</title>
     <description></description>
     <link>/rss.xml</link>
-    <lastBuildDate>2016-05-03T10:58:47+08:00</lastBuildDate>
-    <pubDate>2016-05-03T10:58:47+08:00</pubDate>
+    <lastBuildDate>2016-05-03T19:25:13+08:00</lastBuildDate>
+    <pubDate>2016-05-03T19:25:13+08:00</pubDate>
     <ttl>1800</ttl>
 
-    
-    <item>
-      <title>写在开始</title>
-      <description>&lt;h3&gt;初衷&lt;/h3&gt;
-
-&lt;p&gt;之前看到&lt;a href=&quot;http://blog.javachen.com/&quot;&gt;javahen&lt;/a&gt;的博客挺不错的，简洁、清晰，但是一直没深入研究一下,我过去使用了一年的&lt;a href=&quot;http://hrps.me&quot;&gt;博客&lt;/a&gt;，从前端到后台完全自己写的，代码在 &lt;a href=&quot;https://github.com/javahuang/rp&quot;&gt;https://github.com/javahuang/rp&lt;/a&gt; 上，博客内容展示部分参考了苏洋的一个个人博客，后台是我自己写的一个cms，用的java+bootstrap+jqueryui，自己买的域名，然后买的阿里云服务器，但是在使用过程中，我一直觉得博客展示部分设计的很不友好，正好服务器快到期，不想续费了。&lt;/p&gt;
-
-&lt;h3&gt;过程&lt;/h3&gt;
-
-&lt;p&gt;昨天开始边看边学边操作，从markdown，gitpages，到jekyll。开始打算，找个jekyll主题然后自己修改，后来在javachen的仓库里面找到了现在使用的这个主题，直接clone到我本地然后略微做了一些简单的改动。目前编写博客直接使用的是md，编辑器用的是mou，就是redcarpet的某些配置在mou上不能体现。后续将之前的博客转化为markdown的格式迁移到这个地方来。&lt;/p&gt;
-
-&lt;h4&gt;参考：&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://shopify.github.io/liquid/&quot;&gt;模板语言Liquid&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/vmg/redcarpet&quot;&gt;markdown解析器redcarept&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://jekyll.bootcss.com/docs/home/&quot;&gt;jekyll中文指南&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://havee.me/about.html&quot;&gt;Havee&amp;#39;s Space&lt;/a&gt;&lt;/p&gt;
-</description>
-      <link>/2016/04/30/blog-init/</link>
-      <guid>/2016/04/30/blog-init/</guid>
-      <pubDate>2016-04-30T00:00:00+08:00</pubDate>
-    </item>
     
     <item>
       <title>linux-expect</title>
@@ -603,6 +578,60 @@ expect -c &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
       <link>/2016/01/11/python-learning/</link>
       <guid>/2016/01/11/python-learning/</guid>
       <pubDate>2016-01-11T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>写在开始</title>
+      <description>&lt;h3&gt;初衷&lt;/h3&gt;
+
+&lt;p&gt;之前看到&lt;a href=&quot;http://blog.javachen.com/&quot;&gt;javahen&lt;/a&gt;的博客挺不错的，简洁、清晰，但是一直没深入研究一下,我过去使用了一年的&lt;a href=&quot;http://hrps.me&quot;&gt;博客&lt;/a&gt;，从购买服务器、域名、备案，到软件环境的搭建以及整个博客代码的编写,前后花了大概两周闲暇时间。&lt;br&gt;
+代码在 &lt;a href=&quot;https://github.com/javahuang/rp&quot;&gt;https://github.com/javahuang/rp&lt;/a&gt; 上，博客内容展示部分参考了苏洋的一个个人博客，后台是我自己写的一个cms，用的java+bootstrap+jqueryui，编辑器用的是百度的ueditor，中间缝缝补补了很多小细节。&lt;br&gt;
+这一年里，博客伴随着我也发生了很多有趣的事情，最开始我给博客对&lt;a href=&quot;http://hrps.me/blog/article/talk-is-cheap-show-me-the-code&quot;&gt;鼻子&lt;/a&gt;和&lt;a href=&quot;http://hrps.me/blog/article/%E7%AB%8B%E9%95%BF%E5%BF%97&quot;&gt;王楠&lt;/a&gt;开放了权限，他们写了几篇博客，我自己前后也写了116篇，从生活到工作。中间我的操作系统也从用了多年的windows换到了macos，IDE从eclipse换到了IDEA，当然最开心的是终于找到了那个她，写了几个静态页面记录了我们的相遇，相识的一些事。&lt;br&gt;
+在使用的过程中，慢慢觉得最开始设计有些问题，首页很多冗余设计，正文地方版面也有点小，分类的也不是很显眼，当然最关键的，是我买的服务器快到期了☺️，一年600多的服务器我却用来部署两个应用实在是大材小用，现在我有了更好的办法。&lt;/p&gt;
+
+&lt;h3&gt;过程&lt;/h3&gt;
+
+&lt;p&gt;昨天开始边看边学边操作，从markdown，gitpages，到jekyll。开始打算，找个jekyll主题然后自己修改，后来在javachen的仓库里面找到了现在使用的这个主题，直接clone到我本地然后略微做了一些简单的改动。目前编写博客直接使用的是md，编辑器用的是macdown，就是redcarpet的某些配置在mou上不能体现。后续将之前的博客转化为markdown的格式迁移到这个地方来。&lt;/p&gt;
+
+&lt;h5&gt;&lt;code class=&quot;prettyprint&quot;&gt;操作步骤&lt;/code&gt;&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;环境的搭建&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;jekyll环境&lt;/code&gt;&lt;br&gt;
+官方文档：&lt;a href=&quot;http://jekyll.bootcss.com/docs/home/&quot;&gt;http://jekyll.bootcss.com/docs/home/&lt;/a&gt;&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;github环境&lt;/code&gt;&lt;br&gt;
+
+&lt;ol&gt;
+&lt;li&gt;创建一个repository，命名为name.github.io(name随便起)&lt;/li&gt;
+&lt;li&gt;从&lt;a href=&quot;https://github.com/javahuang/javahuang-blog-theme&quot;&gt;https://github.com/javahuang/javahuang-blog-theme&lt;/a&gt; fork一份代码并且clone到本地&lt;/li&gt;
+&lt;li&gt;修改_config.yml为自己的信息，如title，author，comment(自己去多说申请账号)，下面是几个文件夹的作用，具体用法可以看参考里面的模板语言Liquid
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;prettyprint&quot;&gt;_data&lt;/code&gt; 目前存放的是首页的友链，可以通过 site.data 获取&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;prettyprint&quot;&gt;_includes&lt;/code&gt; 存放的是从页面整体布局抽出来的独立模块，如可以在index.html被引用&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;prettyprint&quot;&gt;_layouts&lt;/code&gt; 存放页面模板，可以被_post里面的文章通过layout标签引用&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;prettyprint&quot;&gt;_posts&lt;/code&gt; 就是博客正文，命名格式就是访问的地址&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;prettyprint&quot;&gt;index.html&lt;/code&gt;就是首页&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;运行deploy.sh,执行&lt;code class=&quot;prettyprint&quot;&gt;jekyll build&lt;/code&gt;会在&lt;code class=&quot;prettyprint&quot;&gt;_site&lt;/code&gt;文件夹生成可以部署的静态html，我目前采用的是将_site里面的内容push到第一步新建的&lt;a href=&quot;https://github.com/javahuang/javahuang.github.io.git&quot;&gt;repository&lt;/a&gt;，github内建支持jekyll，也可以在fork上面的&lt;a href=&quot;https://github.com/javahuang/javahuang-blog-theme.git&quot;&gt;javahuang-blog-theme&lt;/a&gt;，然后在Settings里面修改Repository name为name.github.io，然后直接在_post里面写博客，然后直接push&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;markdown编辑器的选择
+之前我使用的mou，使用了一天果断换到了macdown，两个md编辑器的区别可以参见&lt;a href=&quot;http://www.jianshu.com/p/6c157af09e84&quot;&gt;Mac 下两款 Markdown 编辑器 Mou/MacDown 大 PK&lt;/a&gt;，对于我来说，macdown有几点mou做不到的，比如代码高亮识别代码语言&lt;strong&gt;```bash&lt;/strong&gt;,直接回车换行,对jekyll前面那段的支持，以及对Autolink、Strikethrough等的支持正好和_config.yml中配置的macdown处理器redcarpet配置的extensions对应。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;参考：&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://shopify.github.io/liquid/&quot;&gt;模板语言Liquid&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/vmg/redcarpet&quot;&gt;markdown解析器redcarept&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://jekyll.bootcss.com/docs/home/&quot;&gt;jekyll中文指南&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://havee.me/about.html&quot;&gt;Havee&amp;#39;s Space&lt;/a&gt;&lt;/p&gt;
+</description>
+      <link>/2015/05/14/blog-init/</link>
+      <guid>/2015/05/14/blog-init/</guid>
+      <pubDate>2015-05-14T00:00:00+08:00</pubDate>
     </item>
     
   </channel>
