@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>python基础语法学习记录笔记 - 进击的大黄</title>
+      <meta name="author" content="Huang rp">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" >
+      <link rel="canonical" href="/2016/01/11/python-learning/">
+      <link rel="stylesheet" href="/static/css/bootstrap.min.css" media="all">
+      <link rel="stylesheet" href="/static/css/style.css" media="all">
+      <link rel="stylesheet" href="/static/css/pygments.css" media="all">
+      <link rel="stylesheet" href="/static/css/font-awesome.css" media="all">
+          <link rel="stylesheet" href="/static/css/showup.css" media="all">
+
+      <!-- atom & rss feed -->
+      <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="进击的大黄 RSS Feed">
+      <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="进击的大黄 ATOM Feed">
+    </head>
+
+
+  <body>
+    <div class="container">
+    <!--[if lte IE 9]>
+<div class="alert alert-warning">
+  <p>Your Internet Explorer is not supported. Please upgrade your Internet Explorer to version 9+, or use latest <a href="http://www.google.com/chrome/" target="_blank" class="alert-link">Google chrome</a>、<a href="http://www.mozilla.org/firefox/" target="_blank" class="alert-link">Mozilla Firefox</a>.</p>
+  <p>If you are using IE 9 or later, make sure you <a href="http://windows.microsoft.com/en-us/internet-explorer/use-compatibility-view#ie=ie-8" target="_blank" class="alert-link">turn off "Compatibility view"</a>.</p>
+</div>
+<![endif]-->
+<header class="header">
+  <div class="title"><a title="进击的大黄" href="/">进击的大黄</a></div>
+  <ul class="nav navbar-nav navbar-right visible-lg visible-md">
+    <li>
+    <form id="search-form" class="form-group has-success visible-lg" role="form">
+      <input type="text" class="form-control input-sm" placeholder="Search" id="query" style="width: 160px;">
+    </form>
+    </li>
+    <li><a href="/archive.html" title="Archive"><span class='fa fa-archive fa-2x'></span></a></li>
+    <li><a href="/categories.html" title="Categories"><span class='fa fa-navicon fa-2x'></span></a></li>
+    <li><a href="/tags.html" title="Tags"><span class='fa fa-tags fa-2x'></span></a></li>
+    <li><a href="/about.html" title="About"><span class='fa fa-user fa-2x'></span></a></li>
+    
+    <li><a href="https://github.com/javahuang" target="_blank" title="Github"><span class='fa fa-github fa-2x'></span></a></li>
+    
+    
+    
+    
+    
+    <li><a href="http://weibo.com/dota88" target="_blank" title="Weibo"><span class="fa fa-weibo fa-2x"></span></a></li>
+    
+
+    <li><a href="/rss.xml" target="_blank" title="RSS"><span class='fa fa-rss fa-2x'></span></a></li>
+  </ul>
+</header>
+
+
+      <div class="wrapper">
+        <div class="row">
+          <div id="search-loader" style="display:none;text-align:center">
+            <img src="/static/images/loading.gif">
+          </div>
+          <div class="col-md-12">
+            <article class="news-item">
+
+                <h1  class="news-item text-center"> python基础语法学习记录笔记  
+                  <time class="small pull-right">2016.01.11</time>
+                </h1>
+                <div id="code" class="qrcode visible-lg"><canvas width="100" height="100"></canvas></div>
+                <div>
+                <h4>第一天-基础语法</h4>
+
+<p>注释后面空一格，逗号后面空一格，函数前面空两行，行后面的注释要空两格，语句里面的= &gt; &lt;左右都要空一格</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="c"># coding=utf-8</span>
+<span class="c"># 设置文件字符集编码,不设置使用中文会报错</span>
+<span class="k">print</span> <span class="s">&quot;hello world&quot;</span>
+<span class="c"># input and output</span>
+<span class="n">name</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;name:&#39;</span><span class="p">)</span>  <span class="c"># waiting user input</span>
+<span class="k">print</span> <span class="n">name</span><span class="p">,</span> <span class="s">&#39;is who&#39;</span>  <span class="c"># str concat</span>
+
+<span class="c"># escape with \</span>
+<span class="k">print</span> <span class="s">&#39;i </span><span class="se">\&#39;</span><span class="s">m ok&#39;</span>
+<span class="k">print</span> <span class="bp">True</span> <span class="ow">and</span> <span class="bp">False</span>
+<span class="k">print</span> <span class="ow">not</span> <span class="bp">True</span>
+<span class="c"># None like null in java</span>
+<span class="c"># usually use capital name variable name</span>
+<span class="k">print</span> <span class="mi">10</span><span class="o">/</span><span class="mi">3</span>
+<span class="k">print</span> <span class="mf">10.0</span><span class="o">/</span><span class="mi">3</span>
+<span class="c"># 字母和对应数字转化</span>
+<span class="k">print</span> <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;A&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">65</span><span class="p">)</span>
+<span class="c"># unicode 输出</span>
+<span class="k">print</span> <span class="s">u&#39;中文&#39;</span>
+<span class="k">print</span> <span class="s">u&#39;中文&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">)</span>
+
+<span class="c"># %运算符就是用来格式化字符串的。在字符串内部，%s表示用字符串替换，%d表示用整数替换，有几个%?占位符</span>
+<span class="c"># %d   整数</span>
+<span class="c"># %f   浮点数</span>
+<span class="c"># %s   字符串</span>
+<span class="c"># %x   十六进制整数</span>
+<span class="k">print</span> <span class="s">&#39;Hi,</span><span class="si">%s</span><span class="s">,you hava save </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;Xiaoming&#39;</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+
+<span class="c"># list</span>
+<span class="n">classmates</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;xiaoming&#39;</span><span class="p">,</span> <span class="s">&#39;xiaohong&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">classmates</span><span class="p">)</span>
+<span class="c"># gei last element</span>
+<span class="k">print</span> <span class="n">classmates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">classmates</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#39;xiaogang&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">classmates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c"># tuple immutable不可变</span>
+<span class="n">classmates</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;daming&#39;</span><span class="p">,</span> <span class="s">&#39;dahong&#39;</span><span class="p">,</span> <span class="s">&#39;dahei&#39;</span><span class="p">)</span>
+<span class="c"># 一个元素也要加上逗号</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">22</span><span class="p">,)</span>
+<span class="k">print</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;xiaoming&#39;</span><span class="p">,</span> <span class="s">&#39;xiaohong&#39;</span><span class="p">])</span>
+<span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;xiaohua&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c"># dict</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;xiaoming&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&#39;xiaohong&#39;</span><span class="p">:</span> <span class="mi">26</span><span class="p">}</span>
+<span class="k">print</span> <span class="n">d</span><span class="p">[</span><span class="s">&#39;xiaoming&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;233&#39;</span><span class="p">,</span> <span class="mi">233</span><span class="p">)</span>
+<span class="c"># set 创建set 需要提供list作为输入 多个set可以做 &amp; | 运算</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">s</span>
+
+<span class="c"># if else</span>
+<span class="c"># end with colon is code block</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">a</span>
+    <span class="k">print</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="o">-</span><span class="n">a</span>
+<span class="n">birth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;birth:&#39;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">birth</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;00前&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;00后&#39;</span>
+</code></pre></div>
+<h4>第二天-函数</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="c"># coding=utf-8</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">print</span> <span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+<span class="c"># compare return 1/0/-1</span>
+<span class="k">print</span> <span class="nb">cmp</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">int</span><span class="p">(</span><span class="s">&#39;233&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">float</span><span class="p">(</span><span class="s">&#39;222&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">unicode</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">bool</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># True</span>
+<span class="k">print</span> <span class="nb">bool</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>  <span class="c"># False</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">abs</span>
+<span class="k">print</span> <span class="n">a</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s">&#39;-11&#39;</span><span class="p">))</span>
+
+<span class="c"># define function</span>
+
+
+<span class="k">def</span> <span class="nf">my_abs</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>  <span class="c"># 参数类型限制</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&#39;bad operate &#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">xs</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">xs</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">xs</span>
+<span class="k">print</span> <span class="n">my_abs</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">nop</span><span class="p">():</span>  <span class="c"># 定义一个空函数</span>
+    <span class="k">pass</span>
+
+
+<span class="c"># return multi value 返回多个值,其实是返回一个tuple</span>
+<span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">nx</span> <span class="o">=</span> <span class="n">xs</span><span class="o">+</span><span class="n">step</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+    <span class="n">ny</span> <span class="o">=</span> <span class="n">ys</span><span class="o">-</span><span class="n">step</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">move</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>  <span class="c"># 151.961524227 70.0</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">move</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>  <span class="c"># (151.96152422706632, 70.0)</span>
+
+
+<span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>  <span class="c"># 添加默认值</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>  <span class="c"># 这个使用n=n-1会黄色警告建议使用augmented assignments(增强任务)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">*</span><span class="n">xs</span>
+    <span class="k">return</span> <span class="n">s</span>
+<span class="k">print</span> <span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">enroll</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">city</span><span class="o">=</span><span class="s">&#39;beijing&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="n">name</span>
+    <span class="k">print</span> <span class="s">&#39;gender&#39;</span><span class="p">,</span> <span class="n">gender</span>
+    <span class="k">print</span> <span class="s">&#39;age&#39;</span><span class="p">,</span> <span class="n">age</span>
+    <span class="k">print</span> <span class="s">&#39;city&#39;</span><span class="p">,</span> <span class="n">city</span>
+<span class="k">print</span> <span class="n">enroll</span><span class="p">(</span><span class="s">&#39;xiaoming&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">city</span><span class="o">=</span><span class="s">&#39;bj&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">add_end</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>  <span class="c"># 如果L=[],则每次添加都会改变L的值 # 默认参数必须是不变对象</span>
+    <span class="k">if</span> <span class="n">l</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;END&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">l</span>
+<span class="k">print</span> <span class="n">add_end</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>  <span class="c"># mutable parameter可变参数#传入list或者tuple</span>
+    <span class="n">sums</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="n">sums</span> <span class="o">=</span> <span class="n">sums</span><span class="o">+</span><span class="n">n</span><span class="o">*</span><span class="n">n</span>
+    <span class="k">return</span> <span class="n">sums</span>
+<span class="k">print</span> <span class="n">calc</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="c"># print calc(1,2,3) error</span>
+
+
+<span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="n">sums</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="n">sums</span> <span class="o">+=</span> <span class="n">n</span><span class="o">*</span><span class="n">n</span>
+    <span class="k">return</span> <span class="nb">sum</span>
+<span class="k">print</span> <span class="n">calc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c"># 注意和上面的区别</span>
+
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>  <span class="c"># 将list或者tuple传入可变参数</span>
+    <span class="n">sums</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="n">sums</span> <span class="o">+=</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="n">sums</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">test</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">test</span><span class="p">(</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">person</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="o">**</span><span class="n">ks</span><span class="p">):</span>  <span class="c"># 关键字参数**  接受一个dict</span>
+    <span class="k">print</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">&#39;age&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="s">&#39;other&#39;</span><span class="p">,</span> <span class="n">ks</span>
+<span class="n">person</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="n">say</span><span class="o">=</span><span class="s">&#39;high&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;sex&#39;</span><span class="p">:</span> <span class="s">&#39;man&#39;</span><span class="p">,</span> <span class="s">&#39;height&#39;</span><span class="p">:</span> <span class="mi">23</span><span class="p">}</span>
+<span class="n">person</span><span class="p">(</span><span class="s">&#39;xiaoming&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="o">**</span><span class="n">p</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>  <span class="c"># 参数组合</span>
+    <span class="k">print</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s">&#39;args=&#39;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="s">&#39;kw=&#39;</span><span class="p">,</span> <span class="n">kw</span>
+<span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="mi">99</span><span class="p">)</span>  <span class="c"># 1 2 3 args= ([4, 5, 6],) kw= {&#39;x&#39;: 99}</span>
+<span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">kw</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="mi">99</span><span class="p">}</span>
+<span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>  <span class="c"># 1 2 3 args= (4, 5, 6) kw= {&#39;x&#39;: 99}</span>
+
+
+<span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c"># 递归</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n</span>
+<span class="k">print</span> <span class="n">fact</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<h4>第三天-高级特性</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="c"># coding=utf-8</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c"># 切片</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;小华&#39;</span><span class="p">,</span> <span class="s">&#39;小红&#39;</span><span class="p">,</span> <span class="s">&#39;小丽&#39;</span><span class="p">,</span> <span class="s">&#39;小黑&#39;</span><span class="p">,</span> <span class="s">&#39;小刚&#39;</span><span class="p">]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c"># 切片 L[x:y] 从第x个开始取y个 负数是从右到左</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+<span class="n">L</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c"># 0-100</span>
+<span class="k">print</span> <span class="n">L</span><span class="p">[:</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span>  <span class="c"># 0-89</span>
+<span class="k">print</span> <span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>  <span class="c"># 90-99</span>
+
+<span class="c"># 迭代</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">k</span>  <span class="c"># 遍历key</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">itervalues</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">v</span>  <span class="c"># 遍历value</span>
+<span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="s">&#39;ABC&#39;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">ch</span>  <span class="c"># 遍历字符串</span>
+<span class="c"># 判断某个对象是否可被迭代</span>
+<span class="k">print</span> <span class="nb">isinstance</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span>  <span class="c"># True</span>
+<span class="c"># 遍历索引和值</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="s">&#39;C&#39;</span><span class="p">]):</span>
+    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)}:</span>
+    <span class="k">print</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+
+
+<span class="c"># 列表生成式 运用列表生成式，可以快速生成list，可以通过一个list推导出另一个list，而代码却十分简洁。</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>  <span class="c"># [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span>
+<span class="k">print</span> <span class="n">a</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>  <span class="c"># [4, 16, 36, 64, 100]</span>
+<span class="k">print</span> <span class="n">b</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="o">+</span> <span class="n">n</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="s">&#39;ABC&#39;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="s">&#39;XYZ&#39;</span><span class="p">]</span>  <span class="c"># [&#39;AX&#39;, &#39;AY&#39;, &#39;AZ&#39;, &#39;BX&#39;, &#39;BY&#39;, &#39;BZ&#39;, &#39;CX&#39;, &#39;CY&#39;, &#39;CZ&#39;]</span>
+<span class="k">print</span> <span class="n">c</span>  <span class="c"># 全排列</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)]</span>  <span class="c"># [&#39;day-2-funtion.py&#39;, &#39;day-3-advance-grammar.py&#39;, &#39;day1.py&#39;, &#39;rp-python.iml&#39;]</span>
+<span class="k">print</span> <span class="n">d</span>  <span class="c"># 列出当前目录的文件</span>
+<span class="c"># e = [k + &#39;=&#39; + v for k, v in {(1, 2), (3, 4), (5, 6)}]  # error</span>
+<span class="c"># print e</span>
+<span class="n">_e</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">:</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="s">&#39;C&#39;</span><span class="p">}</span>
+<span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="s">&#39;=&#39;</span> <span class="o">+</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_e</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]</span>
+<span class="k">print</span> <span class="n">e</span>  <span class="c"># [&#39;y=B&#39;, &#39;x=A&#39;, &#39;z=C&#39;]</span>
+
+
+<span class="c"># 生成器Generator</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">print</span> <span class="n">f</span>  <span class="c"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">print</span> <span class="n">g</span>  <span class="c"># &lt;generator object &lt;genexpr&gt; at 0x022AD4E0&gt;</span>
+<span class="k">print</span> <span class="n">g</span><span class="o">.</span><span class="n">next</span><span class="p">(),</span> <span class="n">g</span><span class="o">.</span><span class="n">next</span><span class="p">(),</span> <span class="n">g</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>  <span class="c"># 0 1 4</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">x</span>  <span class="c"># 9 16...</span>
+
+
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>  <span class="c"># 斐波拉契数列（Fibonacci）</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">b</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="n">fib</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>  <span class="c"># 斐波拉契数列（Fibonacci）</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">b</span>  <span class="c"># 如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator：</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">fib</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="c"># 遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">h</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">x</span>  <span class="c"># 1 1 2 3 5 8</span>
+</code></pre></div>
+<h4>第四天-函数式编程</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="c"># coding=utf-8</span>
+<span class="c"># function programing</span>
+
+
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">abs</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">b</span>  <span class="c"># 13</span>
+
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  <span class="c"># map 对list每个函数执行f</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">print</span> <span class="n">d</span>  <span class="c"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+<span class="c"># 复习之前的列表生成式</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">print</span> <span class="n">c</span>
+<span class="n">e</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span> <span class="n">e</span>  <span class="c"># [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]</span>
+
+
+<span class="c"># reduce(f,[x1, x2 ,x3 ,x4])=f(f(f(x1, x2), x3), x4) reduce把结果继续和序列的下一个元素做累积计算</span>
+<span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">y</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="k">print</span> <span class="n">f</span>  <span class="c"># 13579</span>
+
+
+<span class="k">def</span> <span class="nf">char2num</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;0&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;1&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;2&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;3&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;4&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;5&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;6&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&#39;7&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s">&#39;8&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">&#39;9&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}[</span><span class="n">s</span><span class="p">]</span>
+<span class="k">print</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="n">char2num</span><span class="p">,</span> <span class="s">&#39;12345&#39;</span><span class="p">))</span>  <span class="c"># 12345</span>
+
+
+<span class="k">def</span> <span class="nf">str2int</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">char2num</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;0&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;1&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;2&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;3&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;4&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;5&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;6&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&#39;7&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s">&#39;8&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">&#39;9&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}[</span><span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="n">char2num</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="k">print</span> <span class="n">str2int</span><span class="p">(</span><span class="s">&#39;2333&#39;</span><span class="p">)</span>  <span class="c"># 2333</span>
+<span class="c"># [&#39;adam&#39;, &#39;LISA&#39;, &#39;barT&#39;]，输出：[&#39;Adam&#39;, &#39;Lisa&#39;, &#39;Bart&#39;]。</span>
+<span class="k">print</span> <span class="s">&#39;aaa&#39;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>  <span class="c"># 首字母大小</span>
+
+
+<span class="k">def</span> <span class="nf">isOdd</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">g</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">isOdd</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="k">print</span> <span class="n">g</span>  <span class="c"># [1, 3, 5]</span>
+
+
+<span class="k">def</span> <span class="nf">isPrime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c"># 练习 判断素数</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="bp">True</span>
+<span class="k">print</span> <span class="n">isPrime</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">filter</span><span class="p">(</span><span class="n">isPrime</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>  <span class="c"># [1, 3, 5, 7]</span>
+
+
+<span class="k">def</span> <span class="nf">_comp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>  <span class="c">#</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">0</span>
+<span class="k">print</span> <span class="nb">sorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">_comp</span><span class="p">)</span>  <span class="c"># [4, 3, 2, 1] 自定义排序规则</span>
+
+
+<span class="k">def</span> <span class="nf">cal_sum</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>  <span class="c"># 返回函数</span>
+    <span class="k">def</span> <span class="nf">sum</span><span class="p">():</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+            <span class="n">ax</span> <span class="o">+=</span> <span class="n">n</span>
+        <span class="k">return</span> <span class="n">ax</span>
+    <span class="k">return</span> <span class="nb">sum</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">cal_sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">h</span>
+<span class="k">print</span> <span class="n">h</span><span class="p">()</span>  <span class="c"># 10</span>
+
+
+<span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+        <span class="n">fs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fs</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">f1</span><span class="p">[</span><span class="mi">0</span><span class="p">]()</span>  <span class="c"># 9</span>
+<span class="n">f2</span><span class="p">,</span> <span class="n">f3</span><span class="p">,</span> <span class="n">f4</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>  <span class="c"># 注意和上面那种定义方式的区别 count()返回到的是一个数组,数组里面存放的是函数</span>
+<span class="k">print</span> <span class="n">f2</span><span class="p">()</span>  <span class="c"># 9</span>
+<span class="k">print</span> <span class="n">f3</span><span class="p">()</span>  <span class="c"># 9</span>
+<span class="k">print</span> <span class="n">f4</span><span class="p">()</span>  <span class="c"># 9</span>
+
+
+<span class="k">def</span> <span class="nf">count</span><span class="p">():</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">g</span><span class="p">():</span>
+                <span class="k">return</span> <span class="n">j</span><span class="o">*</span><span class="n">j</span>
+            <span class="k">return</span> <span class="n">g</span>
+        <span class="n">fs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">fs</span>
+<span class="n">f2</span><span class="p">,</span> <span class="n">f3</span><span class="p">,</span> <span class="n">f4</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">f2</span><span class="p">()</span>  <span class="c"># 1</span>
+<span class="k">print</span> <span class="n">f3</span><span class="p">()</span>  <span class="c"># 4</span>
+<span class="k">print</span> <span class="n">f4</span><span class="p">()</span>  <span class="c"># 9</span>
+
+
+<span class="k">print</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>   <span class="c"># [0, 1, 4, 9, 16, 25, 36, 49, 64] # 匿名函数</span>
+<span class="n">h</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">*</span><span class="n">x</span>
+<span class="k">print</span> <span class="n">h</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c"># 25</span>
+
+
+<span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>  <span class="c"># 装饰器</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">ks</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&#39;call </span><span class="si">%s</span><span class="s">:&#39;</span> <span class="o">%</span> <span class="n">fun</span><span class="o">.</span><span class="n">__name__</span>
+        <span class="k">return</span> <span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">ks</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<span class="nd">@log</span>  <span class="c"># 等价于 now = log(now)</span>
+<span class="k">def</span> <span class="nf">now</span><span class="p">():</span>  <span class="c"># 借助Python的@语法，把decorator置于函数的定义处：</span>
+    <span class="k">print</span> <span class="s">&#39;2016-1-12&#39;</span>
+
+<span class="k">print</span> <span class="n">now</span><span class="p">()</span>  <span class="c"># call now: 2016-1-12</span>
+
+
+<span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+            <span class="k">print</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">():&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+
+<span class="nd">@log</span><span class="p">(</span><span class="s">&#39;execute&#39;</span><span class="p">)</span>  <span class="c"># now = log(&#39;execute&#39;)(now)</span>
+<span class="k">def</span> <span class="nf">now</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s">&#39;2013-12-25&#39;</span>  <span class="c"># execute now(): 2013-12-25</span>
+<span class="k">print</span> <span class="n">now</span><span class="p">()</span>
+</code></pre></div>
+<h4>第五天-模块及面向对象编程</h4>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="c"># coding=utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    a test module</span>
+<span class="sd">    python在注释中有一个非常有用的东西是 doc String]</span>
+<span class="sd">    第一行注释文件直接在Unix/Linux/Mac上运行</span>
+<span class="sd">    第二行标识py文件本身使用utf-8编码</span>
+<span class="sd">    sys.argv 默认参数只有一个是当前文件名字,可以带多个参数</span>
+<span class="sd">    执行python test.pt para1 para2...</span>
+
+<span class="sd">    __xxx__特殊变量,可以被直接饮用,一般都有特殊用途 如__name__ __author__ __doc__</span>
+<span class="sd">    _xxx __xxx 用来定义private,不应该被直接饮用</span>
+
+<span class="sd">    安装PIL(Python Imaging Library时使用 python install PIL不起作用,手动去http://www.pythonware.com/products/pil/下载的</span>
+
+<span class="sd">        [&#39;C:\\Java\\myblogworkspace\\rp\\rp-python\\pkg&#39;,</span>
+<span class="sd">        &#39;C:\\Java\\myblogworkspace\\rp\\rp-python&#39;,</span>
+<span class="sd">        &#39;C:\\Windows\\system32\\python27.zip&#39;, &#39;C:\\Python27\\DLLs&#39;,</span>
+<span class="sd">        &#39;C:\\Python27\\lib&#39;, &#39;C:\\Python27\\lib\\plat-win&#39;,</span>
+<span class="sd">        &#39;C:\\Python27\\lib\\lib-tk&#39;, &#39;C:\\Python27&#39;, &#39;C:\\Python27\\lib\\site-packages&#39;,</span>
+<span class="sd">        &#39;C:\\Python27\\lib\\site-packages\\PIL&#39;]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">cStringIO</span> <span class="kn">as</span> <span class="nn">StringIO</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c"># 导入失败会捕获到ImportError</span>
+    <span class="kn">import</span> <span class="nn">StringIO</span>
+
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;rp&#39;</span>
+
+<span class="k">print</span> <span class="n">__name__</span>  <span class="c"># __main__</span>
+
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
+    <span class="k">print</span> <span class="n">args</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;hell`&#39;</span> \
+              <span class="s">&#39;`&#39;</span> \
+              <span class="s">&#39;o world&#39;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;hello,</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;too many arguments!&#39;</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">test</span><span class="p">()</span>
+
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;test.jpg&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">im</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">mode</span>  <span class="c"># JPEG (199, 60) RGB</span>
+<span class="n">im</span><span class="o">.</span><span class="n">thumbnail</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c"># 生成图片的缩略图</span>
+<span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;thumb.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;JPEG&#39;</span><span class="p">)</span>
+
+
+<span class="c"># __future__模块，让你在旧的版本中试验新版本的一些特性。</span>
+<span class="k">print</span> <span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">xxx</span><span class="se">\&#39;</span><span class="s"> is unicode?&#39;</span><span class="p">,</span> <span class="nb">isinstance</span><span class="p">(</span><span class="s">&#39;xxx&#39;</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;u</span><span class="se">\&#39;</span><span class="s">xxx</span><span class="se">\&#39;</span><span class="s"> is unicode?&#39;</span><span class="p">,</span> <span class="nb">isinstance</span><span class="p">(</span><span class="s">u&#39;xxx&#39;</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;</span><span class="se">\&#39;</span><span class="s">xxx</span><span class="se">\&#39;</span><span class="s"> is str?&#39;</span><span class="p">,</span> <span class="nb">isinstance</span><span class="p">(</span><span class="s">&#39;xxx&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;b</span><span class="se">\&#39;</span><span class="s">xxx</span><span class="se">\&#39;</span><span class="s"> is str?&#39;</span><span class="p">,</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;xxx&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+</code></pre></div>
+                </div>
+
+
+                <div id="pay" style="text-align:center;">
+                  ----EOF-----
+                  <br>
+                  
+                </div>
+
+                <p class="meta">
+                	
+                      Categories:
+                	    
+                    	<a class="btn btn-default btn-xs" href="/categories.html#python">python</a>
+                    
+                	
+
+                	
+                      Tags:
+                	    
+                    	<a class="btn btn-default btn-xs" href="/tags.html#python">python</a>
+                    
+                	
+                </p>
+          	</article>
+
+          	<ul class="pager">
+          	  
+          	  <li class="previous disabled"><a class="btn btn-xs" href="#">&larr; Prev</a></li>
+          	  
+          	  
+          	  <li class="next"><a class="btn btn-xs" href="/2016/04/14/linux-expect" title="linux-expect">Next &rarr;</a></li>
+          	  
+          	</ul>
+
+            
+<div id="comments">
+  <div class="ds-thread" data-thread-key="/2016/01/11/python-learning"  data-title="python基础语法学习记录笔记"></div>
+</div>
+
+
+
+          </div>
+
+        </div>
+      </div>
+
+      <footer class="footer text-center">
+        <p>&copy; 2009-2016 <a href="/" target="_blank" title="">Huang rp</a> CC BY-NC-SA 3.0. <a href="https://github.com/javachen/javachen-blog-theme" target="_blank" title="https://github.com/javachen/javachen-blog-theme">Theme</a> build with <a href="//jekyllrb.com/" target="_blank" title="Transform your plain text into static websites and blogs.">Jekyll</a>.
+      	            
+            
+        </p>
+        <div id="toTop" style="display: block;">  <a href="#">▲</a><a href="#footer">▼</a>  </div>
+      </footer>
+
+      <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/static/js/core.js"></script>
+      <script type="text/javascript" src="/static/js/jquery.qrcode.min.js"></script>
+      <script type="text/javascript" src="/static/js/showup.js"></script>
+      
+      <!-- duoshuo Begin -->
+      <script type="text/javascript">
+        var duoshuoQuery = {short_name:"javahuang"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = 'http://static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0] ||
+          document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+      </script>
+      <!-- duoshuo End -->
+      
+      <script type="text/javascript">
+          <!--验证码-->
+          var url=window.location.href;
+          $('#code').qrcode({
+              width: 128,
+              height: 128,
+              text: url
+          });
+
+      </script>
+
+
+    </div>
+  </body>
+</html>

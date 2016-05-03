@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>进击的大黄</title>
+  <link href="//atom.xml" rel="self"/>
+  <link href=""/>
+  <updated>2016-05-03T10:58:47+08:00</updated>
+  <id></id>
+  <author>
+    <name>Huang rp</name>
+  </author>
+
+  
+  <entry>
+    <title>写在开始</title>
+    <link href="/2016/04/30/blog-init/"/>
+    <updated>2016-04-30T00:00:00+08:00</updated>
+    <id>/2016/04/30/blog-init</id>
+    <content type="html">初衷
+
+之前看到javahen的博客挺不错的，简洁、清晰，但是一直没深入研究一下,我过去使用了一年的博客，从前端到后台完全自己写的，代码在 https://github.com/javahuang/rp 上，博客内容展示部分参考了苏洋的一个个人博客，后台是我自己写的一个cms，用的java+bootstrap+jqueryui，自己买的域名，然后买的阿里云服务器，但是在使用过程中，我一直觉得博客展示部分设计的很不友好，正好服务器快到期，不想续费了。
+
+过程
+
+昨天开始边看边学边操作，从markdown，gitpages，到jekyll。开始打算，找个jekyll主题然后自己修改，后来在j...</content>
+  </entry>
+  
+  <entry>
+    <title>linux-expect</title>
+    <link href="/2016/04/14/linux-expect/"/>
+    <updated>2016-04-14T00:00:00+08:00</updated>
+    <id>/2016/04/14/linux-expect</id>
+    <content type="html">题记
+
+在我没有搭建基于jenkins的持续集成平台时，项目都是我手动的打包，然后scp到linux服务器，再重启服务。期间，要重复的输入ssh的密码，我就想有没有一种简单的方式，能写一个脚本来一键进行这些操作。
+
+语法：
+
+#!/usr/bin/expect 告诉操作系统脚本代码使用哪一种shell执行
+set timeout 300 设置超时时间，比如ssh时等待出现密码输入界面时间
+spawn ssh root@192.168.1.100 spawn进入expect环境后，创建一个expect管理的与其他程序或者远程设备交互的session，用来传递交互指令。
+expect &amp;qu...</content>
+  </entry>
+  
+  <entry>
+    <title>python基础语法学习记录笔记</title>
+    <link href="/2016/01/11/python-learning/"/>
+    <updated>2016-01-11T00:00:00+08:00</updated>
+    <id>/2016/01/11/python-learning</id>
+    <content type="html">第一天-基础语法
+
+注释后面空一格，逗号后面空一格，函数前面空两行，行后面的注释要空两格，语句里面的= &amp;gt; &amp;lt;左右都要空一格
+#!/usr/bin/env python
+# coding=utf-8
+# 设置文件字符集编码,不设置使用中文会报错
+print &amp;quot;hello world&amp;quot;
+# input and output
+name = raw_input(&amp;#39;name:&amp;#39;)  # waiting user input
+print name, &amp;#39;is who&amp;#39;  # str concat
+
+# escape with \
+pri...</content>
+  </entry>
+  
+</feed>
