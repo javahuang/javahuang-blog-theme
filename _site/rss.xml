@@ -4,8 +4,8 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-05-03T23:08:02+08:00</lastBuildDate>
-    <pubDate>2016-05-03T23:08:02+08:00</pubDate>
+    <lastBuildDate>2016-05-04T22:14:10+08:00</lastBuildDate>
+    <pubDate>2016-05-04T22:14:10+08:00</pubDate>
     <ttl>1800</ttl>
 
     
@@ -613,7 +613,7 @@ expect -c &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
 &lt;li&gt;&lt;code class=&quot;prettyprint&quot;&gt;_posts&lt;/code&gt; 就是博客正文，命名格式就是访问的地址&lt;/li&gt;
 &lt;li&gt;&lt;code class=&quot;prettyprint&quot;&gt;index.html&lt;/code&gt;就是首页&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;运行deploy.sh,执行&lt;code class=&quot;prettyprint&quot;&gt;jekyll build&lt;/code&gt;会在&lt;code class=&quot;prettyprint&quot;&gt;_site&lt;/code&gt;文件夹生成可以部署的静态html，我目前采用的是将_site里面的内容push到第一步新建的&lt;a href=&quot;https://github.com/javahuang/javahuang.github.io.git&quot;&gt;repository&lt;/a&gt;，github内建支持jekyll，也可以在fork上面的&lt;a href=&quot;https://github.com/javahuang/javahuang-blog-theme.git&quot;&gt;javahuang-blog-theme&lt;/a&gt;，然后在Settings里面修改Repository name为name.github.io，然后直接在_post里面写博客，然后直接push&lt;/li&gt;
+&lt;li&gt;运行deploy.sh,执行&lt;code class=&quot;prettyprint&quot;&gt;jekyll build&lt;/code&gt;会在&lt;code class=&quot;prettyprint&quot;&gt;_site&lt;/code&gt;文件夹生成可以部署的静态html，我目前采用的是将_site里面的内容push到第一步新建的&lt;a href=&quot;https://github.com/javahuang/javahuang.github.io.git&quot;&gt;repository&lt;/a&gt;，git上有个开源项目&lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;jekyll-now&lt;/a&gt;提供了另外一个使用jekyll搭建gitpages博客。&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;markdown编辑器的选择
 之前我使用的mou，使用了一天果断换到了macdown，两个md编辑器的区别可以参见&lt;a href=&quot;http://www.jianshu.com/p/6c157af09e84&quot;&gt;Mac 下两款 Markdown 编辑器 Mou/MacDown 大 PK&lt;/a&gt;，对于我来说，macdown有几点mou做不到的，比如代码高亮识别代码语言&lt;strong&gt;```bash&lt;/strong&gt;,直接回车换行,对jekyll前面那段的支持，以及对Autolink、Strikethrough等的支持正好和_config.yml中配置的macdown处理器redcarpet配置的extensions对应。&lt;/li&gt;
@@ -632,6 +632,17 @@ expect -c &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
       <link>http://javahuang.github.io/2015/05/14/blog-init/</link>
       <guid>http://javahuang.github.io/2015/05/14/blog-init/</guid>
       <pubDate>2015-05-14T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>netty源码阅读笔记</title>
+      <description>&lt;h3&gt;netty&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/16-5-4/71648584.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2015/05/04/netty-study/</link>
+      <guid>http://javahuang.github.io/2015/05/04/netty-study/</guid>
+      <pubDate>2015-05-04T00:00:00+08:00</pubDate>
     </item>
     
   </channel>

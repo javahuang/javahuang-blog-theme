@@ -4,6 +4,10 @@ echo `date`
 
 msg="update:$*"
 
+# 同步图片到七牛
+qrsync qiniu-images.json
+
+# sed -i "" 's/javachen\-rs\.qiniudn\.com/7xnrdo\.com1\.z0\.glb.clouddn\.com/g' */*
 
 rm -rf _site/*
 jekyll build

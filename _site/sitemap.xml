@@ -25,6 +25,13 @@
     <priority>0.8</priority>
   </url>
   
+  <url>
+    <loc>http://javahuang.github.io/2015/05/04/netty-study/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-05-04T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
 
   <url>
 	<loc>http://javahuang.github.io</loc>
