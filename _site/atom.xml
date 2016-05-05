@@ -4,7 +4,7 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-05-04T22:14:10+08:00</updated>
+  <updated>2016-05-05T22:46:36+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
@@ -66,9 +66,15 @@ pri...</content>
     <updated>2015-05-04T00:00:00+08:00</updated>
     <id>/2015/05/04/netty-study</id>
     <content type="html">netty
-
-
-</content>
+//AbstractBootstrap
+private ChannelFuture doBind(final SocketAddress localAddress) {
+        final ChannelFuture regFuture = initAndRegister();
+        final Channel channel = regFuture.channel();
+        if (regFuture.cause() != null) {
+            return regFuture;
+        }
+...
+final Cha...</content>
   </entry>
   
 </feed>

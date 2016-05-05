@@ -1,5 +1,5 @@
 {
-  "src": "static/images",
+  "src": "qiniu/images",
   "dest": "qiniu:access_key=S6eT1lKL3Ewqx3F0ZobACxR1LR9qrLzhZAsefKj-&secret_key=eSKxyCHpJCOrI5EPZe7zY0y2fYzR4XTOzCInkzSo&bucket=huang",
   "debug_level": 1
 }
