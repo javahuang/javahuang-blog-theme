@@ -5,6 +5,27 @@
 
   
   <url>
+    <loc>http://javahuang.github.io/2016/05/10/map-reduce-impreative-devlarative/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-05-10T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/05/10/java8-lambda/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-05-10T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/05/09/java-8-lambda/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-05-09T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://javahuang.github.io/2016/04/14/linux-expect/</loc>
     <changefreq>daily</changefreq>
     <lastmod>2016-04-14T00:00:00+08:00</lastmod>
@@ -22,6 +43,13 @@
     <loc>http://javahuang.github.io/2015/05/14/blog-init/</loc>
     <changefreq>daily</changefreq>
     <lastmod>2015-05-14T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2015/05/11/java-concurrent-forkjoinpool/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2015-05-11T00:00:00+08:00</lastmod>
     <priority>0.8</priority>
   </url>
   

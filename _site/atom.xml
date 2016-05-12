@@ -4,12 +4,57 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-05-05T22:46:36+08:00</updated>
+  <updated>2016-05-12T15:22:33+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
   </author>
 
+  
+  <entry>
+    <title>mapreduce及命令声明式编程</title>
+    <link href="/2016/05/10/map-reduce-impreative-devlarative/"/>
+    <updated>2016-05-10T00:00:00+08:00</updated>
+    <id>/2016/05/10/map-reduce-impreative-devlarative</id>
+    <content type="html">早晨在看java8的lambda表达式，在java8初体验看到了命令式编程和声明式编程的区别，在文章中的例子中用到了JavaScript数组的map和reduce函数，这两个函数在java和JavaScript的函数式编程中都常用到，就顺便翻了下用通俗易懂的大白话讲解Map/Reduce原理。
+
+map reduce
+
+
+map（映射）单独对每个元素进行操作，如执行过滤原始数据等；
+reduce（化简）如将map操作的元素聚集在一起，获取结果；
+
+
+命令式和声明式编程
+
+
+命令式编程：命令机器如何做（how），你想要的（what），都会按你的命令实现。
+
+var a=[1,2,3,4,5...</content>
+  </entry>
+  
+  <entry>
+    <title>Java8特性学习</title>
+    <link href="/2016/05/10/java8-lambda/"/>
+    <updated>2016-05-10T00:00:00+08:00</updated>
+    <id>/2016/05/10/java8-lambda</id>
+    <content type="html">default方法
+
+在接口内定义一些默认实现，如 java.util.function.Predicate 定义了一个抽象方法用于lambda表达式接口，定义了若干default方法。
+比如，在Collection定义了了几个Stream相关的default方法，能保持代码的向下兼容的同时也能加一些新的java8特性。
+public interface SimpleInterface {
+  public void doSomeWork();
+
+  //A default method in the interface created using &amp;quot;default&amp;quot;...</content>
+  </entry>
+  
+  <entry>
+    <title>lambdaexpressions</title>
+    <link href="/2016/05/09/java-8-lambda/"/>
+    <updated>2016-05-09T00:00:00+08:00</updated>
+    <id>/2016/05/09/java-8-lambda</id>
+    <content type="html"></content>
+  </entry>
   
   <entry>
     <title>linux-expect</title>
@@ -61,20 +106,30 @@ pri...</content>
   </entry>
   
   <entry>
+    <title>多线程-forkjoinpoll</title>
+    <link href="/2015/05/11/java-concurrent-forkjoinpool/"/>
+    <updated>2015-05-11T00:00:00+08:00</updated>
+    <id>/2015/05/11/java-concurrent-forkjoinpool</id>
+    <content type="html">首先我们需要先知道并发(Concurrency)和并行(Parallelism)的区别,下面是so上一个作者的回答
+
+
+Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn&amp;#39;t necessarily mean they&amp;#39;ll ever both be running at the same instant. Eg. multitasking on a single-core machine.
+Parallelism ...</content>
+  </entry>
+  
+  <entry>
     <title>netty源码阅读笔记</title>
     <link href="/2015/05/04/netty-study/"/>
     <updated>2015-05-04T00:00:00+08:00</updated>
     <id>/2015/05/04/netty-study</id>
-    <content type="html">netty
+    <content type="html">AbstractBootstrap构建流程
+
+channelFactory.newChannel()来创建NioServerSocketChannel
 //AbstractBootstrap
 private ChannelFuture doBind(final SocketAddress localAddress) {
         final ChannelFuture regFuture = initAndRegister();
         final Channel channel = regFuture.channel();
-        if (regFuture.cause() != null) {
-            return regFuture;
-        }
-...
-final Cha...</content>
+        if (regFuture.ca...</content>
   </entry>
   
 </feed>

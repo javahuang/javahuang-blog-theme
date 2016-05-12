@@ -3,7 +3,7 @@ layout: post
 title:  "linux-expect"
 keywords: "linux, expect"
 description: "linux expect的学习"
-category: others
+category: linux
 tags: [linux]
 ---
 

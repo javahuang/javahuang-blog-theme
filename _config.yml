@@ -15,7 +15,7 @@ donate_url:
 
 # Outputting 分页设置
 permalink: /:year/:month/:day/:title
-paginate: 5
+paginate: 15
 paginate_path: "page:num"
 timezone: Asia/Shanghai
 
