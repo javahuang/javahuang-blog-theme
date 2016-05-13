@@ -4,10 +4,33 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-05-12T15:22:33+08:00</lastBuildDate>
-    <pubDate>2016-05-12T15:22:33+08:00</pubDate>
+    <lastBuildDate>2016-05-13T14:48:29+08:00</lastBuildDate>
+    <pubDate>2016-05-13T14:48:29+08:00</pubDate>
     <ttl>1800</ttl>
 
+    
+    <item>
+      <title>多线程-forkjoinpoll</title>
+      <description>&lt;p&gt;首先我们需要先知道并发(Concurrency)和并行(Parallelism)的区别,下面是so上一个作者的回答&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn&amp;#39;t necessarily mean they&amp;#39;ll ever both be running at the same instant. Eg. multitasking on a single-core machine.&lt;br&gt;
+Parallelism is when tasks literally run at the same time, eg. on a multicore processor.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ForkJoinPoll的官方api&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;An ExecutorService for running ForkJoinTasks. A ForkJoinPool provides the entry point for submissions from non-ForkJoinTask clients, as well as management and monitoring operations.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/&quot;&gt;http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/&lt;/a&gt;&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;Fork/Join Framework&lt;/code&gt; vs. &lt;code class=&quot;prettyprint&quot;&gt;Parallel Streams&lt;/code&gt; vs. &lt;code class=&quot;prettyprint&quot;&gt;ExecutorService&lt;/code&gt;:&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/05/11/java-concurrent-forkjoinpool/</link>
+      <guid>http://javahuang.github.io/2016/05/11/java-concurrent-forkjoinpool/</guid>
+      <pubDate>2016-05-11T00:00:00+08:00</pubDate>
+    </item>
     
     <item>
       <title>mapreduce及命令声明式编程</title>
@@ -210,14 +233,6 @@
       <link>http://javahuang.github.io/2016/05/10/java8-lambda/</link>
       <guid>http://javahuang.github.io/2016/05/10/java8-lambda/</guid>
       <pubDate>2016-05-10T00:00:00+08:00</pubDate>
-    </item>
-    
-    <item>
-      <title>lambdaexpressions</title>
-      <description></description>
-      <link>http://javahuang.github.io/2016/05/09/java-8-lambda/</link>
-      <guid>http://javahuang.github.io/2016/05/09/java-8-lambda/</guid>
-      <pubDate>2016-05-09T00:00:00+08:00</pubDate>
     </item>
     
     <item>
@@ -851,26 +866,6 @@ github环境&lt;/p&gt;
       <link>http://javahuang.github.io/2015/05/14/blog-init/</link>
       <guid>http://javahuang.github.io/2015/05/14/blog-init/</guid>
       <pubDate>2015-05-14T00:00:00+08:00</pubDate>
-    </item>
-    
-    <item>
-      <title>多线程-forkjoinpoll</title>
-      <description>&lt;p&gt;首先我们需要先知道并发(Concurrency)和并行(Parallelism)的区别,下面是so上一个作者的回答&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn&amp;#39;t necessarily mean they&amp;#39;ll ever both be running at the same instant. Eg. multitasking on a single-core machine.&lt;br&gt;
-Parallelism is when tasks literally run at the same time, eg. on a multicore processor.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;ForkJoinPoll的官方api&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;An ExecutorService for running ForkJoinTasks. A ForkJoinPool provides the entry point for submissions from non-ForkJoinTask clients, as well as management and monitoring operations.&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-      <link>http://javahuang.github.io/2015/05/11/java-concurrent-forkjoinpool/</link>
-      <guid>http://javahuang.github.io/2015/05/11/java-concurrent-forkjoinpool/</guid>
-      <pubDate>2015-05-11T00:00:00+08:00</pubDate>
     </item>
     
     <item>
