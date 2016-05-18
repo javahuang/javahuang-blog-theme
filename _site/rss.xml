@@ -4,19 +4,108 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-05-13T14:48:29+08:00</lastBuildDate>
-    <pubDate>2016-05-13T14:48:29+08:00</pubDate>
+    <lastBuildDate>2016-05-18T10:22:35+08:00</lastBuildDate>
+    <pubDate>2016-05-18T10:22:35+08:00</pubDate>
     <ttl>1800</ttl>
 
     
     <item>
+      <title>虚拟机性能监控与故障处理工具</title>
+      <description>&lt;h3&gt;jps：虚拟机进程状况工具&lt;/h3&gt;
+
+&lt;p&gt;本地虚拟机ID(Local Virtual Machine Identifier)&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;选项&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-q&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;只输出LVMID，省略主类的名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-m&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;输出虚拟机进程启动时传递给主类main(函数的参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-l&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;输出主类的全名，如果进程执行的是Jar包，输出Jar路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-v&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;输出虚拟机进程启动时JVM参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h3&gt;jstat：虚拟机统计信息监视工具&lt;/h3&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;选项&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-gc&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;监视java堆状况，包括Eden区，2个survivor区，老年代，永久代的容量，已用空间，GC时间合计等信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-gcutil&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;输出虚拟机进程启动时传递给主类main(函数的参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h3&gt;jinfo：Java配置信息工具&lt;/h3&gt;
+
+&lt;p&gt;jinfo [ option ] pid&lt;/p&gt;
+
+&lt;h3&gt;jmap：Java内存映像工具&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;jmap -dump:format&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;b,file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eclipse.bin 3500
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;jhat：虚拟机堆转储快照分析工具&lt;/h3&gt;
+
+&lt;p&gt;配合上面的jmap对dump的堆转储快照进行分析&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;jhat eclipse.bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;jstack：Java堆栈跟踪工具&lt;/h3&gt;
+
+&lt;p&gt;jstack（Stack Trace for Java）用于生成虚拟机当前时刻的线程快照&lt;br&gt;
+在项目中，使用Thread.getAllStackTraces()来获取虚拟机中所有线程的StackTraceElement对象&lt;/p&gt;
+
+&lt;h3&gt;jdk的可视化工具&lt;/h3&gt;
+
+&lt;p&gt;jconsole&lt;br&gt;
+jvisualvm&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/05/17/jvm-tools/</link>
+      <guid>http://javahuang.github.io/2016/05/17/jvm-tools/</guid>
+      <pubDate>2016-05-17T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
       <title>多线程-forkjoinpoll</title>
-      <description>&lt;p&gt;首先我们需要先知道并发(Concurrency)和并行(Parallelism)的区别,下面是so上一个作者的回答&lt;/p&gt;
+      <description>&lt;h3&gt;Concurrency vs Parallelism&lt;/h3&gt;
+
+&lt;p&gt;首先我们需要先知道并发(Concurrency)和并行(Parallelism)的区别,下面是so上一个作者的回答&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn&amp;#39;t necessarily mean they&amp;#39;ll ever both be running at the same instant. Eg. multitasking on a single-core machine.&lt;br&gt;
 Parallelism is when tasks literally run at the same time, eg. on a multicore processor.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;h3&gt;ForkJoinPool vs ExecutorService&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;测试代码:
+&lt;a href=&quot;https://github.com/javahuang/rp-study/tree/master/blog/src/main/java/insidecoding/webcrawler&quot;&gt;https://github.com/javahuang/rp-study/tree/master/blog/src/main/java/insidecoding/webcrawler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;测试结果：
+当开启64个线程的时候，爬1500个link使用ExecutorService结果是：Time for visit 1500 distinct links=420426359000；使用ForkJoinPool时的结果是：Time for visit 1500 distinct links= 19478698300&lt;/li&gt;
+&lt;li&gt;测试结果表明，在解决递归问题时，Fork/Join可能是最有效的解决方案，它不会取代原来的java.util.concurrency包，在多核平台并行编程上递归是很重要的，fork/join是对java平台并发编程一个很重要的扩充。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;参考：&lt;/strong&gt;&lt;a href=&quot;http://www.javaworld.com/article/2078440/enterprise-java/java-tip-when-to-use-forkjoinpool-vs-executorservice.html&quot;&gt;http://www.javaworld.com/article/2078440/enterprise-java/java-tip-when-to-use-forkjoinpool-vs-executorservice.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;ForkJoinPoll的官方api&lt;/p&gt;
 

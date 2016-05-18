@@ -4,7 +4,7 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-05-13T14:48:29+08:00</updated>
+  <updated>2016-05-18T10:22:35+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
@@ -12,15 +12,66 @@
 
   
   <entry>
+    <title>虚拟机性能监控与故障处理工具</title>
+    <link href="/2016/05/17/jvm-tools/"/>
+    <updated>2016-05-17T00:00:00+08:00</updated>
+    <id>/2016/05/17/jvm-tools</id>
+    <content type="html">jps：虚拟机进程状况工具
+
+本地虚拟机ID(Local Virtual Machine Identifier)
+
+
+
+选项
+作用
+
+
+
+-q
+只输出LVMID，省略主类的名称
+
+
+-m
+输出虚拟机进程启动时传递给主类main(函数的参数
+
+
+-l
+输出主类的全名，如果进程执行的是Jar包，输出Jar路径
+
+
+-v
+输出虚拟机进程启动时JVM参数
+
+
+
+jstat：虚拟机统计信息监视工具
+
+
+
+选项
+作用
+
+
+
+-gc
+监视java堆状况，包括Eden区，2个survivor区，老年代，永久代的容量，已用空间，GC时间合计等信息
+
+
+-gcutil
+输出虚拟机进程启动时传递给主类main...</content>
+  </entry>
+  
+  <entry>
     <title>多线程-forkjoinpoll</title>
     <link href="/2016/05/11/java-concurrent-forkjoinpool/"/>
     <updated>2016-05-11T00:00:00+08:00</updated>
     <id>/2016/05/11/java-concurrent-forkjoinpool</id>
-    <content type="html">首先我们需要先知道并发(Concurrency)和并行(Parallelism)的区别,下面是so上一个作者的回答
+    <content type="html">Concurrency vs Parallelism
+
+首先我们需要先知道并发(Concurrency)和并行(Parallelism)的区别,下面是so上一个作者的回答
 
 
-Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn&amp;#39;t necessarily mean they&amp;#39;ll ever both be running at the same instant. Eg. multitasking on a single-core machine.
-Parallelism ...</content>
+Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn&amp;#39;t necessarily mean they&amp;#39;ll ever both be running at the same instant. Eg. multitasking on a singl...</content>
   </entry>
   
   <entry>
