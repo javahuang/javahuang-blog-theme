@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="inc/jquery-1.10.1.min.js"></script>
+    <link rel="stylesheet" href="inc/bootstrap.css">
+    <script type="text/javascript" src="inc/test.js"></script>
+    <link rel="stylesheet" href="inc/test.css" />
+</head>
+<body>
+<div class="container">
+    <div style="text-align: center;font-size: 60px;font-weight: bold;margin-top: 6px;color:rgba(33, 62, 230, 0.88)">
+        我们的纪念日
+    </div>
+    <div id="DateCountdown" data-date="2016-02-09 09:00:00"></div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold">
+       你好哇,<span style="font-size: 60px;color: #EF16BA;">❤张小艳️</span>
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        我们已经认识<span class="outday" style="color: red"></span>天了!
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        今天你过的还开心吗?
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        我希望你每天都能开开心心的
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        我会尽我自己最大的努力让彼此过的更好
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        如果你的天空出现刹那阴霾,请告诉我
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        愿我们的爱情像大海一样宽容
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        如天空一般广阔
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        比大山还要稳定
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        愿无岁月可回头 且以深情共白首
+    </div>
+    <div style="text-align: center;font-size: 40px;font-weight: bold;margin-top: 6px;">
+        一起努力吧!
+    </div>
+</div>
+<script>
+    $("#DateCountdown").TimeCircles();
+    var updateTime = function(){
+        var date = $("#date").val();
+        var time = $("#time").val();
+        var datetime = date + ' ' + time + ':00';
+        $("#DateCountdown").data('date', datetime).TimeCircles().start();
+    }
+    $("#date").change(updateTime).keyup(updateTime);
+    $("#time").change(updateTime).keyup(updateTime);
+    $(function(){
+        setInterval(function(){
+            $(".outday").html($(".textDiv_Days").find("span").text());
+        },1000);
+    });
+</script>
+</body>
+</html>
