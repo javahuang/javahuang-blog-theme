@@ -4,10 +4,112 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-05-19T09:53:00+08:00</lastBuildDate>
-    <pubDate>2016-05-19T09:53:00+08:00</pubDate>
+    <lastBuildDate>2016-05-25T22:51:14+08:00</lastBuildDate>
+    <pubDate>2016-05-25T22:51:14+08:00</pubDate>
     <ttl>1800</ttl>
 
+    
+    <item>
+      <title>linux使用笔记</title>
+      <description>&lt;h1&gt;基础知识&lt;/h1&gt;
+
+&lt;h1&gt;shell&lt;/h1&gt;
+
+&lt;p&gt;shell是linux/unix的一个外壳，负责与linux内核交换。&lt;br&gt;
+用户登录时，会读取&lt;code class=&quot;prettyprint&quot;&gt;/etc/profile&lt;/code&gt;,&lt;code class=&quot;prettyprint&quot;&gt;~/.profile&lt;/code&gt;，如果当前shell是bash，还会读取(如果存在)&lt;code class=&quot;prettyprint&quot;&gt;~/.bash_profile&lt;/code&gt;,&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 查看目前系统有几种shell&lt;/span&gt;
+cat /etc/shells
+&lt;span class=&quot;c&quot;&gt;# 查看当前使用的shell&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SHELL&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 切换shell&lt;/span&gt;
+chsh -s /bin/zsh
+&lt;span class=&quot;c&quot;&gt;# 显示 shell变量&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 显示 用户变量(与使用哪种shell无关)&lt;/span&gt;
+env
+&lt;span class=&quot;c&quot;&gt;# shell变量导出为用户变量&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;aa&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;bb
+&lt;span class=&quot;c&quot;&gt;# 清除用户变量&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;unset&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$aa&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# PATH决定了shell到哪些目录中寻找命令或者程序&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;输出重定向&lt;/h3&gt;
+
+&lt;p&gt;bash中，0，1，2分别代表STDIN_FILENO（标准输入）、STDOUT_FILENO（标准输出）、STDERR_FILENO（错误信息输出）。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 将错误消息和标准输出输出到文件a.txt,如果不加2&amp;gt;&amp;amp;1则错误消息只会输出到屏幕&lt;/span&gt;
+find / -name &lt;span class=&quot;s1&quot;&gt;&amp;#39;bash&amp;#39;&lt;/span&gt;&amp;gt;a.txt 2&amp;gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;1
+&lt;span class=&quot;c&quot;&gt;# 将错误消息和标准输出输出到文件，同时输出到屏幕&lt;/span&gt;
+find / -name &lt;span class=&quot;s1&quot;&gt;&amp;#39;bash&amp;#39;&lt;/span&gt;&amp;gt;a.txt 2&amp;gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;tee a.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;常用的linux命令&lt;/h3&gt;
+
+&lt;h3&gt;常用的脚本&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;从服务器exp导出数据，并且imp到本地&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;https://github.com/javahuang/rp-study/blob/master/blog/src/main/resources/shell/script/oracle_exp_imp.sh&quot;&gt;https://github.com/javahuang/rp-study/blob/master/blog/src/main/resources/shell/script/oracle_exp_imp.sh&lt;/a&gt;&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/05/25/linux/</link>
+      <guid>http://javahuang.github.io/2016/05/25/linux/</guid>
+      <pubDate>2016-05-25T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>java.util.stream包描述翻译</title>
+      <description>&lt;h2&gt;Package java.util.stream.Description&lt;/h2&gt;
+
+&lt;p&gt;部分练习代码见:&lt;br&gt;
+支持对流元素函数式操作，比如集合里面的map-reduce变换&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;widgets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RED&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;mapToInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWeight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+                      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Streams和collections的区别：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;非存储。stream并非存储元素的数据结构。&lt;/li&gt;
+&lt;li&gt;Functional in nature。对stream的操作不会修改source。&lt;/li&gt;
+&lt;li&gt;Laziness-seeking。延迟查找，Stream操作通常被分割成&lt;code class=&quot;prettyprint&quot;&gt;intermediate operations&lt;/code&gt;和&lt;code class=&quot;prettyprint&quot;&gt;terminal operations&lt;/code&gt;,中间过程操作(通常是lazy的)和结果集操作。&lt;/li&gt;
+&lt;li&gt;Possibly unbounded。元素个数无需明确指出，比如可以通过limit(n)或者findFirst()来在有限时间对流进行计算。&lt;/li&gt;
+&lt;li&gt;Comsumable。stream的元素只在stream的生命周期内有效，&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&lt;span id=&quot;getStream&quot;&gt;Streams的获取途径:&lt;/span&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过Collection的stream()和parallelStream()获取&lt;/li&gt;
+&lt;li&gt;通过Arrays.stream()获取&lt;/li&gt;
+&lt;li&gt;通过stream类的静态工厂方法来获取，如Stream.of(),IntStream.range()或者Stream.iterate()&lt;/li&gt;
+&lt;li&gt;文件的行,BufferedReader.lines()&lt;/li&gt;
+&lt;li&gt;通过Files提供的一些方法，&lt;code class=&quot;prettyprint&quot;&gt;lines&lt;/code&gt; &lt;code class=&quot;prettyprint&quot;&gt;walk&lt;/code&gt; &lt;code class=&quot;prettyprint&quot;&gt;find&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取Random.ints()来获取随机数 &lt;/li&gt;
+&lt;li&gt;BitSet.stream(),Pattern.splitAsStream(),JarFile.stream()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Stream operations and pipelines&lt;/h3&gt;
+
+&lt;p&gt;流操作被分割成中间过程操作和结果集操作，通过流管道(stream pipelines)关联。stream pipeline可以通过上面的&lt;a href=&quot;#getStream&quot;&gt;获取途径&lt;/a&gt;来获取，跟上一个或者多个中间过程操作，以一个结果集操作结尾。&lt;br&gt;
+中间过程操作会返回新的stream，并且通常是懒加载（消费的时候按需加载）的，对管道数据的遍历操作(中间过程操作)发生在结果集操作之后。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Traversal of the pipeline source does not begin until the terminal operation of the pipeline is executed. &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;Stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;one&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;two&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;three&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;four&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;String:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toUpperCase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;peek&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Mapped value: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;//.collect(Collectors.toList());//如果注释该行前面的map和peek都不会执行&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Parallelism&lt;/h3&gt;
+
+&lt;h3&gt;Low-level stream construction&lt;/h3&gt;
+
+&lt;p&gt;StreamSupport&lt;code class=&quot;prettyprint&quot;&gt;有若干更底层创建stream的方法，所有的都是使用&lt;/code&gt;Spliterator&lt;code class=&quot;prettyprint&quot;&gt;,A spliterator is the parallel analogue of an Iterator; spliterator是iterator的并行模型实现，最简单直观创建spliterator的方法是&lt;/code&gt;Spliterators.spliteratorUnknownSize(java.util.Iterator,int)`&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/05/23/java-util-stream-translate/</link>
+      <guid>http://javahuang.github.io/2016/05/23/java-util-stream-translate/</guid>
+      <pubDate>2016-05-23T00:00:00+08:00</pubDate>
+    </item>
     
     <item>
       <title>虚拟机性能监控与故障处理工具</title>
@@ -119,8 +221,36 @@ Parallelism is when tasks literally run at the same time, eg. on a multicore pro
 &lt;h5&gt;萌萌哒栗子:&lt;/h5&gt;
 
 &lt;p&gt;求质数算法：判断一个数是否是&lt;code class=&quot;prettyprint&quot;&gt;质数&lt;/code&gt;，可以依次用该数对&lt;code class=&quot;prettyprint&quot;&gt;从2到该数的平方根&lt;/code&gt;的数&lt;code class=&quot;prettyprint&quot;&gt;求摸&lt;/code&gt;&lt;br&gt;
-求平方根算法：&lt;code class=&quot;prettyprint&quot;&gt;Math.sqrt()&lt;/code&gt;,math包自带的求平方根只能对double运算，double最大值为2&lt;sup&gt;1024&lt;/sup&gt;，308位，代码里面采用的是牛顿法求平方根，而BigInteger是没有位数限制的。&lt;/p&gt;
-
+求平方根算法：&lt;code class=&quot;prettyprint&quot;&gt;Math.sqrt()&lt;/code&gt;,math包自带的求平方根只能对double运算，double最大值为2&lt;sup&gt;1024&lt;/sup&gt;，308位，代码里面采用的是牛顿法求平方根，而BigInteger是没有位数限制的。&lt;br&gt;
+栗子中用J8的stream并行流来判断一个数是否是质数：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;// 要计算的质数
+primeNumber = new BigInteger(sPrime);
+// 对质数进行求平方根
+sqrt = Utils.sqrt(primeNumber);
+// 线程数 ForkJoinPoll开启worker线程数
+numberOfThread = new BigInteger(sNumberOfThread);
+// 给每个线程分配的块
+lengthForThread = TestPrime.sqrt.divide(numberOfThread);
+//
+Set&amp;lt;BigInteger&amp;gt; collect = Stream
+                .iterate(Utils.two, n -&amp;gt; n.add(TestPrime.lengthForThread))
+                .limit(TestPrime.numberOfThread.longValue())
+                .parallel()
+                .filter(i -&amp;gt; Utils.primeProcessPart(i))
+                .collect(Collectors.toSet());
+//
+public static Boolean primeProcessPart(BigInteger from) {
+        boolean isPrime = true;
+        BigInteger to = from.add(TestPrime.lengthForThread);
+        for (BigInteger i = from; i.compareTo(to) &amp;lt;= 0; i = i
+                .add(BigInteger.ONE)) {
+            if (TestPrime.primeNumber.mod(i).equals(BigInteger.ZERO)) {
+                isPrime = false;
+            }
+        }
+        return isPrime;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;参考：&lt;/strong&gt;&lt;a href=&quot;http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/&quot;&gt;http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/&lt;/a&gt;&lt;/p&gt;
 </description>
       <link>http://javahuang.github.io/2016/05/11/java-concurrent-forkjoinpool/</link>
@@ -271,6 +401,7 @@ Parallelism is when tasks literally run at the same time, eg. on a multicore pro
 &lt;li&gt;stream转换&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//过滤 去重 转换 添加消费函数 丢弃 限制 汇聚&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//消费函数会在汇聚函数调用的时候执行&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;distinct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;mapToInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;peek&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;skip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;

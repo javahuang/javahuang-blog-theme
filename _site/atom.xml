@@ -4,12 +4,59 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-05-19T09:53:00+08:00</updated>
+  <updated>2016-05-25T22:51:14+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
   </author>
 
+  
+  <entry>
+    <title>linux使用笔记</title>
+    <link href="/2016/05/25/linux/"/>
+    <updated>2016-05-25T00:00:00+08:00</updated>
+    <id>/2016/05/25/linux</id>
+    <content type="html">基础知识
+
+shell
+
+shell是linux/unix的一个外壳，负责与linux内核交换。
+用户登录时，会读取/etc/profile,~/.profile，如果当前shell是bash，还会读取(如果存在)~/.bash_profile,
+# 查看目前系统有几种shell
+cat /etc/shells
+# 查看当前使用的shell
+echo $SHELL
+# 切换shell
+chsh -s /bin/zsh
+# 显示 shell变量
+set
+# 显示 用户变量(与使用哪种shell无关)
+env
+# shell变量导出为用户变量
+export aa=bb
+# 清除用户变量
+un...</content>
+  </entry>
+  
+  <entry>
+    <title>java.util.stream包描述翻译</title>
+    <link href="/2016/05/23/java-util-stream-translate/"/>
+    <updated>2016-05-23T00:00:00+08:00</updated>
+    <id>/2016/05/23/java-util-stream-translate</id>
+    <content type="html">Package java.util.stream.Description
+
+部分练习代码见:
+支持对流元素函数式操作，比如集合里面的map-reduce变换
+int sum = widgets.stream()
+                      .filter(b -&amp;gt; b.getColor() == RED)
+                      .mapToInt(b -&amp;gt; b.getWeight())
+                      .sum();
+
+Streams和collections的区别：
+
+
+非存储。stream并非存储元素的数据结...</content>
+  </entry>
   
   <entry>
     <title>虚拟机性能监控与故障处理工具</title>
