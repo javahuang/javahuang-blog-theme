@@ -4,12 +4,119 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-05-25T22:51:14+08:00</updated>
+  <updated>2016-05-30T22:34:33+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
   </author>
 
+  
+  <entry>
+    <title>concurrent包学习实践</title>
+    <link href="/2016/05/27/java-concurrent/"/>
+    <updated>2016-05-27T00:00:00+08:00</updated>
+    <id>/2016/05/27/java-concurrent</id>
+    <content type="html">CountDownLatch
+
+测试代码
+https://github.com/javahuang/rp-study/blob/master/blog/src/main/java/concurrent/CountDownLatchTest1.java
+描述
+A synchronization aid that allows one or more threads to wait until a set of operations being performed in other threads completes.
+构造的时候初始化一个count，每次countDown()会将count...</content>
+  </entry>
+  
+  <entry>
+    <title>css3学习</title>
+    <link href="/2016/05/27/css3/"/>
+    <updated>2016-05-27T00:00:00+08:00</updated>
+    <id>/2016/05/27/css3</id>
+    <content type="html">工具
+
+css Gradient工具：http://www.colorzilla.com/gradient-editor/
+
+gradient
+
+渐变
+
+
+线性渐变
+
+
+
+径向渐变
+
+
+
+线性重复渐变
+
+
+
+
+
+CSS3 Transitions、Transforms、Animation
+
+过度、变换、动画
+
+Transitions
+
+从一个状态过度到另外一个状态的,如从正常到 :hover
+transition有下面些具体属性：
+
+
+transition-property :* //指定过渡的性质，比如transition-property:backgrond 就是指backgound参...</content>
+  </entry>
+  
+  <entry>
+    <title>css学习</title>
+    <link href="/2016/05/27/css/"/>
+    <updated>2016-05-27T00:00:00+08:00</updated>
+    <id>/2016/05/27/css</id>
+    <content type="html">background
+
+background-postion
+
+设置活检索对象的背景头像位置
+
+
+
+例子
+说明
+
+
+
+background-position:-70px -40px;
+图片以左上角向左偏移70向上偏移40
+
+
+background-position:50% 50%;  background-position:center
+x：{容器(container)的宽度—背景图片的宽度}x百分比y：{容器(container)的高度—背景图片的高度}y百分比
+
+
+background-position:100% 100%;  background-position:right bo...</content>
+  </entry>
+  
+  <entry>
+    <title>Java语言编码规范(Java Code Conventions)</title>
+    <link href="/2016/05/26/javacodeconv/"/>
+    <updated>2016-05-26T00:00:00+08:00</updated>
+    <id>/2016/05/26/javacodeconv</id>
+    <content type="html">http://morningspace.51.net/resource/javacodeconv.html#a1
+
+1 介绍(Introduction)
+
+1.1 为什么要有编码规范(Why Have Code Conventions)
+
+编码规范对于程序员而言尤为重要，有以下几个原因：
+
+
+一个软件的生命周期中，80%的花费在于维护
+几乎没有任何一个软件，在其整个生命周期中，均由最初的开发人员来维护
+编码规范可以改善软件的可读性，可以让程序员尽快而彻底地理解新的代码
+如果你将源码作为产品发布，就需要确任它是否被很好的打包并且清晰无误，一如你已构建的其它任何产品
+
+
+为了执行规范，每个软...</content>
+  </entry>
   
   <entry>
     <title>linux使用笔记</title>
@@ -45,17 +152,11 @@ un...</content>
     <id>/2016/05/23/java-util-stream-translate</id>
     <content type="html">Package java.util.stream.Description
 
-部分练习代码见:
+部分练习代码见:https://github.com/javahuang/rp-study/blob/master/blog/src/main/java/j8/stream/StreamTest.java
 支持对流元素函数式操作，比如集合里面的map-reduce变换
 int sum = widgets.stream()
                       .filter(b -&amp;gt; b.getColor() == RED)
-                      .mapToInt(b -&amp;gt; b.getWeight())
-                      .sum();
-
-Streams和collections的区别：
-
-
-非存储。stream并非存储元素的数据结...</content>
+                      .mapToInt(b -&amp;gt...</content>
   </entry>
   
   <entry>

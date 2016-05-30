@@ -5,6 +5,34 @@
 
   
   <url>
+    <loc>http://javahuang.github.io/2016/05/27/java-concurrent/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-05-27T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/05/27/css3/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-05-27T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/05/27/css/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-05-27T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/05/26/javacodeconv/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-05-26T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://javahuang.github.io/2016/05/25/linux/</loc>
     <changefreq>daily</changefreq>
     <lastmod>2016-05-25T00:00:00+08:00</lastmod>

@@ -158,7 +158,7 @@ table {
 }
 table:hover {
 	border:1px solid rgba(50,118,177,0.35);
-	box-shadow:0 0 3 rgba(50,118,177,0.267);
+	box-shadow:0 0 3px rgba(50,118,177,0.267);
 	transition:all 0.3s
 }
 table thead tr th {
