@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3 transition</title>
+    <style type="text/css">
+        #t1 {
+            background-size:1px 200px;
+            border-radius: 10px;
+            border: 1px solid #839DB0;
+            cursor:pointer;
+            width: 150px;
+            height: 100px;
+            transition: all 1s linear;
+            background: linear-gradient(to right, #fc3f32 0%,#000000 100%);
+        }
+        #t1:hover {
+            background-position:150px;
+        }
+
+        #t2 {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #839DB0;
+            margin-top: 5px;
+        }
+        #t21, #t22, #t23, #t24 {
+            width: 42px;
+            height: 42px;
+            border: 1px solid #839DB0;
+            margin-top: 5px;
+        }
+        #t21 {
+            transition: all 4s ease;
+        }
+        #t22 {
+            transition: all 4s ease-in;
+        }
+        #t23 {
+            transition: all 4s ease-out;
+        }
+        #t24 {
+            transition: all 4s linear;
+        }
+        #t2:hover .trans_list {
+            transform: rotate(360deg);
+            margin-left: 75%;
+            background-color: #fc3f32;
+        }
+
+        #t31, #t32 {
+            width: 200px;
+            height: 100px;
+            border-radius: 3px;
+            border: 1px solid;
+        }
+        #t31 {
+            background: radial-gradient(#31a758, #95e4af);
+            background-size: 100% 10%;
+            transition: all .7s linear;
+        }
+        #t31:hover {
+            background-size: 80% 100%;
+        }
+
+        #t32 {
+            background: #2876b2;
+            background: linear-gradient(#2876b2, #549ad0);
+            background-repeat: repeat;
+            background-size: 100% 200%;
+            transition: all .5s linear;
+        }
+        #t32:hover {
+            background-position: 0 -102%;
+        }
+        .button {
+            background-image: linear-gradient( rgba(255,255,255,0.6), rgba(0,0,0,0.6) );
+            display: inline-block;
+            height: 70px;
+            width: 120px;
+            line-height: 70px;
+            margin: 5px;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        #hue {
+            background-color: hsl(0, 100%, 50%); /*red*/
+            animation: hue 3s infinite alternate;
+        }
+        @keyframes hue {
+            /*hue will animate from 0 to 360. Saturation and Lightness remain constant*/
+            20% {background-color: hsl(72, 100%, 50%);}
+            40% {background-color: hsl(144, 100%, 50%);}
+            60% {background-color: hsl(216, 100%, 50%);}
+            80% {background-color: hsl(288, 100%, 50%);}
+            100% {background-color: hsl(360, 100%, 50%);}
+        }
+    </style>
+</head>
+<body>
+    <p>测试颜色渐变gradient和transition</p>
+    <div id="t1">
+        <div id="t11"></div>
+        <div id="t12"></div>
+    </div>
+    <p>
+        测试transform和transition
+    </p>
+    <div id="t2">
+        <div id="t21" class="trans_list"></div>
+        <div id="t22" class="trans_list"></div>
+        <div id="t23" class="trans_list"></div>
+        <div id="t24" class="trans_list"></div>
+    </div>
+    <p>
+        颜色渐变动画 transition+background-position
+    </p>
+    <div>
+        <button id="t31"></button>
+        <button id="t32"></button>
+    </div>
+    <p>
+        颜色渐变动画 animation 注意animation和linear-gradient渐变搭配的效果
+    </p>
+    <div>
+        <a class="button" id="hue">Hue</a>
+    </div>
+</body>
+</html>

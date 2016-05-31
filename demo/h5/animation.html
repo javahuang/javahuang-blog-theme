@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #t1{
+            transition: all .2s linear 0s;
+            position: relative;
+            box-sizing: border-box;
+            padding: 15px;
+            height: 255px;
+            width: 255px;
+            background-color: #fff;
+            border-width: 1px 1px medium;
+            border-style: solid solid none;
+            border-color: #c77171;
+            -moz-border-top-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-bottom-colors: none;
+            -moz-border-left-colors: none;
+            border-image: none;
+            border-radius: 5px 5px 0 0;
+            cursor: default;
+            overflow: hidden;
+        }
+        #t1:hover {
+            z-index: 2;
+            box-shadow: 0 15px 30px rgba(0,0,0,.1);
+            transform: translate3d(0,-2px,0);
+        }
+        .section-bottom-a, .section-bottom-b {
+            height: 1px;
+            margin: 1px auto;
+            border-bottom: 1px solid #12adff;
+            overflow: hidden;
+        }
+        .section-bottom-a{
+            width: 247px;
+        }
+        .section-bottom-b{
+            width: 252px;
+        }
+    </style>4
+</head>
+<body>
+    <div id="t1">
+        <div id="t11">
+        </div>
+        <div class="section-bottom-a"></div>
+        <div class="section-bottom-b"></div>
+    </div>
+</body>
+</html>

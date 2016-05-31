@@ -4,8 +4,8 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-05-31T13:09:18+08:00</lastBuildDate>
-    <pubDate>2016-05-31T13:09:18+08:00</pubDate>
+    <lastBuildDate>2016-05-31T14:16:23+08:00</lastBuildDate>
+    <pubDate>2016-05-31T14:16:23+08:00</pubDate>
     <ttl>1800</ttl>
 
     
@@ -1020,7 +1020,10 @@ find / -name &lt;span class=&quot;s1&quot;&gt;&amp;#39;bash&amp;#39;&lt;/span&gt
 find / -name &lt;span class=&quot;s1&quot;&gt;&amp;#39;bash&amp;#39;&lt;/span&gt;&amp;gt;a.txt 2&amp;gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;tee a.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;常用的linux命令&lt;/h3&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 从原始目录复制文件到目标目录(排除某些文件)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 在linux里面 `` 反引号里面的command会立即执行&lt;/span&gt;
+cp -fr &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;ls &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep -E -v &lt;span class=&quot;s2&quot;&gt;&amp;quot;.sh&amp;quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; destDir
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;常用的脚本&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;从oracle服务器exp导出数据，并且imp到本地&lt;/strong&gt;&lt;br&gt;
