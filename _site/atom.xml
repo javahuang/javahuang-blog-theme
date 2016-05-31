@@ -4,7 +4,7 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-05-31T14:16:23+08:00</updated>
+  <updated>2016-05-31T15:43:30+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
@@ -33,6 +33,8 @@ A synchronization aid that allows one or more threads to wait until a set of ope
     <content type="html">工具
 
 css Gradient工具：http://www.colorzilla.com/gradient-editor/
+
+测试demo:http://hrps.me/demo/css3/transition-animation.html
 
 gradient
 
@@ -63,7 +65,7 @@ Transitions
 transition有下面些具体属性：
 
 
-transition-property :* //指定过渡的性质，比如transition-property:backgrond 就是指backgound参...</content>
+transition-property...</content>
   </entry>
   
   <entry>
@@ -71,7 +73,11 @@ transition-property :* //指定过渡的性质，比如transition-property:backg
     <link href="/2016/05/27/css/"/>
     <updated>2016-05-27T00:00:00+08:00</updated>
     <id>/2016/05/27/css</id>
-    <content type="html">background
+    <content type="html">line-height
+
+demo:
+
+background
 
 background-postion
 
@@ -92,7 +98,7 @@ background-position:50% 50%;  background-position:center
 x：{容器(container)的宽度—背景图片的宽度}x百分比y：{容器(container)的高度—背景图片的高度}y百分比
 
 
-background-position:100% 100%;  background-position:right bo...</content>
+background-position:100% 100%;  backgrou...</content>
   </entry>
   
   <entry>

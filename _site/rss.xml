@@ -4,8 +4,8 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-05-31T14:16:23+08:00</lastBuildDate>
-    <pubDate>2016-05-31T14:16:23+08:00</pubDate>
+    <lastBuildDate>2016-05-31T15:43:30+08:00</lastBuildDate>
+    <pubDate>2016-05-31T15:43:30+08:00</pubDate>
     <ttl>1800</ttl>
 
     
@@ -57,6 +57,8 @@ boss线程等待worker结束之后，进行汇总操作&lt;br&gt;
       <description>&lt;h3&gt;工具&lt;/h3&gt;
 
 &lt;p&gt;css Gradient工具：&lt;a href=&quot;http://www.colorzilla.com/gradient-editor/&quot;&gt;http://www.colorzilla.com/gradient-editor/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;测试demo:&lt;a href=&quot;http://hrps.me/demo/css3/transition-animation.html&quot;&gt;http://hrps.me/demo/css3/transition-animation.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3&gt;gradient&lt;/h3&gt;
 
@@ -149,7 +151,11 @@ transition-timing-function:*//指定过渡类型，有ease | linear | ease-in | 
     
     <item>
       <title>css学习</title>
-      <description>&lt;h3&gt;background&lt;/h3&gt;
+      <description>&lt;h5&gt;line-height&lt;/h5&gt;
+
+&lt;p&gt;demo:&lt;/p&gt;
+
+&lt;h3&gt;background&lt;/h3&gt;
 
 &lt;h5&gt;background-postion&lt;/h5&gt;
 
