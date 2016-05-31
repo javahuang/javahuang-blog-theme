@@ -4,8 +4,8 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-05-30T22:34:33+08:00</lastBuildDate>
-    <pubDate>2016-05-30T22:34:33+08:00</pubDate>
+    <lastBuildDate>2016-05-31T13:09:18+08:00</lastBuildDate>
+    <pubDate>2016-05-31T13:09:18+08:00</pubDate>
     <ttl>1800</ttl>
 
     
@@ -136,9 +136,11 @@ transition-timing-function:*//指定过渡类型，有ease | linear | ease-in | 
     &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;webkit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;animation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;参考&lt;/h3&gt;
+&lt;h5&gt;参考&lt;/h5&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms-animation-introduction/&quot;&gt;CSS3 Transitions, Transforms和Animation使用简介与应用展示&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;color&lt;/h3&gt;
 </description>
       <link>http://javahuang.github.io/2016/05/27/css3/</link>
       <guid>http://javahuang.github.io/2016/05/27/css3/</guid>
