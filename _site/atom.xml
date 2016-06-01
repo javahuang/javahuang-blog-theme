@@ -4,7 +4,7 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-05-31T15:43:30+08:00</updated>
+  <updated>2016-06-01T10:58:22+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
@@ -73,32 +73,34 @@ transition-property...</content>
     <link href="/2016/05/27/css/"/>
     <updated>2016-05-27T00:00:00+08:00</updated>
     <id>/2016/05/27/css</id>
-    <content type="html">line-height
+    <content type="html">例子
 
-demo:
+demo
+http://hrps.me/demo/css/line-height-and-vertical-align.html
 
-background
+工具
+https://keyes.ie/things/baseliner/
 
-background-postion
+基础
 
-设置活检索对象的背景头像位置
+基线baseline
 
+如vertical-align默认就是基线对其
 
+https://keyes.ie/things/baseliner/
 
-例子
+块级元素属性
+
+line-height
+
+height和line-height都是块级元素，line-height里面的元素表现为垂直居中
+
+行级元素属性
+
+vertical-align
+
 说明
-
-
-
-background-position:-70px -40px;
-图片以左上角向左偏移70向上偏移40
-
-
-background-position:50% 50%;  background-position:center
-x：{容器(container)的宽度—背景图片的宽度}x百分比y：{容器(container)的高度—背景图片的高度}y百分比
-
-
-background-position:100% 100%;  backgrou...</content>
+该属性定义行内元素的基线相...</content>
   </entry>
   
   <entry>

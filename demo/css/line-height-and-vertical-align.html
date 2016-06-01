@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css line-height应用</title>
+    <style type="text/css">
+        body>div {
+            margin-top: 5px;
+        }
+        .test1{font-size:20px; line-height:0; border:1px solid #cccccc; background:#eeeeee;}
+        .test2{font-size:0; line-height:20px; border:1px solid #cccccc; background:#eeeeee;margin-top: 20px;}
+        .test3 {
+            border: 1px dashed;
+            line-height: 150px;
+        }
+        .test3 span {
+            padding-left: 10px;
+            line-height: 1.2em;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .test4 span{
+            border: 1px solid red;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .test4 span:first-child {
+            height: 40px;
+        }
+        .test4 span:last-child {
+            line-height: 40px;
+        }
+        img {
+            height: 125px;
+            width: 160px;
+        }
+        .test5 {
+            border: 1px solid ;
+        }
+    </style>
+</head>
+<body>
+    <p>决定行高的是line-height而非font-size</p>
+    <div class="test1">测试</div>
+    <p></p>
+    <div class="test2">测试</div>
+
+    <div class="test3">
+        <span>
+            br分割的元素相当于两行,line-height和height只对块元素有效果,所以对span设置display:inline-block
+            <br>
+            inline-block元素外部行为表现为inline,内部内容以block呈现
+        </span>
+    </div>
+    <p>行高的垂直居中,表现为line-height里面的文字或者图片垂直居中对齐</p>
+    <div class="test4">
+        <span>测试height</span>
+        <span>测试inline-height</span>
+    </div>
+    <p>
+        测试virtual-align
+        <br>
+        vertical-align: baseline默认值基线对其,如下面img和span,文字下边框和图片下边对其,图片下方有一段空隙
+    </p>
+    <div class="test5">
+        <img src="../img/xy.png" style="vertical-align: baseline">
+        <span>文字下方有间距,导致图片下方有空白</span>
+    </div>
+    <div class="test5">
+        <img style="vertical-align: middle" src="../img/xy.png">
+        <span>vertical-align: top/bottom/center</span>
+    </div>
+    <p>
+        "x-height"就是指的小写字母'x'的高度
+    </p>
+    <div>
+        <img src="../img/x-height.png" style="width: 410px;height: 115px;">
+    </div>
+    <p>
+        ex的价值就在其副业上——不受字体字号影响的内联元素的垂直居中对齐效果 1ex=x-height的高度,默认virtical-align:baseling基线对其
+    </p>
+    <div class="test5" style="font-size: 120px;">
+        <span>Sphinx</span><img src="../img/arrow.png" style="height: 1ex;">
+    </div>
+</body>
+</html>

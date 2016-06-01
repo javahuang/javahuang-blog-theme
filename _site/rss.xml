@@ -4,8 +4,8 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-05-31T15:43:30+08:00</lastBuildDate>
-    <pubDate>2016-05-31T15:43:30+08:00</pubDate>
+    <lastBuildDate>2016-06-01T10:58:22+08:00</lastBuildDate>
+    <pubDate>2016-06-01T10:58:22+08:00</pubDate>
     <ttl>1800</ttl>
 
     
@@ -151,15 +151,41 @@ transition-timing-function:*//指定过渡类型，有ease | linear | ease-in | 
     
     <item>
       <title>css学习</title>
-      <description>&lt;h5&gt;line-height&lt;/h5&gt;
+      <description>&lt;h3&gt;例子&lt;/h3&gt;
 
-&lt;p&gt;demo:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;demo&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;http://hrps.me/demo/css/line-height-and-vertical-align.html&quot;&gt;http://hrps.me/demo/css/line-height-and-vertical-align.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;工具&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;https://keyes.ie/things/baseliner/&quot;&gt;https://keyes.ie/things/baseliner/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;基础&lt;/h3&gt;
+
+&lt;h5&gt;基线baseline&lt;/h5&gt;
+
+&lt;p&gt;如vertical-align默认就是基线对其&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://keyes.ie/things/baseliner/&quot;&gt;https://keyes.ie/things/baseliner/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;块级元素属性&lt;/h3&gt;
+
+&lt;h5&gt;line-height&lt;/h5&gt;
+
+&lt;p&gt;height和line-height都是块级元素，line-height里面的元素表现为垂直居中&lt;/p&gt;
+
+&lt;h3&gt;行级元素属性&lt;/h3&gt;
+
+&lt;h5&gt;vertical-align&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;&lt;br&gt;
+该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不是升高。在表单元格中，这个属性会设置单元格框中的单元格内容的对齐方式。&lt;br&gt;
+默认值是baseline，基线对其，涉及到&lt;code class=&quot;prettyprint&quot;&gt;x-height&lt;/code&gt;，&lt;/p&gt;
 
 &lt;h3&gt;background&lt;/h3&gt;
 
 &lt;h5&gt;background-postion&lt;/h5&gt;
 
-&lt;p&gt;设置活检索对象的背景头像位置&lt;/p&gt;
+&lt;p&gt;设置检索对象的背景头像位置&lt;/p&gt;
 
 &lt;table&gt;&lt;thead&gt;
 &lt;tr&gt;
