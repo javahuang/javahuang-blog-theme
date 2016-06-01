@@ -4,12 +4,26 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-06-01T10:58:22+08:00</updated>
+  <updated>2016-06-01T17:53:31+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
   </author>
 
+  
+  <entry>
+    <title>java volatile关键字</title>
+    <link href="/2016/06/01/java-volatile/"/>
+    <updated>2016-06-01T00:00:00+08:00</updated>
+    <id>/2016/06/01/java-volatile</id>
+    <content type="html">下面摘自《深入理解java虚拟机》 
+
+
+原子性、可见性与有序性Java内存模型是围绕着在并发过程中如何处理原子性、可见性和有序性这三个特征来建立的：
+原子性（Atomicity）：由Java内存模型来直接保证的原子性变量操作包括read、load、assign、use、store和write这六个，我们大致可以认为基本数据类型的访问读写是具备原子性的。在synchronized块之间的操作也具备原子性。
+可见性（Visibility）：可见性就是指当一个线程修改了共享变量的值，其他线程能够立即得知这个修改。
+有序性（Ordering）：Java程序中天然的有序性可以总结为一句话：如果在...</content>
+  </entry>
   
   <entry>
     <title>concurrent包学习实践</title>
@@ -78,17 +92,6 @@ transition-property...</content>
 demo
 http://hrps.me/demo/css/line-height-and-vertical-align.html
 
-工具
-https://keyes.ie/things/baseliner/
-
-基础
-
-基线baseline
-
-如vertical-align默认就是基线对其
-
-https://keyes.ie/things/baseliner/
-
 块级元素属性
 
 line-height
@@ -100,7 +103,10 @@ height和line-height都是块级元素，line-height里面的元素表现为垂�
 vertical-align
 
 说明
-该属性定义行内元素的基线相...</content>
+该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不是升高。在表单元格中，这个属性会设置单元格框中的单元格内容的对齐方式。
+默认值是baseline，基线对其，涉及到x-height，
+
+backgrou...</content>
   </entry>
   
   <entry>
