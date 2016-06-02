@@ -4,8 +4,8 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-06-01T17:53:31+08:00</lastBuildDate>
-    <pubDate>2016-06-01T17:53:31+08:00</pubDate>
+    <lastBuildDate>2016-06-02T16:13:45+08:00</lastBuildDate>
+    <pubDate>2016-06-02T16:13:45+08:00</pubDate>
     <ttl>1800</ttl>
 
     
@@ -81,7 +81,7 @@ boss线程等待worker结束之后，进行汇总操作&lt;br&gt;
 &lt;strong&gt;应用场景&lt;/strong&gt;&lt;br&gt;
 与CountDownLatch看起来差不多，前者是通过计数最终触发await的线程，后者等待所有的party线程await完执行给定的barrierAction&lt;/p&gt;
 
-&lt;h3&gt;Phaser&lt;/h3&gt;
+&lt;h3&gt;&lt;span id=&quot;phaser&quot;&gt;Phaser&lt;/span&gt;&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;测试代码&lt;/strong&gt;&lt;br&gt;
 &lt;a href=&quot;https://github.com/javahuang/rp-study/blob/master/blog/src/main/java/concurrent/PhaserTest1.java&quot;&gt;https://github.com/javahuang/rp-study/blob/master/blog/src/main/java/concurrent/PhaserTest1.java&lt;/a&gt; 1-5&lt;br&gt;
@@ -1086,6 +1086,11 @@ find / -name &lt;span class=&quot;s1&quot;&gt;&amp;#39;bash&amp;#39;&lt;/span&gt
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 从原始目录复制文件到目标目录(排除某些文件)&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# 在linux里面 `` 反引号里面的command会立即执行&lt;/span&gt;
 cp -fr &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;ls &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep -E -v &lt;span class=&quot;s2&quot;&gt;&amp;quot;.sh&amp;quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; destDir
+
+&lt;span class=&quot;c&quot;&gt;# 查看端口占用进程&lt;/span&gt;
+netstat -apn &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep 8080
+&lt;span class=&quot;c&quot;&gt;# mac 下&lt;/span&gt;
+lsof -i TCP:8080
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;常用的脚本&lt;/h3&gt;
 
@@ -1230,8 +1235,91 @@ jvisualvm&lt;/p&gt;
     </item>
     
     <item>
-      <title>多线程-forkjoinpoll</title>
-      <description>&lt;h3&gt;Concurrency vs Parallelism&lt;/h3&gt;
+      <title>多线程-ForkJoinPoll</title>
+      <description>&lt;h2&gt;基础&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A static commonPool() is available and appropriate for most applications. The common pool is used by any ForkJoinTask that is not explicitly submitted to a specified pool. Using the common pool normally reduces resource usage (its threads are slowly reclaimed during periods of non-use, and reinstated upon subsequent use). --since jdk8&lt;br&gt;
+通常使用&lt;code class=&quot;prettyprint&quot;&gt;ForjJoinPool.commonPool()&lt;/code&gt;来创建一个通用线程池，用来处理那些没有被显示提交到任何线程池的任务,并且能降低系统占用，线程会在没有使用的时候回收，被在随后使用的时候恢复。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Fork/Join池没有一个最大线程数，只有一个期望并发数，指我们希望同时又多少活跃的线程，通常默认值即运行时计算机处理器的数量-1，可以通过如下方式来显示的&lt;span id=&quot;tz&quot;&gt;调整&lt;/span&gt;。&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;-Djava.util.concurrent.ForkJoinPool.common.parallelism=N&lt;/code&gt;&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;System.setProperty(&amp;quot;java.util.concurrent.ForkJoinPool.common.parallelism&amp;quot;, &amp;quot;20&amp;quot;);&lt;/code&gt;&lt;br&gt;
+通常在进行性能测试的时候，ForkJoinPoll处理任务分割时，设置不在划分的阈值，对性能有影响。&lt;/p&gt;
+
+&lt;h3&gt;两个例子&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/javahuang/rp-study/blob/master/blog/src/main/java/forkjoin/PhaserForkJoinTest.java&quot;&gt;PhaserForkJoinTest.java&lt;/a&gt;，从该段代码可以看出：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;ForkJoinPoll池（FJ池）初始化线程数是从1递增的，没有最大值，我使用了&lt;a href=&quot;http://hrps.me/2016/05/27/java-concurrent#phaser&quot;&gt;phaser&lt;/a&gt;,设置party数量为200，不断的fork子任务，因为每个任务&lt;code class=&quot;prettyprint&quot;&gt;arriveAndAwaitAdvance()&lt;/code&gt;导致当前任务阻塞，FJ池里面没有空闲的线程就会不断的新增线程，在我实际测试的过程中，phaser的数量大概超过250之后就会报错，不会增加新的线程了。&lt;/li&gt;
+&lt;li&gt;ForkJoinPoll提供了两个方法&lt;code class=&quot;prettyprint&quot;&gt;getActiveThreadCount()&lt;/code&gt;和&lt;code class=&quot;prettyprint&quot;&gt;getRunningThreadCount()&lt;/code&gt;分别来获取&lt;strong&gt;当前正在窃取或执行任务&lt;/strong&gt;和&lt;strong&gt;没有被阻塞等待执行任务&lt;/strong&gt;的&lt;strong&gt;大概&lt;/strong&gt;的线程数。本例两个数为1和0。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/javahuang/rp-study/blob/master/blog/src/main/java/j8/stream/ParallelTest.java&quot;&gt;ParallelTest.java&lt;/a&gt;,从这段代码可以看出:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code class=&quot;prettyprint&quot;&gt;test1()&lt;/code&gt;，表明java8 &lt;code class=&quot;prettyprint&quot;&gt;parallelStream&lt;/code&gt;的默认使用的是&lt;code class=&quot;prettyprint&quot;&gt;ForkJoinPoll.commonPool()&lt;/code&gt;,默认并行度可以通过上面的&lt;a href=&quot;#tz&quot;&gt;方式&lt;/a&gt;来调整，&lt;code class=&quot;prettyprint&quot;&gt;IntStream.range(0, num)&lt;/code&gt;，我变动参数的范围测试FJ池worker的数量，下面是随手测试并行度，参数个数，worker线程数三者的关系，可以看出当任务足够多的时候，并没有新增worker的数量&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;parallelism&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;num&lt;/th&gt;
+&lt;th style=&quot;text-align: right&quot;&gt;worker&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;20&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+&lt;td style=&quot;text-align: right&quot;&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;20&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+&lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;30&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;20_000_000&lt;/td&gt;
+&lt;td style=&quot;text-align: right&quot;&gt;30&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code class=&quot;prettyprint&quot;&gt;test2()&lt;/code&gt;和&lt;code class=&quot;prettyprint&quot;&gt;test3()&lt;/code&gt;其实就是改变&lt;strong&gt;parallel streams&lt;/strong&gt;默认执行方式的两种方式。下面是测试在并行、非并行、不同并行度下消耗的时间。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;parallelism&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;耗时(ms)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;默认&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;6649&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;2&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;10536&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;20&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;6214&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;非parallel方式&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;28931&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;自动并行化（Automatic Parallelization）&lt;/p&gt;
+
+&lt;p&gt;代码分析：&lt;/p&gt;
+
+&lt;h2&gt;Concurrency vs Parallelism&lt;/h2&gt;
 
 &lt;p&gt;首先我们需要先知道并发(Concurrency)和并行(Parallelism)的区别,下面是so上一个作者的回答&lt;/p&gt;
 
@@ -1240,7 +1328,7 @@ jvisualvm&lt;/p&gt;
 Parallelism is when tasks literally run at the same time, eg. on a multicore processor.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3&gt;ExecutorService vs ForkJoinPool&lt;/h3&gt;
+&lt;h2&gt;ExecutorService vs ForkJoinPool&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;测试代码:
@@ -1253,7 +1341,7 @@ Parallelism is when tasks literally run at the same time, eg. on a multicore pro
 
 &lt;p&gt;&lt;strong&gt;参考：&lt;/strong&gt;&lt;a href=&quot;http://www.javaworld.com/article/2078440/enterprise-java/java-tip-when-to-use-forkjoinpool-vs-executorservice.html&quot;&gt;http://www.javaworld.com/article/2078440/enterprise-java/java-tip-when-to-use-forkjoinpool-vs-executorservice.html&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3&gt;Fork/Join Framework vs Parallel Streams vs ExecutorService&lt;/h3&gt;
+&lt;h2&gt;Fork/Join Framework vs Parallel Streams vs ExecutorService&lt;/h2&gt;
 
 &lt;p&gt;ForkJoinPoll的官方api&lt;/p&gt;
 
@@ -1294,7 +1382,15 @@ Parallelism is when tasks literally run at the same time, eg. on a multicore pro
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isPrime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;参考：&lt;/strong&gt;&lt;a href=&quot;http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/&quot;&gt;http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;测试代码&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/javahuang/rp-study/blob/master/blog/src/main/java/forkjoin/PhaserForkJoinTest.java&quot;&gt;https://github.com/javahuang/rp-study/blob/master/blog/src/main/java/forkjoin/PhaserForkJoinTest.java&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;参考&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/&quot;&gt;http://blog.takipi.com/forkjoin-framework-vs-parallel-streams-vs-executorservice-the-ultimate-benchmark/&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;http://stackoverflow.com/questions/21163108/custom-thread-pool-in-java-8-parallel-stream&quot;&gt;Custom thread pool in Java 8 parallel stream&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;http://it.deepinmind.com/%E5%B9%B6%E5%8F%91/2014/06/01/java8-and-runtime-getruntime-availableprocessors.html&quot;&gt;Java 8与Runtime.getRuntime().availableProcessors()&lt;/a&gt;&lt;/p&gt;
 </description>
       <link>http://javahuang.github.io/2016/05/11/java-concurrent-forkjoinpool/</link>
       <guid>http://javahuang.github.io/2016/05/11/java-concurrent-forkjoinpool/</guid>

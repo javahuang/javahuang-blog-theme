@@ -4,7 +4,7 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-06-01T17:53:31+08:00</updated>
+  <updated>2016-06-02T16:13:45+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
@@ -224,16 +224,14 @@ jstat：虚拟机统计信息监视工具
   </entry>
   
   <entry>
-    <title>多线程-forkjoinpoll</title>
+    <title>多线程-ForkJoinPoll</title>
     <link href="/2016/05/11/java-concurrent-forkjoinpool/"/>
     <updated>2016-05-11T00:00:00+08:00</updated>
     <id>/2016/05/11/java-concurrent-forkjoinpool</id>
-    <content type="html">Concurrency vs Parallelism
-
-首先我们需要先知道并发(Concurrency)和并行(Parallelism)的区别,下面是so上一个作者的回答
+    <content type="html">基础
 
 
-Concurrency is when two or more tasks can start, run, and complete in overlapping time periods. It doesn&amp;#39;t necessarily mean they&amp;#39;ll ever both be running at the same instant. Eg. multitasking on a singl...</content>
+A static commonPool() is available and appropriate for most applications. The common pool is used by any ForkJoinTask that is not explicitly submitted to a specified pool. Using the common pool normally reduces resource usage (its threads are slowly reclaimed during periods of non-use, and r...</content>
   </entry>
   
   <entry>
