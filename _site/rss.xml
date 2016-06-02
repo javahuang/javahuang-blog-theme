@@ -4,10 +4,94 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-06-02T16:13:45+08:00</lastBuildDate>
-    <pubDate>2016-06-02T16:13:45+08:00</pubDate>
+    <lastBuildDate>2016-06-02T23:23:00+08:00</lastBuildDate>
+    <pubDate>2016-06-02T23:23:00+08:00</pubDate>
     <ttl>1800</ttl>
 
+    
+    <item>
+      <title>java 队列</title>
+      <description>&lt;h1&gt;non-blocking queue(非阻塞队列)&lt;/h1&gt;
+
+&lt;h2&gt;ConcurrentLinkedQueue&lt;/h2&gt;
+
+&lt;p&gt;基于 &lt;strong&gt;链表&lt;/strong&gt; 节点的无界 &lt;strong&gt;非阻塞&lt;/strong&gt; &lt;strong&gt;线程安全&lt;/strong&gt; 队列，队列元素 &lt;strong&gt;先进先出&lt;/strong&gt;，不允许空元素。&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;peek()&lt;/code&gt; 获取但不删除head节点&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;offer()&lt;/code&gt; 插入元素到tail节点&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;pool()&lt;/code&gt;  获取并删除head节点&lt;/p&gt;
+
+&lt;h1&gt;blocking queue(阻塞队列)&lt;/h1&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;方法\处理方式&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;抛出异常&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;返回特殊值&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;一直阻塞&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;超时退出&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;插入方法&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;add(e)&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;offer(e)&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;put(e)&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;offer(e,time,unit)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;移除方法&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;remove()&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;pool()&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;take()&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;poll(time,unit)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;检查方法&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;element()&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;peek()&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;不可用&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;不可用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;抛出异常：阻塞队列满时，往队列插元素，会抛出异常。&lt;/li&gt;
+&lt;li&gt;返回特殊值：插入成功，返回true&lt;/li&gt;
+&lt;li&gt;一直阻塞，队列满put，队列空take都会阻塞队列&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;ArrayBlockingQueue&lt;/h2&gt;
+
+&lt;p&gt;一个由数组结构构成的有界组设队列。&lt;/p&gt;
+
+&lt;h2&gt;LinkedBlockingQueue&lt;/h2&gt;
+
+&lt;p&gt;一个由链表结构组成的有界阻塞队列。&lt;/p&gt;
+
+&lt;h2&gt;PriorityBlockingQueue&lt;/h2&gt;
+
+&lt;p&gt;一个支持优先级排序的无界阻塞队列。默认采用自然排序，可以通过比较器&lt;code class=&quot;prettyprint&quot;&gt;comparator&lt;/code&gt;来进行排序。&lt;/p&gt;
+
+&lt;h2&gt;DelayQueue&lt;/h2&gt;
+
+&lt;p&gt;一个使用优先级队列实现的无界阻塞队列。&lt;/p&gt;
+
+&lt;h2&gt;SynchronousQueue&lt;/h2&gt;
+
+&lt;p&gt;一个不存储元素的阻塞队列。&lt;/p&gt;
+
+&lt;h2&gt;LinkedTransferQueue&lt;/h2&gt;
+
+&lt;p&gt;一个由链表结构组成的无界阻塞队列&lt;/p&gt;
+
+&lt;h2&gt;LinkedBlockingDeque&lt;/h2&gt;
+
+&lt;p&gt;一个由链表结构组成的双向阻塞队列&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/06/02/java-concurrent-queue/</link>
+      <guid>http://javahuang.github.io/2016/06/02/java-concurrent-queue/</guid>
+      <pubDate>2016-06-02T00:00:00+08:00</pubDate>
+    </item>
     
     <item>
       <title>java volatile关键字</title>
@@ -1235,12 +1319,12 @@ jvisualvm&lt;/p&gt;
     </item>
     
     <item>
-      <title>多线程-ForkJoinPoll</title>
+      <title>我理解的ForkJoinPoll</title>
       <description>&lt;h2&gt;基础&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;A static commonPool() is available and appropriate for most applications. The common pool is used by any ForkJoinTask that is not explicitly submitted to a specified pool. Using the common pool normally reduces resource usage (its threads are slowly reclaimed during periods of non-use, and reinstated upon subsequent use). --since jdk8&lt;br&gt;
-通常使用&lt;code class=&quot;prettyprint&quot;&gt;ForjJoinPool.commonPool()&lt;/code&gt;来创建一个通用线程池，用来处理那些没有被显示提交到任何线程池的任务,并且能降低系统占用，线程会在没有使用的时候回收，被在随后使用的时候恢复。&lt;/p&gt;
+java8引入了&lt;code class=&quot;prettyprint&quot;&gt;ForjJoinPool.commonPool()&lt;/code&gt;来创建一个通用线程池，用来处理那些没有被显示提交到任何线程池的任务,并且能降低系统占用，线程会在没有使用的时候回收，被在随后使用的时候恢复。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Fork/Join池没有一个最大线程数，只有一个期望并发数，指我们希望同时又多少活跃的线程，通常默认值即运行时计算机处理器的数量-1，可以通过如下方式来显示的&lt;span id=&quot;tz&quot;&gt;调整&lt;/span&gt;。&lt;br&gt;
@@ -1314,10 +1398,6 @@ jvisualvm&lt;/p&gt;
 &lt;td style=&quot;text-align: center&quot;&gt;28931&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;&lt;/table&gt;
-
-&lt;p&gt;自动并行化（Automatic Parallelization）&lt;/p&gt;
-
-&lt;p&gt;代码分析：&lt;/p&gt;
 
 &lt;h2&gt;Concurrency vs Parallelism&lt;/h2&gt;
 

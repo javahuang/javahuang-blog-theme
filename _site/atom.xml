@@ -4,12 +4,52 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-06-02T16:13:45+08:00</updated>
+  <updated>2016-06-02T23:23:00+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
   </author>
 
+  
+  <entry>
+    <title>java 队列</title>
+    <link href="/2016/06/02/java-concurrent-queue/"/>
+    <updated>2016-06-02T00:00:00+08:00</updated>
+    <id>/2016/06/02/java-concurrent-queue</id>
+    <content type="html">non-blocking queue(非阻塞队列)
+
+ConcurrentLinkedQueue
+
+基于 链表 节点的无界 非阻塞 线程安全 队列，队列元素 先进先出，不允许空元素。
+peek() 获取但不删除head节点
+offer() 插入元素到tail节点
+pool()  获取并删除head节点
+
+blocking queue(阻塞队列)
+
+
+
+方法\处理方式
+抛出异常
+返回特殊值
+一直阻塞
+超时退出
+
+
+
+插入方法
+add(e)
+offer(e)
+put(e)
+offer(e,time,unit)
+
+
+移除方法
+remove()
+pool()
+take()
+poll(time,u...</content>
+  </entry>
   
   <entry>
     <title>java volatile关键字</title>
@@ -224,7 +264,7 @@ jstat：虚拟机统计信息监视工具
   </entry>
   
   <entry>
-    <title>多线程-ForkJoinPoll</title>
+    <title>我理解的ForkJoinPoll</title>
     <link href="/2016/05/11/java-concurrent-forkjoinpool/"/>
     <updated>2016-05-11T00:00:00+08:00</updated>
     <id>/2016/05/11/java-concurrent-forkjoinpool</id>
