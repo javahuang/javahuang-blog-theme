@@ -4,12 +4,63 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-06-02T23:23:00+08:00</updated>
+  <updated>2016-06-07T10:31:08+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
   </author>
 
+  
+  <entry>
+    <title>web开发那些事儿</title>
+    <link href="/2016/06/07/web-tools/"/>
+    <updated>2016-06-07T00:00:00+08:00</updated>
+    <id>/2016/06/07/web-tools</id>
+    <content type="html">工具
+
+Postman
+
+在学习elasticsearch过程中，需要不断的put数据进行测试，直接使用curl -d实在是不方便。而且，put和get的都是json数据，正好之前看到了有一个chrome插件,postman,正好可以用起来。
+下图是PUT JSON数据的设置
+</content>
+  </entry>
+  
+  <entry>
+    <title>基于logstash构建日志系统</title>
+    <link href="/2016/06/06/logstash-elasticsearch/"/>
+    <updated>2016-06-06T00:00:00+08:00</updated>
+    <id>/2016/06/06/logstash-elasticsearch</id>
+    <content type="html">logstash
+
+环境准备
+
+logstash的两种
+
+错误：
+
+测试logstash
+
+The -e flag enables you to specify a configuration directly from the command line.
+https://www.elastic.co/guide/en/logstash/current/first-event.html
+➜ /usr/local/Cellar/logstash/2.3.2/bin git:(master)&amp;gt;pwd
+/usr/local/Cellar/logstash/2.3.2/bin
+➜ /usr...</content>
+  </entry>
+  
+  <entry>
+    <title>aop的那点事儿</title>
+    <link href="/2016/06/03/mac-brew/"/>
+    <updated>2016-06-03T00:00:00+08:00</updated>
+    <id>/2016/06/03/mac-brew</id>
+    <content type="html">brew install redis
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/redis-3.0.7.el_capitan.bottle.1.tar.gz
+
+################################################################## 100.0%
+
+==&amp;gt; Pouring redis-3.0.7.el_capitan.bottle.1.tar.gz
+==&amp;gt; Caveats
+To have launchd start redis now and re...</content>
+  </entry>
   
   <entry>
     <title>java 队列</title>

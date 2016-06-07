@@ -5,6 +5,27 @@
 
   
   <url>
+    <loc>http://javahuang.github.io/2016/06/07/web-tools/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-06-07T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/06/06/logstash-elasticsearch/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-06-06T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/06/03/mac-brew/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-06-03T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://javahuang.github.io/2016/06/02/java-concurrent-queue/</loc>
     <changefreq>daily</changefreq>
     <lastmod>2016-06-02T00:00:00+08:00</lastmod>

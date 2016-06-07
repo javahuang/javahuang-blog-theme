@@ -4,10 +4,161 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-06-02T23:23:00+08:00</lastBuildDate>
-    <pubDate>2016-06-02T23:23:00+08:00</pubDate>
+    <lastBuildDate>2016-06-07T10:31:08+08:00</lastBuildDate>
+    <pubDate>2016-06-07T10:31:08+08:00</pubDate>
     <ttl>1800</ttl>
 
+    
+    <item>
+      <title>web开发那些事儿</title>
+      <description>&lt;h1&gt;工具&lt;/h1&gt;
+
+&lt;h2&gt;Postman&lt;/h2&gt;
+
+&lt;p&gt;在学习&lt;code class=&quot;prettyprint&quot;&gt;elasticsearch&lt;/code&gt;过程中，需要不断的put数据进行测试，直接使用&lt;code class=&quot;prettyprint&quot;&gt;curl -d&lt;/code&gt;实在是不方便。而且，put和get的都是json数据，正好之前看到了有一个chrome插件,&lt;a href=&quot;http://www.getpostman.com/apps&quot;&gt;postman&lt;/a&gt;,正好可以用起来。&lt;br&gt;
+下图是PUT JSON数据的设置&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/06/07/web-tools/</link>
+      <guid>http://javahuang.github.io/2016/06/07/web-tools/</guid>
+      <pubDate>2016-06-07T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>基于logstash构建日志系统</title>
+      <description>&lt;h1&gt;logstash&lt;/h1&gt;
+
+&lt;h2&gt;环境准备&lt;/h2&gt;
+
+&lt;p&gt;logstash的两种&lt;/p&gt;
+
+&lt;p&gt;错误：&lt;/p&gt;
+
+&lt;h1&gt;测试logstash&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code class=&quot;prettyprint&quot;&gt;-e&lt;/code&gt; flag enables you to specify a configuration directly from the command line.&lt;br&gt;
+&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/first-event.html&quot;&gt;https://www.elastic.co/guide/en/logstash/current/first-event.html&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;➜ /usr/local/Cellar/logstash/2.3.2/bin git:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;gt;pwd
+/usr/local/Cellar/logstash/2.3.2/bin
+➜ /usr/local/Cellar/logstash/2.3.2/bin git:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;gt;ls
+logstash        logstash-plugin
+➜ /usr/local/Cellar/logstash/2.3.2/bin git:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;gt;logstash -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;input { stdin { } } output { stdout {} }&amp;#39;&lt;/span&gt;
+Settings: Default pipeline workers: 8
+Pipeline main started
+hello world
+2016-06-06T06:01:10.161Z huangrupengdeMacBook-Pro.local hello world
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;使用Elasticsearch存储日志&lt;/h2&gt;
+
+&lt;p&gt;output的elasticsearch的配置页面&lt;br&gt;
+&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html#plugins-outputs-elasticsearch-hosts&quot;&gt;https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html#plugins-outputs-elasticsearch-hosts&lt;/a&gt;&lt;br&gt;
+测试由控制台输入，通过&lt;a href=&quot;http://localhost:9200/_search?pretty%E8%8E%B7%E5%8F%96%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C&quot;&gt;http://localhost:9200/_search?pretty获取输出结果&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;➜ /usr/local/Cellar/logstash/2.3.2/bin git:(master)&amp;gt;logstash -e &amp;#39;input { stdin { } } output { elasticsearch { hosts =&amp;gt; [&amp;quot;127.0.0.1:9200&amp;quot;]} }&amp;#39;
+Settings: Default pipeline workers: 8
+Pipeline main started
+haha
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;获取输出结果&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;➜ /Users/huangrupeng &amp;gt;curl &amp;#39;http://localhost:9200/_search?pretty&amp;#39;
+{
+  &amp;quot;took&amp;quot; : 4,
+  &amp;quot;timed_out&amp;quot; : false,
+  &amp;quot;_shards&amp;quot; : {
+    &amp;quot;total&amp;quot; : 5,
+    &amp;quot;successful&amp;quot; : 5,
+    &amp;quot;failed&amp;quot; : 0
+  },
+  &amp;quot;hits&amp;quot; : {
+    &amp;quot;total&amp;quot; : 1,
+    &amp;quot;max_score&amp;quot; : 1.0,
+    &amp;quot;hits&amp;quot; : [ {
+      &amp;quot;_index&amp;quot; : &amp;quot;logstash-2016.06.06&amp;quot;,
+      &amp;quot;_type&amp;quot; : &amp;quot;logs&amp;quot;,
+      &amp;quot;_id&amp;quot; : &amp;quot;AVUkSEbOku6huolSa-22&amp;quot;,
+      &amp;quot;_score&amp;quot; : 1.0,
+      &amp;quot;_source&amp;quot; : {
+        &amp;quot;message&amp;quot; : &amp;quot;haha&amp;quot;,
+        &amp;quot;@version&amp;quot; : &amp;quot;1&amp;quot;,
+        &amp;quot;@timestamp&amp;quot; : &amp;quot;2016-06-06T05:56:03.076Z&amp;quot;,
+        &amp;quot;host&amp;quot; : &amp;quot;huangrupengdeMacBook-Pro.local&amp;quot;
+      }
+    } ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;kibana&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/kibana/current/index.html&quot;&gt;https://www.elastic.co/guide/en/kibana/current/index.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;访问地址：&lt;a href=&quot;http://localhost:5601/&quot;&gt;http://localhost:5601/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;elasticsearch&lt;/h1&gt;
+
+&lt;h2&gt;安装marvel&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/downloads/marvel&quot;&gt;https://www.elastic.co/downloads/marvel&lt;/a&gt;&lt;br&gt;
+启用marvel监控&lt;br&gt;
+&lt;a href=&quot;http://localhost:5601/app/marvel&quot;&gt;http://localhost:5601/app/marvel&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;elasticsearch配置文件位置：&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
+/usr/local/Cellar/kibana/4.5.0/bin git:(master)&amp;gt;find / -name &amp;quot;elasticsearch.yml&amp;quot; 2&amp;gt;/dev/null&lt;br&gt;
+/usr/local/etc/elasticsearch/elasticsearch.yml&lt;br&gt;
+&lt;/code&gt;`&lt;/p&gt;
+
+&lt;h3&gt;请求样式&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl -XGET &lt;span class=&quot;s1&quot;&gt;&amp;#39;localhost:9200/_count?pretty&amp;#39;&lt;/span&gt; -d &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    &amp;quot;query&amp;quot;: {&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        &amp;quot;match_all&amp;quot;: {}&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    }&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;}&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;参考&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/index.html&quot;&gt;logstash reference&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;http://blog.csdn.net/wp500/article/details/41040213?utm_source=tuicool&amp;amp;utm_medium=referral&quot;&gt;logstash快速入门&lt;/a&gt;&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/06/06/logstash-elasticsearch/</link>
+      <guid>http://javahuang.github.io/2016/06/06/logstash-elasticsearch/</guid>
+      <pubDate>2016-06-06T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>aop的那点事儿</title>
+      <description>&lt;p&gt;brew install redis&lt;br&gt;
+==&amp;gt; Downloading &lt;a href=&quot;https://homebrew.bintray.com/bottles/redis-3.0.7.el_capitan.bottle.1.tar.gz&quot;&gt;https://homebrew.bintray.com/bottles/redis-3.0.7.el_capitan.bottle.1.tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;h6&gt;################################################################## 100.0%&lt;/h6&gt;
+
+&lt;p&gt;==&amp;gt; Pouring redis-3.0.7.el_capitan.bottle.1.tar.gz&lt;br&gt;
+==&amp;gt; Caveats&lt;br&gt;
+To have launchd start redis now and restart at login:&lt;br&gt;
+  brew services start redis&lt;br&gt;
+Or, if you don&amp;#39;t want/need a background service you can just run:&lt;br&gt;
+  redis-server /usr/local/etc/redis.conf&lt;/p&gt;
+
+&lt;p&gt;==&amp;gt; Downloading &lt;a href=&quot;https://homebrew.bintray.com/bottles/mysql-5.7.12.el_capitan.bottle.tar.gz&quot;&gt;https://homebrew.bintray.com/bottles/mysql-5.7.12.el_capitan.bottle.tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;h6&gt;################################################################## 100.0%&lt;/h6&gt;
+
+&lt;p&gt;==&amp;gt; Pouring mysql-5.7.12.el_capitan.bottle.tar.gz&lt;br&gt;
+==&amp;gt; /usr/local/Cellar/mysql/5.7.12/bin/mysqld --initialize-insecure --user=huangrupeng --basedir=/usr/local/Cellar/mysql/5.7.12 --datadir=/usr/local/var/mysql&lt;br&gt;
+==&amp;gt; Caveats&lt;br&gt;
+We&amp;#39;ve installed your MySQL database without a root password. To secure it run:&lt;br&gt;
+    mysql_secure_installation&lt;/p&gt;
+
+&lt;p&gt;To connect run:&lt;br&gt;
+    mysql -uroot&lt;/p&gt;
+
+&lt;p&gt;To have find  start mysql now and restart at login:&lt;br&gt;
+  brew services start mysql&lt;br&gt;
+Or, if you don&amp;#39;t want/need a background service you can just run:&lt;br&gt;
+  mysql.server start&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/06/03/mac-brew/</link>
+      <guid>http://javahuang.github.io/2016/06/03/mac-brew/</guid>
+      <pubDate>2016-06-03T00:00:00+08:00</pubDate>
+    </item>
     
     <item>
       <title>java 队列</title>
@@ -1165,6 +1316,9 @@ env
 find / -name &lt;span class=&quot;s1&quot;&gt;&amp;#39;bash&amp;#39;&lt;/span&gt;&amp;gt;a.txt 2&amp;gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;1
 &lt;span class=&quot;c&quot;&gt;# 将错误消息和标准输出输出到文件，同时输出到屏幕&lt;/span&gt;
 find / -name &lt;span class=&quot;s1&quot;&gt;&amp;#39;bash&amp;#39;&lt;/span&gt;&amp;gt;a.txt 2&amp;gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;tee a.txt
+&lt;span class=&quot;c&quot;&gt;# 忽略错误消息 &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# /dev/null 表示linux的空设备文件&lt;/span&gt;
+find / -name &lt;span class=&quot;s1&quot;&gt;&amp;#39;bash&amp;#39;&lt;/span&gt; 2&amp;gt;/dev/null
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;常用的linux命令&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 从原始目录复制文件到目标目录(排除某些文件)&lt;/span&gt;
