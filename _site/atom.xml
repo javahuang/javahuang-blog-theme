@@ -4,7 +4,7 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-06-07T10:31:08+08:00</updated>
+  <updated>2016-06-07T10:33:08+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
@@ -22,6 +22,7 @@ Postman
 
 在学习elasticsearch过程中，需要不断的put数据进行测试，直接使用curl -d实在是不方便。而且，put和get的都是json数据，正好之前看到了有一个chrome插件,postman,正好可以用起来。
 下图是PUT JSON数据的设置
+
 </content>
   </entry>
   
