@@ -4,10 +4,49 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-06-07T10:33:08+08:00</lastBuildDate>
-    <pubDate>2016-06-07T10:33:08+08:00</pubDate>
+    <lastBuildDate>2016-06-14T10:59:52+08:00</lastBuildDate>
+    <pubDate>2016-06-14T10:59:52+08:00</pubDate>
     <ttl>1800</ttl>
 
+    
+    <item>
+      <title>做菜</title>
+      <description>&lt;p&gt;在炝锅时，锅内下入底油，在油温30℃~50℃时，下入经刀工处理的葱、蒜、姜，使之香气成分充分挥发出来。&lt;br&gt;
+用鲜姜或姜汁在锅底涂上一层，然后放油，油热后放鱼，这样也不粘锅。&lt;/p&gt;
+
+&lt;h2&gt;土豆鸡块&lt;/h2&gt;
+
+&lt;h2&gt;油焖大虾&lt;/h2&gt;
+
+&lt;h2&gt;肉末茄子&lt;/h2&gt;
+
+&lt;h2&gt;番茄鸡蛋&lt;/h2&gt;
+
+&lt;p&gt;西红柿去皮，用刀将上下划两个十字，放入沸水里面煮两分钟。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;油放下去之后不要马上把打好的蛋放进去，把油烧热，把锅周围也用油过一遍。&lt;/li&gt;
+&lt;li&gt;油热了之后把鸡蛋顺着锅倒进去，因为锅周边也都沾上了热的油，所以鸡蛋马上就会鼓起来&lt;/li&gt;
+&lt;li&gt;然后马上把鸡蛋炒开，一炒开就盛起来，不调盐。这样的话鸡蛋就会做的显得很多并且很嫩。&lt;/li&gt;
+&lt;li&gt;然后再炒番茄， 要把汁炒出来，可以稍微用锅铲压一压。&lt;/li&gt;
+&lt;li&gt;汁炒出来之后再把鸡蛋放进去，稍微对一点水，要调一点糖，这样那个汤汁就不会太酸，味道更好。&lt;/li&gt;
+&lt;li&gt;再就一样了，放盐，加一点点味精，起锅就好了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1&gt;线椒鸡胗&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;鸡胗切法，竖着切几刀，不切断，横着切几刀，切断，切成花状；&lt;/li&gt;
+&lt;li&gt;加入盐，料酒，兰德之类的调料，搅拌均匀；&lt;/li&gt;
+&lt;li&gt;倒油，七分热，倒入鸡胗，待变色之后，盛起来；&lt;/li&gt;
+&lt;li&gt;加油，油热之后，放线椒，蒜瓣，加入一点老干妈，炒出味&lt;/li&gt;
+&lt;li&gt;加入鸡胗，炒一会，时间不用长，盛起来。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      <link>http://javahuang.github.io/2016/06/10/cooking/</link>
+      <guid>http://javahuang.github.io/2016/06/10/cooking/</guid>
+      <pubDate>2016-06-10T00:00:00+08:00</pubDate>
+    </item>
     
     <item>
       <title>web开发那些事儿</title>
@@ -15,7 +54,7 @@
 
 &lt;h2&gt;Postman&lt;/h2&gt;
 
-&lt;p&gt;在学习&lt;code class=&quot;prettyprint&quot;&gt;elasticsearch&lt;/code&gt;过程中，需要不断的put数据进行测试，直接使用&lt;code class=&quot;prettyprint&quot;&gt;curl -d&lt;/code&gt;实在是不方便。而且，put和get的都是json数据，正好之前看到了有一个chrome插件,&lt;a href=&quot;http://www.getpostman.com/apps&quot;&gt;postman&lt;/a&gt;,正好可以用起来。&lt;br&gt;
+&lt;p&gt;在学习&lt;code class=&quot;prettyprint&quot;&gt;elasticsearch&lt;/code&gt;过程中，需要不断的put数据进行测试，直接使用&lt;code class=&quot;prettyprint&quot;&gt;curl -d&lt;/code&gt;实在是不方便。而且，put的都是json数据，正好之前看到了有一个chrome插件,&lt;a href=&quot;http://www.getpostman.com/apps&quot;&gt;postman&lt;/a&gt;,正好可以用起来。&lt;br&gt;
 下图是PUT JSON数据的设置&lt;br&gt;
 &lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/web-tools-postman-1.png&quot; alt=&quot;post-man)&quot;&gt;&lt;/p&gt;
 </description>
@@ -25,16 +64,36 @@
     </item>
     
     <item>
-      <title>基于logstash构建日志系统</title>
-      <description>&lt;h1&gt;logstash&lt;/h1&gt;
+      <title>基于LEK构建日志系统</title>
+      <description>&lt;p&gt;项目需要构建一个日志管理平台，网上找到了一套开源的ELK（elasticsearch+logstash+kibana）解决方案。&lt;br&gt;
+&lt;img src=&quot;https://www.elastic.co/guide/en/logstash/current/static/images/basic_logstash_pipeline.png&quot; alt=&quot;logstash&quot;&gt;&lt;/p&gt;
 
-&lt;h2&gt;环境准备&lt;/h2&gt;
+&lt;p&gt;目前的操作是&lt;/p&gt;
 
-&lt;p&gt;logstash的两种&lt;/p&gt;
+&lt;p&gt;Elasticsearch是个开源分布式搜索引擎，它的特点有：分布式，零配置，自动发现，索引自动分片，索引副本机制，restful风格接口，多数据源，自动搜索负载等。&lt;br&gt;
+Logstash是一个完全开源的工具，它可以对你的日志进行收集、分析，并将其存储供以后使用&lt;br&gt;
+kibana 是一个开源和免费的工具，它可以为 Logstash 和 ElasticSearch 提供的日志分析友好的 Web 界面，可以帮助您汇总、分析和搜索重要数据日志。&lt;br&gt;
+&lt;a href=&quot;https://www.elastic.co/&quot;&gt;官网&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;错误：&lt;/p&gt;
+&lt;h1&gt;elastic&lt;/h1&gt;
 
-&lt;h1&gt;测试logstash&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;官方文档&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;https://www.elastic.co/guide/index.html&quot;&gt;https://www.elastic.co/guide/index.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;logstash&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;官方API&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3&gt;config&lt;/h3&gt;
+
+&lt;h4&gt;filter&lt;/h4&gt;
+
+&lt;h3&gt;环境准备&lt;/h3&gt;
+
+&lt;p&gt;logstash的两种&lt;br&gt;
+错误：&lt;/p&gt;
+
+&lt;h3&gt;测试logstash&lt;/h3&gt;
 
 &lt;p&gt;The &lt;code class=&quot;prettyprint&quot;&gt;-e&lt;/code&gt; flag enables you to specify a configuration directly from the command line.&lt;br&gt;
 &lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/first-event.html&quot;&gt;https://www.elastic.co/guide/en/logstash/current/first-event.html&lt;/a&gt;&lt;/p&gt;
@@ -48,7 +107,7 @@ Pipeline main started
 hello world
 2016-06-06T06:01:10.161Z huangrupengdeMacBook-Pro.local hello world
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;使用Elasticsearch存储日志&lt;/h2&gt;
+&lt;h3&gt;使用Elasticsearch存储日志&lt;/h3&gt;
 
 &lt;p&gt;output的elasticsearch的配置页面&lt;br&gt;
 &lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html#plugins-outputs-elasticsearch-hosts&quot;&gt;https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html#plugins-outputs-elasticsearch-hosts&lt;/a&gt;&lt;br&gt;
@@ -59,6 +118,11 @@ Pipeline main started
 haha
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;获取输出结果&lt;/p&gt;
+
+&lt;h2&gt;elasticsearch&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;官方API&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;➜ /Users/huangrupeng &amp;gt;curl &amp;#39;http://localhost:9200/_search?pretty&amp;#39;
 {
   &amp;quot;took&amp;quot; : 4,
@@ -86,27 +150,13 @@ haha
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;kibana&lt;/h1&gt;
+&lt;h3&gt;es实践&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/kibana/current/index.html&quot;&gt;https://www.elastic.co/guide/en/kibana/current/index.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;访问地址：&lt;a href=&quot;http://localhost:5601/&quot;&gt;http://localhost:5601/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1&gt;elasticsearch&lt;/h1&gt;
-
-&lt;h2&gt;安装marvel&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/downloads/marvel&quot;&gt;https://www.elastic.co/downloads/marvel&lt;/a&gt;&lt;br&gt;
-启用marvel监控&lt;br&gt;
-&lt;a href=&quot;http://localhost:5601/app/marvel&quot;&gt;http://localhost:5601/app/marvel&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;elasticsearch配置文件位置：&lt;br&gt;
-&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
-/usr/local/Cellar/kibana/4.5.0/bin git:(master)&amp;gt;find / -name &amp;quot;elasticsearch.yml&amp;quot; 2&amp;gt;/dev/null&lt;br&gt;
-/usr/local/etc/elasticsearch/elasticsearch.yml&lt;br&gt;
-&lt;/code&gt;`&lt;/p&gt;
-
-&lt;h3&gt;请求样式&lt;/h3&gt;
+&lt;p&gt;elasticsearch配置文件位置：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/usr/local/Cellar/kibana/4.5.0/bin git:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;gt;find / -name &lt;span class=&quot;s2&quot;&gt;&amp;quot;elasticsearch.yml&amp;quot;&lt;/span&gt; 2&amp;gt;/dev/null
+/usr/local/etc/elasticsearch/elasticsearch.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;请求格式&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl -XGET &lt;span class=&quot;s1&quot;&gt;&amp;#39;localhost:9200/_count?pretty&amp;#39;&lt;/span&gt; -d &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;s1&quot;&gt;{&lt;/span&gt;
 &lt;span class=&quot;s1&quot;&gt;    &amp;quot;query&amp;quot;: {&lt;/span&gt;
@@ -114,6 +164,62 @@ haha
 &lt;span class=&quot;s1&quot;&gt;    }&lt;/span&gt;
 &lt;span class=&quot;s1&quot;&gt;}&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;搜索文档 /&lt;em&gt;index/&lt;em&gt;type/&lt;em&gt;id&lt;br&gt;
+`&lt;a href=&quot;http://localhost:9200/megacorp/employee/&quot;&gt;http://localhost:9200/megacorp/employee/&lt;/a&gt;&lt;/em&gt;search&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
+&lt;/code&gt;GET /megacorp/employee/&lt;/em&gt;search?q=last_name:Smith&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
+只显示title和text&lt;br&gt;
+&lt;/code&gt;GET /website/blog/123?&lt;/em&gt;source=title,text&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
+获取集群健康状态&lt;br&gt;
+&lt;/code&gt;GET /&lt;em&gt;cluster/health&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
+获取分片状态&lt;br&gt;
+GET /_cat/shards&lt;br&gt;
+添加文档，id自增长&lt;br&gt;
+&lt;/code&gt;POST /&lt;/em&gt;index/_type/`&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;状态&lt;/th&gt;
+&lt;th&gt;意义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;green&lt;/td&gt;
+&lt;td&gt;所有主分片和从分片都可用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;yellow&lt;/td&gt;
+&lt;td&gt;所有主分片可用，但存在不可用的从分片存在不可用的主要分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;red&lt;/td&gt;
+&lt;td&gt;存在不可用的主要分片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h3&gt;遇到的问题&lt;/h3&gt;
+
+&lt;p&gt;集群健康状态为 &lt;code class=&quot;prettyprint&quot;&gt;red&lt;/code&gt;，在当前机器上重新启动了一个节点&lt;/p&gt;
+
+&lt;h2&gt;kibana&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/kibana/current/index.html&quot;&gt;https://www.elastic.co/guide/en/kibana/current/index.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;访问地址：&lt;a href=&quot;http://localhost:5601/&quot;&gt;http://localhost:5601/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;marvel&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/downloads/marvel&quot;&gt;https://www.elastic.co/downloads/marvel&lt;/a&gt;&lt;br&gt;
+启用marvel监控&lt;br&gt;
+&lt;a href=&quot;http://localhost:5601/app/marvel&quot;&gt;http://localhost:5601/app/marvel&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;sense&lt;/h2&gt;
+
+&lt;p&gt;Sense is a handy console for interacting with the REST API of Elasticsearch。&lt;br&gt;
+&lt;strong&gt;访问地址&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;http://localhost:5601/app/sense&quot;&gt;http://localhost:5601/app/sense&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;安装&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;https://www.elastic.co/guide/en/sense/current/installing.html&quot;&gt;https://www.elastic.co/guide/en/sense/current/installing.html&lt;/a&gt;&lt;/p&gt;
+
 &lt;h1&gt;参考&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/index.html&quot;&gt;logstash reference&lt;/a&gt;&lt;br&gt;

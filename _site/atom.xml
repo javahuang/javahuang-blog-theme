@@ -4,12 +4,38 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-06-07T10:33:08+08:00</updated>
+  <updated>2016-06-14T10:59:52+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
   </author>
 
+  
+  <entry>
+    <title>做菜</title>
+    <link href="/2016/06/10/cooking/"/>
+    <updated>2016-06-10T00:00:00+08:00</updated>
+    <id>/2016/06/10/cooking</id>
+    <content type="html">在炝锅时，锅内下入底油，在油温30℃~50℃时，下入经刀工处理的葱、蒜、姜，使之香气成分充分挥发出来。
+用鲜姜或姜汁在锅底涂上一层，然后放油，油热后放鱼，这样也不粘锅。
+
+土豆鸡块
+
+油焖大虾
+
+肉末茄子
+
+番茄鸡蛋
+
+西红柿去皮，用刀将上下划两个十字，放入沸水里面煮两分钟。
+
+
+油放下去之后不要马上把打好的蛋放进去，把油烧热，把锅周围也用油过一遍。
+油热了之后把鸡蛋顺着锅倒进去，因为锅周边也都沾上了热的油，所以鸡蛋马上就会鼓起来
+然后马上把鸡蛋炒开，一炒开就盛起来，不调盐。这样的话鸡蛋就会做的显得很多并且很嫩。
+然后再炒番茄， 要把汁炒出来，可以稍微用锅铲压一压。
+汁炒出来之后再把鸡蛋...</content>
+  </entry>
   
   <entry>
     <title>web开发那些事儿</title>
@@ -20,32 +46,28 @@
 
 Postman
 
-在学习elasticsearch过程中，需要不断的put数据进行测试，直接使用curl -d实在是不方便。而且，put和get的都是json数据，正好之前看到了有一个chrome插件,postman,正好可以用起来。
+在学习elasticsearch过程中，需要不断的put数据进行测试，直接使用curl -d实在是不方便。而且，put的都是json数据，正好之前看到了有一个chrome插件,postman,正好可以用起来。
 下图是PUT JSON数据的设置
 
 </content>
   </entry>
   
   <entry>
-    <title>基于logstash构建日志系统</title>
+    <title>基于LEK构建日志系统</title>
     <link href="/2016/06/06/logstash-elasticsearch/"/>
     <updated>2016-06-06T00:00:00+08:00</updated>
     <id>/2016/06/06/logstash-elasticsearch</id>
-    <content type="html">logstash
+    <content type="html">项目需要构建一个日志管理平台，网上找到了一套开源的ELK（elasticsearch+logstash+kibana）解决方案。
 
-环境准备
 
-logstash的两种
+目前的操作是
 
-错误：
+Elasticsearch是个开源分布式搜索引擎，它的特点有：分布式，零配置，自动发现，索引自动分片，索引副本机制，restful风格接口，多数据源，自动搜索负载等。
+Logstash是一个完全开源的工具，它可以对你的日志进行收集、分析，并将其存储供以后使用
+kibana 是一个开源和免费的工具，它可以为 Logstash 和 ElasticSearch 提供的日志分析友好的 Web 界面，可以帮助您汇总、分析和搜索重要数据日志。
+官网
 
-测试logstash
-
-The -e flag enables you to specify a configuration directly from the command line.
-https://www.elastic.co/guide/en/logstash/current/first-event.html
-➜ /usr/local/Cellar/logstash/2.3.2/bin git:(master)&amp;gt;pwd
-/usr/local/Cellar/logstash/2.3.2/bin
-➜ /usr...</content>
+...</content>
   </entry>
   
   <entry>
