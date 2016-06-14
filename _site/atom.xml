@@ -4,7 +4,7 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-06-14T10:59:52+08:00</updated>
+  <updated>2016-06-14T13:26:42+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
@@ -59,15 +59,7 @@ Postman
     <id>/2016/06/06/logstash-elasticsearch</id>
     <content type="html">项目需要构建一个日志管理平台，网上找到了一套开源的ELK（elasticsearch+logstash+kibana）解决方案。
 
-
-目前的操作是
-
-Elasticsearch是个开源分布式搜索引擎，它的特点有：分布式，零配置，自动发现，索引自动分片，索引副本机制，restful风格接口，多数据源，自动搜索负载等。
-Logstash是一个完全开源的工具，它可以对你的日志进行收集、分析，并将其存储供以后使用
-kibana 是一个开源和免费的工具，它可以为 Logstash 和 ElasticSearch 提供的日志分析友好的 Web 界面，可以帮助您汇总、分析和搜索重要数据日志。
-官网
-
-...</content>
+各个子系统每天上传大量的日志文件到服务器上A，以ZIP包的形式存在，通过shell定时将ZIP包解压到指定的目录B，将logstash部署到A上，配置Input plugin的file插件，会自动检测file中配置的path(支持模糊匹配)中文件的变化，如新增文件、文件内容的变化，默认对文件按行解析，将每行当成一个event,配置Code plugin的multiline可以将多行解析成一个event(如java输出的错误堆栈日志)，然后通过Filter p...</content>
   </entry>
   
   <entry>

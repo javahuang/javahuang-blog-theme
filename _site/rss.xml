@@ -4,8 +4,8 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-06-14T10:59:52+08:00</lastBuildDate>
-    <pubDate>2016-06-14T10:59:52+08:00</pubDate>
+    <lastBuildDate>2016-06-14T13:26:42+08:00</lastBuildDate>
+    <pubDate>2016-06-14T13:26:42+08:00</pubDate>
     <ttl>1800</ttl>
 
     
@@ -66,14 +66,8 @@
     <item>
       <title>基于LEK构建日志系统</title>
       <description>&lt;p&gt;项目需要构建一个日志管理平台，网上找到了一套开源的ELK（elasticsearch+logstash+kibana）解决方案。&lt;br&gt;
-&lt;img src=&quot;https://www.elastic.co/guide/en/logstash/current/static/images/basic_logstash_pipeline.png&quot; alt=&quot;logstash&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;目前的操作是&lt;/p&gt;
-
-&lt;p&gt;Elasticsearch是个开源分布式搜索引擎，它的特点有：分布式，零配置，自动发现，索引自动分片，索引副本机制，restful风格接口，多数据源，自动搜索负载等。&lt;br&gt;
-Logstash是一个完全开源的工具，它可以对你的日志进行收集、分析，并将其存储供以后使用&lt;br&gt;
-kibana 是一个开源和免费的工具，它可以为 Logstash 和 ElasticSearch 提供的日志分析友好的 Web 界面，可以帮助您汇总、分析和搜索重要数据日志。&lt;br&gt;
-&lt;a href=&quot;https://www.elastic.co/&quot;&gt;官网&lt;/a&gt;&lt;/p&gt;
+&lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/elk.png&quot; alt=&quot;logstash&quot;&gt;&lt;br&gt;
+各个子系统每天上传大量的日志文件到服务器上&lt;strong&gt;A&lt;/strong&gt;，以ZIP包的形式存在，通过shell定时将ZIP包解压到指定的目录&lt;strong&gt;B&lt;/strong&gt;，将logstash部署到&lt;strong&gt;A&lt;/strong&gt;上，配置Input plugin的&lt;code class=&quot;prettyprint&quot;&gt;file&lt;/code&gt;插件，会自动检测&lt;code class=&quot;prettyprint&quot;&gt;file&lt;/code&gt;中配置的path(支持模糊匹配)中文件的变化，如新增文件、文件内容的变化，默认对文件按行解析，将每行当成一个&lt;code class=&quot;prettyprint&quot;&gt;event&lt;/code&gt;,配置Code plugin的&lt;code class=&quot;prettyprint&quot;&gt;multiline&lt;/code&gt;可以将多行解析成一个event(如java输出的错误堆栈日志)，然后通过Filter plugin对每行event进行过滤，我使用的是&lt;code class=&quot;prettyprint&quot;&gt;grok&lt;/code&gt;插件，grok提供了大量的正则表达式来对event进行匹配操作，对event解析提取field，最终输出到elasticsearch中，并通过&lt;code class=&quot;prettyprint&quot;&gt;kibana&lt;/code&gt;提供的Web界面来查询分析。&lt;/p&gt;
 
 &lt;h1&gt;elastic&lt;/h1&gt;
 
