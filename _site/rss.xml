@@ -4,8 +4,8 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-06-17T15:11:36+08:00</lastBuildDate>
-    <pubDate>2016-06-17T15:11:36+08:00</pubDate>
+    <lastBuildDate>2016-06-17T15:15:09+08:00</lastBuildDate>
+    <pubDate>2016-06-17T15:15:09+08:00</pubDate>
     <ttl>1800</ttl>
 
     
@@ -115,7 +115,7 @@ service kibana start
     <item>
       <title>基于LEK构建日志系统</title>
       <description>&lt;p&gt;项目需要构建一个日志管理平台，网上找到了一套开源的ELK（elasticsearch+logstash+kibana）解决方案。&lt;br&gt;
-&lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/elk.png&quot; alt=&quot;logstash&quot;&gt;&lt;/p&gt;
+&lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/logstash.png&quot; alt=&quot;logstash&quot;&gt;&lt;/p&gt;
 
 &lt;h2&gt;操作步骤&lt;/h2&gt;
 
