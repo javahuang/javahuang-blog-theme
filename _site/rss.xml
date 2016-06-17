@@ -4,10 +4,59 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-06-14T13:26:42+08:00</lastBuildDate>
-    <pubDate>2016-06-14T13:26:42+08:00</pubDate>
+    <lastBuildDate>2016-06-17T15:03:22+08:00</lastBuildDate>
+    <pubDate>2016-06-17T15:03:22+08:00</pubDate>
     <ttl>1800</ttl>
 
+    
+    <item>
+      <title>elasticsearch 系统搭建</title>
+      <description>&lt;h1&gt;环境准备&lt;/h1&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# java环境准备&lt;/span&gt;
+yum remove java-1.6.0-openjdk
+yum remove java-1.7.0-openjdk
+wget --no-check-certificate --no-cookies --header &lt;span class=&quot;s2&quot;&gt;&amp;quot;Cookie: oraclelicense=accept-securebackup-cookie&amp;quot;&lt;/span&gt; http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz
+&lt;span class=&quot;c&quot;&gt;# 设置环境变量&lt;/span&gt;
+vim /etc/profile
+&lt;span class=&quot;c&quot;&gt;# JAVA_HOME=/usr/java/jdk1.8.0_25/&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# PATH=$JAVA_HOME/bin:$PATH&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# export PATH JAVA_HOME&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# export CLASSPATH=.&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /etc/profile
+
+&lt;span class=&quot;c&quot;&gt;# elasticsearch 环境准备&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## 我使用yum的方式安装 https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## 这种方式安装之后，通过下面这种方式启动会报错找不到配置文件&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /usr/share/elasticsearch/bin/
+./elasticsearch
+&lt;span class=&quot;c&quot;&gt;## 通过 ps -ef | grep elasticsearch 查看es的启动参数&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 启动elasticsearch服务&lt;/span&gt;
+service elasticsearch start
+&lt;span class=&quot;c&quot;&gt;## 问题 ElasticSearch can not find java on centos&lt;/span&gt;
+vim /etc/sysconfig/elasticsearch
+&lt;span class=&quot;c&quot;&gt;# JAVA_HOME=/usr/local/jdk1.8.0_92&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 开启9200端口 服务启动之后，且iptables已经配置，仍然不能访问&lt;/span&gt;
+vim /etc/elasticsearch/elasticsearch.yml
+&lt;span class=&quot;c&quot;&gt;# network.host: 0.0.0.0&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# kibana 环境准备&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## https://www.elastic.co/guide/en/kibana/current/setup.html&lt;/span&gt;
+service kibana start
+&lt;span class=&quot;c&quot;&gt;## 安装marvel 插件&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;### &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## 安装sense插件&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;### https://www.elastic.co/guide/en/sense/current/installing.html&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;学习笔记&lt;/h1&gt;
+</description>
+      <link>http://javahuang.github.io/2016/06/14/elasticsearch/</link>
+      <guid>http://javahuang.github.io/2016/06/14/elasticsearch/</guid>
+      <pubDate>2016-06-14T00:00:00+08:00</pubDate>
+    </item>
     
     <item>
       <title>做菜</title>
@@ -54,7 +103,7 @@
 
 &lt;h2&gt;Postman&lt;/h2&gt;
 
-&lt;p&gt;在学习&lt;code class=&quot;prettyprint&quot;&gt;elasticsearch&lt;/code&gt;过程中，需要不断的put数据进行测试，直接使用&lt;code class=&quot;prettyprint&quot;&gt;curl -d&lt;/code&gt;实在是不方便。而且，put的都是json数据，正好之前看到了有一个chrome插件,&lt;a href=&quot;http://www.getpostman.com/apps&quot;&gt;postman&lt;/a&gt;,正好可以用起来。&lt;br&gt;
+&lt;p&gt;在学习&lt;code class=&quot;prettyprint&quot;&gt;elasticsearch&lt;/code&gt;过程中，需要不断的put数据进行测试，直接使用&lt;code class=&quot;prettyprint&quot;&gt;curl -d&lt;/code&gt;实在是不方便。而且，put的都是json数据，正好之前看到了有一个chrome插件,&lt;a href=&quot;http://www.getpostman.com/apps&quot;&gt;postman&lt;/a&gt;,正好可以用起来。更新，elastic提供了&lt;a href=&quot;https://www.elastic.co/guide/en/sense/current/index.html&quot;&gt;&lt;code class=&quot;prettyprint&quot;&gt;sense&lt;/code&gt;&lt;/a&gt;&lt;br&gt;
 下图是PUT JSON数据的设置&lt;br&gt;
 &lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/web-tools-postman-1.png&quot; alt=&quot;post-man)&quot;&gt;&lt;/p&gt;
 </description>
@@ -66,161 +115,65 @@
     <item>
       <title>基于LEK构建日志系统</title>
       <description>&lt;p&gt;项目需要构建一个日志管理平台，网上找到了一套开源的ELK（elasticsearch+logstash+kibana）解决方案。&lt;br&gt;
-&lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/elk.png&quot; alt=&quot;logstash&quot;&gt;&lt;br&gt;
-各个子系统每天上传大量的日志文件到服务器上&lt;strong&gt;A&lt;/strong&gt;，以ZIP包的形式存在，通过shell定时将ZIP包解压到指定的目录&lt;strong&gt;B&lt;/strong&gt;，将logstash部署到&lt;strong&gt;A&lt;/strong&gt;上，配置Input plugin的&lt;code class=&quot;prettyprint&quot;&gt;file&lt;/code&gt;插件，会自动检测&lt;code class=&quot;prettyprint&quot;&gt;file&lt;/code&gt;中配置的path(支持模糊匹配)中文件的变化，如新增文件、文件内容的变化，默认对文件按行解析，将每行当成一个&lt;code class=&quot;prettyprint&quot;&gt;event&lt;/code&gt;,配置Code plugin的&lt;code class=&quot;prettyprint&quot;&gt;multiline&lt;/code&gt;可以将多行解析成一个event(如java输出的错误堆栈日志)，然后通过Filter plugin对每行event进行过滤，我使用的是&lt;code class=&quot;prettyprint&quot;&gt;grok&lt;/code&gt;插件，grok提供了大量的正则表达式来对event进行匹配操作，对event解析提取field，最终输出到elasticsearch中，并通过&lt;code class=&quot;prettyprint&quot;&gt;kibana&lt;/code&gt;提供的Web界面来查询分析。&lt;/p&gt;
+&lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/elk.png&quot; alt=&quot;logstash&quot;&gt;&lt;/p&gt;
 
-&lt;h1&gt;elastic&lt;/h1&gt;
+&lt;h2&gt;操作步骤&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;官方文档&lt;/strong&gt;&lt;br&gt;
-&lt;a href=&quot;https://www.elastic.co/guide/index.html&quot;&gt;https://www.elastic.co/guide/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;各个子系统每天上传大量的日志文件到服务器上&lt;strong&gt;A&lt;/strong&gt;，以ZIP包的形式存在&lt;/li&gt;
+&lt;li&gt;通过定时任务，将日志通过&lt;code class=&quot;prettyprint&quot;&gt;rsync -auvz&lt;/code&gt;增量更新到服务器&lt;strong&gt;B&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;通过shell定时将ZIP包解压到指定的目录&lt;strong&gt;C&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;将logstash部署到&lt;strong&gt;B&lt;/strong&gt;上，配置Input plugin的&lt;code class=&quot;prettyprint&quot;&gt;file&lt;/code&gt;插件，会自动检测&lt;code class=&quot;prettyprint&quot;&gt;file&lt;/code&gt;中配置的path(支持模糊匹配)中文件的变化，如新增文件、文件内容的变化，默认对文件按行解析，将每行当成一个&lt;code class=&quot;prettyprint&quot;&gt;event&lt;/code&gt;,配置Code plugin的&lt;code class=&quot;prettyprint&quot;&gt;multiline&lt;/code&gt;可以将多行解析成一个event(如java输出的错误堆栈日志)，然后通过Filter plugin对每行event进行过滤，我使用的是&lt;code class=&quot;prettyprint&quot;&gt;grok&lt;/code&gt;插件，grok提供了大量的正则表达式来对event进行匹配操作，对event解析提取field，最终输出到elasticsearch中，并通过&lt;code class=&quot;prettyprint&quot;&gt;kibana&lt;/code&gt;提供的Web界面来查询分析。&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;h2&gt;logstash&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;数据同步解压脚本&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;https://github.com/javahuang/rp-study/blob/master/blog/src/main/resources/shell/script/unzip-file.sh&quot;&gt;https://github.com/javahuang/rp-study/blob/master/blog/src/main/resources/shell/script/unzip-file.sh&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;logstash脚本&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;https://github.com/javahuang/rp-study/blob/master/blog/src/main/resources/elastic/logstash.conf&quot;&gt;https://github.com/javahuang/rp-study/blob/master/blog/src/main/resources/elastic/logstash.conf&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;官方API&lt;/strong&gt;&lt;/p&gt;
+&lt;h1&gt;logstash插件使用&lt;/h1&gt;
 
-&lt;h3&gt;config&lt;/h3&gt;
+&lt;h2&gt;input插件&lt;/h2&gt;
 
-&lt;h4&gt;filter&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html&quot;&gt;https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html&lt;/a&gt;&lt;br&gt;
+我需要解析的日志文件有差不多上万个，在使用这个插件的时候开始没有仔细的读下文档，导致中间出了好几个小问题。&lt;br&gt;
+每个input都对应了一个sincedb文件，默认文件存放在&lt;code class=&quot;prettyprint&quot;&gt;~/sincedb*&lt;/code&gt;里面，记录了&lt;/p&gt;
 
-&lt;h3&gt;环境准备&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;The inode number (or equivalent).&lt;/li&gt;
+&lt;li&gt;The major device number of the file system (or equivalent).&lt;/li&gt;
+&lt;li&gt;The minor device number of the file system (or equivalent).&lt;/li&gt;
+&lt;li&gt;The current byte offset within the file.&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;logstash的两种&lt;br&gt;
-错误：&lt;/p&gt;
-
-&lt;h3&gt;测试logstash&lt;/h3&gt;
-
-&lt;p&gt;The &lt;code class=&quot;prettyprint&quot;&gt;-e&lt;/code&gt; flag enables you to specify a configuration directly from the command line.&lt;br&gt;
-&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/first-event.html&quot;&gt;https://www.elastic.co/guide/en/logstash/current/first-event.html&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;➜ /usr/local/Cellar/logstash/2.3.2/bin git:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;gt;pwd
-/usr/local/Cellar/logstash/2.3.2/bin
-➜ /usr/local/Cellar/logstash/2.3.2/bin git:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;gt;ls
-logstash        logstash-plugin
-➜ /usr/local/Cellar/logstash/2.3.2/bin git:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;gt;logstash -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;input { stdin { } } output { stdout {} }&amp;#39;&lt;/span&gt;
-Settings: Default pipeline workers: 8
-Pipeline main started
-hello world
-2016-06-06T06:01:10.161Z huangrupengdeMacBook-Pro.local hello world
+&lt;p&gt;logstash引擎根据&lt;code class=&quot;prettyprint&quot;&gt;inode&lt;/code&gt;和&lt;code class=&quot;prettyprint&quot;&gt;byte offset&lt;/code&gt;来确定一个日志文件是否已经被读取，如果想重新解析某个日志文件，可以修改这个sincedb文件来操作，max_open_files是在同一时间监视的日志数量，默认是4096，我给设置成100000之后，开始没有设置close_older(关闭时间，默认是一个小时)，导致打开的文件数量过多，且没有关闭，就出现了读取新的日志文件&lt;code class=&quot;prettyprint&quot;&gt;Permission denied&lt;/code&gt;，然后我添加了&lt;code class=&quot;prettyprint&quot;&gt;close_older&lt;/code&gt;参数，设置为1s，解析完某个日志文件之后就自动关闭，开始解析其他的日志文件，&lt;code class=&quot;prettyprint&quot;&gt;ignore_older&lt;/code&gt;，测试的时候，有些日志一直没有解析，看文档发现这个参数默认是1天，file插件会忽略时间戳为1天之前的文件。加入codec，将以&lt;code class=&quot;prettyprint&quot;&gt;====&lt;/code&gt;结尾的多行当做一个event来处理。&lt;br&gt;
+最终的配置如下&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;file &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;/data/xmls/**/error*&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;start_position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;beginning&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;sincedb_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;/data/sincedb_error&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;exclude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;*.zip&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;max_open_files&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; 100000
+    &lt;span class=&quot;nv&quot;&gt;close_older&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; 1
+    &lt;span class=&quot;nv&quot;&gt;ignore_older&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt;94608000
+    &lt;span class=&quot;nv&quot;&gt;add_field&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;system&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;gwsc&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;codec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; multiline &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;c&quot;&gt;# 将=====分割的消息当做一行来处理&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;pattern&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;====================================================================\r$&amp;quot;&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;negate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;what&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; next
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;使用Elasticsearch存储日志&lt;/h3&gt;
-
-&lt;p&gt;output的elasticsearch的配置页面&lt;br&gt;
-&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html#plugins-outputs-elasticsearch-hosts&quot;&gt;https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html#plugins-outputs-elasticsearch-hosts&lt;/a&gt;&lt;br&gt;
-测试由控制台输入，通过&lt;a href=&quot;http://localhost:9200/_search?pretty%E8%8E%B7%E5%8F%96%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C&quot;&gt;http://localhost:9200/_search?pretty获取输出结果&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;➜ /usr/local/Cellar/logstash/2.3.2/bin git:(master)&amp;gt;logstash -e &amp;#39;input { stdin { } } output { elasticsearch { hosts =&amp;gt; [&amp;quot;127.0.0.1:9200&amp;quot;]} }&amp;#39;
-Settings: Default pipeline workers: 8
-Pipeline main started
-haha
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;获取输出结果&lt;/p&gt;
-
-&lt;h2&gt;elasticsearch&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;官方API&lt;/strong&gt;&lt;br&gt;
-&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;➜ /Users/huangrupeng &amp;gt;curl &amp;#39;http://localhost:9200/_search?pretty&amp;#39;
-{
-  &amp;quot;took&amp;quot; : 4,
-  &amp;quot;timed_out&amp;quot; : false,
-  &amp;quot;_shards&amp;quot; : {
-    &amp;quot;total&amp;quot; : 5,
-    &amp;quot;successful&amp;quot; : 5,
-    &amp;quot;failed&amp;quot; : 0
-  },
-  &amp;quot;hits&amp;quot; : {
-    &amp;quot;total&amp;quot; : 1,
-    &amp;quot;max_score&amp;quot; : 1.0,
-    &amp;quot;hits&amp;quot; : [ {
-      &amp;quot;_index&amp;quot; : &amp;quot;logstash-2016.06.06&amp;quot;,
-      &amp;quot;_type&amp;quot; : &amp;quot;logs&amp;quot;,
-      &amp;quot;_id&amp;quot; : &amp;quot;AVUkSEbOku6huolSa-22&amp;quot;,
-      &amp;quot;_score&amp;quot; : 1.0,
-      &amp;quot;_source&amp;quot; : {
-        &amp;quot;message&amp;quot; : &amp;quot;haha&amp;quot;,
-        &amp;quot;@version&amp;quot; : &amp;quot;1&amp;quot;,
-        &amp;quot;@timestamp&amp;quot; : &amp;quot;2016-06-06T05:56:03.076Z&amp;quot;,
-        &amp;quot;host&amp;quot; : &amp;quot;huangrupengdeMacBook-Pro.local&amp;quot;
-      }
-    } ]
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;es实践&lt;/h3&gt;
-
-&lt;p&gt;elasticsearch配置文件位置：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/usr/local/Cellar/kibana/4.5.0/bin git:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;gt;find / -name &lt;span class=&quot;s2&quot;&gt;&amp;quot;elasticsearch.yml&amp;quot;&lt;/span&gt; 2&amp;gt;/dev/null
-/usr/local/etc/elasticsearch/elasticsearch.yml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;请求格式&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl -XGET &lt;span class=&quot;s1&quot;&gt;&amp;#39;localhost:9200/_count?pretty&amp;#39;&lt;/span&gt; -d &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;    &amp;quot;query&amp;quot;: {&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;        &amp;quot;match_all&amp;quot;: {}&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;    }&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;}&amp;#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;搜索文档 /&lt;em&gt;index/&lt;em&gt;type/&lt;em&gt;id&lt;br&gt;
-`&lt;a href=&quot;http://localhost:9200/megacorp/employee/&quot;&gt;http://localhost:9200/megacorp/employee/&lt;/a&gt;&lt;/em&gt;search&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
-&lt;/code&gt;GET /megacorp/employee/&lt;/em&gt;search?q=last_name:Smith&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
-只显示title和text&lt;br&gt;
-&lt;/code&gt;GET /website/blog/123?&lt;/em&gt;source=title,text&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
-获取集群健康状态&lt;br&gt;
-&lt;/code&gt;GET /&lt;em&gt;cluster/health&lt;code class=&quot;prettyprint&quot;&gt;&lt;br&gt;
-获取分片状态&lt;br&gt;
-GET /_cat/shards&lt;br&gt;
-添加文档，id自增长&lt;br&gt;
-&lt;/code&gt;POST /&lt;/em&gt;index/_type/`&lt;/p&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;状态&lt;/th&gt;
-&lt;th&gt;意义&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;green&lt;/td&gt;
-&lt;td&gt;所有主分片和从分片都可用&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;yellow&lt;/td&gt;
-&lt;td&gt;所有主分片可用，但存在不可用的从分片存在不可用的主要分片&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;red&lt;/td&gt;
-&lt;td&gt;存在不可用的主要分片&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h3&gt;遇到的问题&lt;/h3&gt;
-
-&lt;p&gt;集群健康状态为 &lt;code class=&quot;prettyprint&quot;&gt;red&lt;/code&gt;，在当前机器上重新启动了一个节点&lt;/p&gt;
-
-&lt;h2&gt;kibana&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/kibana/current/index.html&quot;&gt;https://www.elastic.co/guide/en/kibana/current/index.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;访问地址：&lt;a href=&quot;http://localhost:5601/&quot;&gt;http://localhost:5601/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2&gt;marvel&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/downloads/marvel&quot;&gt;https://www.elastic.co/downloads/marvel&lt;/a&gt;&lt;br&gt;
-启用marvel监控&lt;br&gt;
-&lt;a href=&quot;http://localhost:5601/app/marvel&quot;&gt;http://localhost:5601/app/marvel&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2&gt;sense&lt;/h2&gt;
-
-&lt;p&gt;Sense is a handy console for interacting with the REST API of Elasticsearch。&lt;br&gt;
-&lt;strong&gt;访问地址&lt;/strong&gt;&lt;br&gt;
-&lt;a href=&quot;http://localhost:5601/app/sense&quot;&gt;http://localhost:5601/app/sense&lt;/a&gt;&lt;br&gt;
-&lt;strong&gt;安装&lt;/strong&gt;&lt;br&gt;
-&lt;a href=&quot;https://www.elastic.co/guide/en/sense/current/installing.html&quot;&gt;https://www.elastic.co/guide/en/sense/current/installing.html&lt;/a&gt;&lt;/p&gt;
-
 &lt;h1&gt;参考&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/index.html&quot;&gt;logstash reference&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;http://blog.csdn.net/wp500/article/details/41040213?utm_source=tuicool&amp;amp;utm_medium=referral&quot;&gt;logstash快速入门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/index.html&quot;&gt;logstash reference&lt;/a&gt;&lt;/p&gt;
 </description>
-      <link>http://javahuang.github.io/2016/06/06/logstash-elasticsearch/</link>
-      <guid>http://javahuang.github.io/2016/06/06/logstash-elasticsearch/</guid>
+      <link>http://javahuang.github.io/2016/06/06/logstash-elasticsearch-kibana/</link>
+      <guid>http://javahuang.github.io/2016/06/06/logstash-elasticsearch-kibana/</guid>
       <pubDate>2016-06-06T00:00:00+08:00</pubDate>
     </item>
     
@@ -1430,12 +1383,162 @@ cp -fr &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;ls &lt;span class=&quot;p&
 netstat -apn &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep 8080
 &lt;span class=&quot;c&quot;&gt;# mac 下&lt;/span&gt;
 lsof -i TCP:8080
+
+&lt;span class=&quot;c&quot;&gt;# 统计文件行数 -c（bytes）-l（line）-w（words）-m（characters）&lt;/span&gt;
+wc 
+
+&lt;span class=&quot;c&quot;&gt;# 从远程服务器获取数据&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 递归复制(r)保留源文件属性(p)&lt;/span&gt;
+scp -rp /usr/local/ root@192.168.1.99:/usr/local/
+&lt;span class=&quot;c&quot;&gt;# -u只更新,不覆盖已经存在的文件 -r对子目录递归处理 -a递归方式拷贝文件，并保持原文件属性 --progress查看拷贝的过程 -z对数据传输压缩&lt;/span&gt;
+rsync -auv /src/foo /dest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;xargs&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The xargs utility reads space, tab, newline and end-of-file delimited strings from the standard input and executes utility with the strings as arguments.&lt;br&gt;
+−0 Change xargs to expect NUL (‘‘\0’’) characters as separators, instead of spaces and newlines.&lt;br&gt;
+This is expected to be used in concert with the −print0 function in find(1).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;xargs默认是按照 空格，tab，换行作为分隔符来分割字符串作为命令参数&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;xargs -0&lt;/code&gt;将&lt;code class=&quot;prettyprint&quot;&gt;\0&amp;#39;&lt;/code&gt;作为默认的文件分隔符，通常配合&lt;code class=&quot;prettyprint&quot;&gt;-print0&lt;/code&gt;来使用&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;find . -name &amp;quot;*.txt&amp;quot; -print0 | xargs -0 grep -n &amp;#39;2016&amp;#39;&lt;/code&gt;&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;-print0&lt;/code&gt; 将默认的分隔符从&lt;code class=&quot;prettyprint&quot;&gt;换行&lt;/code&gt;变成了&lt;code class=&quot;prettyprint&quot;&gt;\0&lt;/code&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Null_character&quot;&gt;空字符 null&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5&gt;xargs和管道符的区别&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;--help&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cat  &lt;span class=&quot;c&quot;&gt;# 作为结果输出&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;--help&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; xargs cat  &lt;span class=&quot;c&quot;&gt;#作为cat的命令参数 类似于 cat --help&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;管道符 | 所传递给程序的不是你简单地在程序名后面输入的参数，它们会被程序内部的读取功能如scanf和gets等接收，而xargs则是将内容作为普通的参数传递给程序&lt;/p&gt;
+
 &lt;h3&gt;常用的脚本&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;从oracle服务器exp导出数据，并且imp到本地&lt;/strong&gt;&lt;br&gt;
 &lt;a href=&quot;https://github.com/javahuang/rp-study/blob/master/blog/src/main/resources/shell/script/oracle_exp_imp.sh&quot;&gt;https://github.com/javahuang/rp-study/blob/master/blog/src/main/resources/shell/script/oracle_exp_imp.sh&lt;/a&gt;&lt;/p&gt;
-</description>
+
+&lt;h3&gt;配置ssh免登陆&lt;/h3&gt;
+
+&lt;p&gt;使用 &lt;code class=&quot;prettyprint&quot;&gt;ssh-keygen -t rsa&lt;/code&gt;生成公钥和私钥(&lt;strong&gt;id_rsa&lt;/strong&gt;和&lt;strong&gt;id_rsa.pub&lt;/strong&gt;)，让输入密码的时候跳过，将生成的idrsa.pub scp到需要登陆的服务器，并&lt;code class=&quot;prettyprint&quot;&gt;&amp;gt;&amp;gt;&lt;/code&gt;到~/.ssh/authorized_keys(没有则新建)文件&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;scp id_rsa.pub root@192.168.1.99:~/.ssh
+touch authorized_keys
+cat id_rsa.pub &amp;gt;&amp;gt; authorized_keys
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;dns设置&lt;/h3&gt;
+
+&lt;p&gt;最近几次都是遇到dns相关的问题&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;中心迁移ip后，应用每次启动初始化数据库连接池都得花很长时间，后来查出来是因为迁移之后，数据库服务器不能连外网，将resolv-conf里面配置的&lt;code class=&quot;prettyprint&quot;&gt;nameserver:114.114.114.114&lt;/code&gt;注释掉就好了&lt;/li&gt;
+&lt;li&gt;使用&lt;code class=&quot;prettyprint&quot;&gt;wget&lt;/code&gt; &lt;code class=&quot;prettyprint&quot;&gt;yum&lt;/code&gt;安装软件，一直不能识别网址url，然后发现resolv-conf里面没有配置&lt;code class=&quot;prettyprint&quot;&gt;nameserver&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;修改resolv-conf，不需要&lt;code class=&quot;prettyprint&quot;&gt;service network restart&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;vim /etc/resolv-conf
+&lt;span class=&quot;c&quot;&gt;# nameserver 114.114.114.114&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# search localdomain&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 data&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# fdisk -l&lt;/span&gt;
+
+Disk /dev/sda: 107.4 GB, &lt;span class=&quot;m&quot;&gt;107374182400&lt;/span&gt; bytes
+&lt;span class=&quot;m&quot;&gt;255&lt;/span&gt; heads, &lt;span class=&quot;m&quot;&gt;63&lt;/span&gt; sectors/track, &lt;span class=&quot;m&quot;&gt;13054&lt;/span&gt; cylinders
+&lt;span class=&quot;nv&quot;&gt;Units&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; cylinders of &lt;span class=&quot;m&quot;&gt;16065&lt;/span&gt; * &lt;span class=&quot;nv&quot;&gt;512&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8225280&lt;/span&gt; bytes
+Sector size &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;logical/physical&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;512&lt;/span&gt; bytes / &lt;span class=&quot;m&quot;&gt;512&lt;/span&gt; bytes
+I/O size &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;minimum/optimal&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;512&lt;/span&gt; bytes / &lt;span class=&quot;m&quot;&gt;512&lt;/span&gt; bytes
+Disk identifier: 0x00024d36
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *           &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;26&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;204800&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;83&lt;/span&gt;  Linux
+Partition &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; does not end on cylinder boundary.
+/dev/sda2              &lt;span class=&quot;m&quot;&gt;26&lt;/span&gt;        &lt;span class=&quot;m&quot;&gt;6145&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;49152000&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;82&lt;/span&gt;  Linux swap / Solaris
+/dev/sda3            &lt;span class=&quot;m&quot;&gt;6145&lt;/span&gt;       &lt;span class=&quot;m&quot;&gt;13055&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;55499776&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;83&lt;/span&gt;  Linux
+
+Disk /dev/sdb: 2199.0 GB, &lt;span class=&quot;m&quot;&gt;2199023255552&lt;/span&gt; bytes
+&lt;span class=&quot;m&quot;&gt;255&lt;/span&gt; heads, &lt;span class=&quot;m&quot;&gt;63&lt;/span&gt; sectors/track, &lt;span class=&quot;m&quot;&gt;267349&lt;/span&gt; cylinders
+&lt;span class=&quot;nv&quot;&gt;Units&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; cylinders of &lt;span class=&quot;m&quot;&gt;16065&lt;/span&gt; * &lt;span class=&quot;nv&quot;&gt;512&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8225280&lt;/span&gt; bytes
+Sector size &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;logical/physical&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;512&lt;/span&gt; bytes / &lt;span class=&quot;m&quot;&gt;4096&lt;/span&gt; bytes
+I/O size &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;minimum/optimal&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;4096&lt;/span&gt; bytes / &lt;span class=&quot;m&quot;&gt;4096&lt;/span&gt; bytes
+Disk identifier: 0x00000000
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 data&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# fdisk /dev/sdb&lt;/span&gt;
+Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
+Building a new DOS disklabel with disk identifier 0x6fffe5cd.
+Changes will remain in memory only, &lt;span class=&quot;k&quot;&gt;until&lt;/span&gt; you decide to write them.
+After that, of course, the previous content won&lt;span class=&quot;s1&quot;&gt;&amp;#39;t be recoverable.&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;WARNING: The size of this disk is 2.2 TB (2199023255552 bytes).&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;DOS partition table format can not be used on drives for volumes&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;larger than (2199023255040 bytes) for 512-byte sectors. Use parted(1) and GUID&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;partition table format (GPT).&lt;/span&gt;
+
+
+&lt;span class=&quot;s1&quot;&gt;The device presents a logical sector size that is smaller than&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;the physical sector size. Aligning to a physical sector (or optimal&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;I/O) size boundary is recommended, or performance may be impacted.&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;WARNING: DOS-compatible mode is deprecated. It&amp;#39;&lt;/span&gt;s strongly recommended to
+         switch off the mode &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; and change display units to
+         sectors &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;u&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+
+Command &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;m &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: n
+Command action
+   e   extended
+   p   primary partition &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1-4&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+p
+Partition number &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1-4&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 1
+First cylinder &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1-267349, default 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 1
+Last cylinder, +cylinders or +size&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;K,M,G&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1-267349, default 267349&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
+Using default value 267349
+
+Command &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;m &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: w
+The partition table has been altered!
+
+Calling ioctl&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; to re-read partition table.
+Syncing disks.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 data&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# mkfs.&lt;/span&gt;
+mkfs.cramfs   mkfs.ext2     mkfs.ext3     mkfs.ext4     mkfs.ext4dev  mkfs.msdos    mkfs.vfat
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 data&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# mkfs.ext4 /dev/sdb&lt;/span&gt;
+sdb   sdb1
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 data&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# mkfs.ext4 /dev/sdb1&lt;/span&gt;
+mke2fs 1.41.12 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;17-May-2010&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+/dev/sdb1 alignment is offset by &lt;span class=&quot;m&quot;&gt;512&lt;/span&gt; bytes.
+This may result in very poor performance, &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;re&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;-partitioning suggested.
+Discarding device blocks: failed - 输入/输出错误
+文件系统标签&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+操作系统:Linux
+块大小&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4096&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+分块大小&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4096&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;Stride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; blocks, Stripe &lt;span class=&quot;nv&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; blocks
+&lt;span class=&quot;m&quot;&gt;134217728&lt;/span&gt; inodes, &lt;span class=&quot;m&quot;&gt;536870202&lt;/span&gt; blocks
+&lt;span class=&quot;m&quot;&gt;26843510&lt;/span&gt; blocks &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;5.00%&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; reserved &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; the super user
+第一个数据块&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+Maximum filesystem &lt;span class=&quot;nv&quot;&gt;blocks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;4294967296
+&lt;span class=&quot;m&quot;&gt;16384&lt;/span&gt; block groups
+&lt;span class=&quot;m&quot;&gt;32768&lt;/span&gt; blocks per group, &lt;span class=&quot;m&quot;&gt;32768&lt;/span&gt; fragments per group
+&lt;span class=&quot;m&quot;&gt;8192&lt;/span&gt; inodes per group
+Superblock backups stored on blocks:
+    32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
+    4096000, 7962624, 11239424, 20480000, 23887872, 71663616, 78675968,
+    102400000, 214990848, 512000000
+
+正在写入inode表: 完成
+Creating journal &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;32768&lt;/span&gt; blocks&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 完成
+Writing superblocks and filesystem accounting information: 完成
+
+This filesystem will be automatically checked every &lt;span class=&quot;m&quot;&gt;30&lt;/span&gt; mounts or
+&lt;span class=&quot;m&quot;&gt;180&lt;/span&gt; days, whichever comes first.  Use tune2fs -c or -i to override.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 /&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# mkdir /data&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 /&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# mount /dev/sd&lt;/span&gt;
+sda   sda1  sda2  sda3  sdb   sdb1
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 /&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# mount /dev/sdb1 /data&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 /&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# df -h&lt;/span&gt;
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda3        53G  4.4G   46G   9% /
+tmpfs            16G   72K   16G   1% /dev/shm
+/dev/sda1       194M   34M  151M  19% /boot
+/dev/sdb1       2.0T  199M  1.9T   1% /data
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 /&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       <link>http://javahuang.github.io/2016/05/25/linux/</link>
       <guid>http://javahuang.github.io/2016/05/25/linux/</guid>
       <pubDate>2016-05-25T00:00:00+08:00</pubDate>
