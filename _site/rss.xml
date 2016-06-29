@@ -4,14 +4,101 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-06-17T15:15:09+08:00</lastBuildDate>
-    <pubDate>2016-06-17T15:15:09+08:00</pubDate>
+    <lastBuildDate>2016-06-29T18:30:42+08:00</lastBuildDate>
+    <pubDate>2016-06-29T18:30:42+08:00</pubDate>
     <ttl>1800</ttl>
 
     
     <item>
+      <title>elasticsearch-java实践</title>
+      <description>&lt;h1&gt;API&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;目前我使用的查询操作，主要是&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/java-full-text-queries.html&quot;&gt;Query String Query&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;responseByKeywords&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SysCodeRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;QueryBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queryStringQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parseRequestToQueryString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ESUtils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SearchRequestBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;searchRequestBuilder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prepareSearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setSearchType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SearchType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DFS_QUERY_THEN_FETCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setFrom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setExplain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 查询指定的字段&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;searchRequestBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addFields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SearchResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;searchResponse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;searchRequestBuilder&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;actionGet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SysCodeResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SysCodeResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SysCodeEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Lists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SearchHit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;searchResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getHits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;SysCodeEntity&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SysCodeEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;field&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;putAll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;hits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setTotal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setHits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JsonUtils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;object2Json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;遇到问题&lt;/h1&gt;
+
+&lt;p&gt;写测试demo时候报错，如下&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;NoNodeAvailableException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;configured&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;available:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transport&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}{&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;10.24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;10.225&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}{&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;10.24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;10.225&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9300&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}]]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;transport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;TransportClientNodesService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ensureNodesAreAvailable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TransportClientNodesService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;299&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;transport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;TransportClientNodesService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TransportClientNodesService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;215&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;transport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;support&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;TransportProxyClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TransportProxyClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;62&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;transport&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;TransportClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;doExecute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TransportClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;280&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;support&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;AbstractClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AbstractClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;394&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ActionRequestBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ActionRequestBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ActionRequestBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ActionRequestBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;54&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ActionRequestBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ActionRequestBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;62&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ESUtils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ESUtils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ESUtils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ESUtils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sun&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;reflect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;NativeMethodAccessorImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;invoke0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Native&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sun&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;reflect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;NativeMethodAccessorImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;invoke&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NativeMethodAccessorImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;62&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sun&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;reflect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DelegatingMethodAccessorImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;invoke&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DelegatingMethodAccessorImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;43&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;reflect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;invoke&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;497&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;intellij&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execution&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;AppMain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppMain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;144&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Process&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finished&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;the client must have the same major version (e.g. 2.x, or 5.x) as the nodes in the cluster.  --&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/client.html#client&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/client.html#client&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;有上面这段话，java驱动的主版本号必须和elasticsearch node节点版本号一致，&lt;code class=&quot;prettyprint&quot;&gt;GET ?pretty&lt;/code&gt;查看&lt;code class=&quot;prettyprint&quot;&gt;version:2.3.3&lt;/code&gt;,重新修改&lt;code class=&quot;prettyprint&quot;&gt;&amp;lt;es.version&amp;gt;2.3.3&amp;lt;/es.version&amp;gt;&lt;/code&gt;问题解决。&lt;/p&gt;
+
+&lt;p&gt;在&lt;code class=&quot;prettyprint&quot;&gt;query_string&lt;/code&gt;里面支持的时间格式&lt;br&gt;
+&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/2.3/mapping-date-format.html&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/reference/2.3/mapping-date-format.html&lt;/a&gt;&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/06/27/elasticsearch-java/</link>
+      <guid>http://javahuang.github.io/2016/06/27/elasticsearch-java/</guid>
+      <pubDate>2016-06-27T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>ruby 学习</title>
+      <description>&lt;p&gt;开始学习ruby，最开始是从&lt;a href=&quot;http://www.runoob.com/ruby/ruby-tutorial.html&quot;&gt;Ruby菜鸟教程&lt;/a&gt;上面熟悉了一遍基础语法，编辑器开始使用的是idea，idea有ruby的自动补全、代码高亮等功能，最近给自己的vim收拾了一遍&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/06/20/ruby-learning/</link>
+      <guid>http://javahuang.github.io/2016/06/20/ruby-learning/</guid>
+      <pubDate>2016-06-20T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
       <title>elasticsearch 系统搭建</title>
-      <description>&lt;h1&gt;环境准备&lt;/h1&gt;
+      <description>&lt;p&gt;学习elasticsearch最好的方式就是看官方的&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html&quot;&gt;Elasticsearch Reference&lt;/a&gt;了，这里我只是记录下我在使用过程中遇到的一些问题和解决方式。&lt;/p&gt;
+
+&lt;h1&gt;环境准备&lt;/h1&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# java环境准备&lt;/span&gt;
 yum remove java-1.6.0-openjdk
 yum remove java-1.7.0-openjdk
@@ -52,7 +139,190 @@ service kibana start
 &lt;span class=&quot;c&quot;&gt;### https://www.elastic.co/guide/en/sense/current/installing.html&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;学习笔记&lt;/h1&gt;
-</description>
+
+&lt;h2&gt;文档&lt;/h2&gt;
+
+&lt;p&gt;elasticsearch使用&lt;code class=&quot;prettyprint&quot;&gt;JSON&lt;/code&gt;作为文档序列化格式。&lt;/p&gt;
+
+&lt;h2&gt;索引&lt;/h2&gt;
+
+&lt;p&gt;对比传统RDB&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Relational DB -&amp;gt; Databases -&amp;gt; Tables -&amp;gt; Rows -&amp;gt; Columns
+Elasticsearch -&amp;gt; Indices   -&amp;gt; Types  -&amp;gt; Documents -&amp;gt; Fields
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;prettyprint&quot;&gt;PUT /test/employee/1&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;名字&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;test&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;索引名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;employee&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;类型名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;1&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;id&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;索引(index)——一个存储关联数据的地方。实际上，索引只是一个用来指向一个或多个分片(shards)的“逻辑命名空间(logical namespace)”.&lt;br&gt;
+一个分片(shard)是一个最小级别“工作单元(worker unit)”,它只是保存了索引中所有数据的一部分。&lt;br&gt;
+复制分片只是主分片的一个副本，它可以防止硬件故障导致的数据丢失，同时可以提供读请求，比如搜索或者从别的shard取回文档。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;prettyprint&quot;&gt;GET /_all&lt;/code&gt; 获取所有的索引信息，每个索引默认是五个主分片和一个复制分片；&lt;br&gt;
+更新文档，&lt;code class=&quot;prettyprint&quot;&gt;_version&lt;/code&gt;字段会增加&lt;/p&gt;
+
+&lt;p&gt;悲观并发控制（Pessimistic concurrency control）&lt;/p&gt;
+
+&lt;p&gt;这在关系型数据库中被广泛的使用，假设冲突的更改经常发生，为了解决冲突我们把访问区块化。典型的例子是在读一行数据前锁定这行，然后确保只有加锁的那个线程可以修改这行数据。&lt;br&gt;
+乐观并发控制（Optimistic concurrency control）：&lt;/p&gt;
+
+&lt;p&gt;被Elasticsearch使用，假设冲突不经常发生，也不区块化访问，然而，如果在读写过程中数据发生了变化，更新操作将失败。这时候由程序决定在失败后如何解决冲突。实际情况中，可以重新尝试更新，刷新数据（重新读取）或者直接反馈给用户。&lt;/p&gt;
+
+&lt;p&gt;更新的时候，使用script的时候出现&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Scripts of type [inline], operation [aggs] and lang [groovy] are disabled&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在&lt;code class=&quot;prettyprint&quot;&gt;elasticsearch.yml&lt;/code&gt;后面添加,&lt;code class=&quot;prettyprint&quot;&gt;script.engine.groovy.inline.update: on&lt;/code&gt;，然后restart，注意每行配置需要用&lt;code class=&quot;prettyprint&quot;&gt;#&lt;/code&gt;隔开&lt;/p&gt;
+
+&lt;p&gt;elasticsearch 数据文件存放位置&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;ps -ef|grep elasticsearch&lt;/code&gt; &lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;-Des.default.path.data=/var/lib/elasticsearch&lt;/code&gt;&lt;br&gt;
+du -h --max-depth=1 查看各个索引文件大小&lt;/p&gt;
+
+&lt;p&gt;路由(Routing)机制和分片机制的关系，路由是讲哈希值相同的文档放在同一个主分片上。自定义routing模式能指定文档存在哪个分片上，搜索的时候只需要直接搜索指定的分片。&lt;/p&gt;
+
+&lt;p&gt;For instance, a string field could be indexed as an &lt;code class=&quot;prettyprint&quot;&gt;analyzed&lt;/code&gt; field for full-text search, and as a &lt;code class=&quot;prettyprint&quot;&gt;not_analyzed&lt;/code&gt; field for sorting or aggregations.&lt;/p&gt;
+
+&lt;p&gt;Mapping-&amp;gt;Field datatypes-&amp;gt;String datatype&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;Full text&lt;/code&gt; values, like the body of an email, are typically used for text based relevance searches。Full text将被&lt;code class=&quot;prettyprint&quot;&gt;analyzed&lt;/code&gt;，they are passed through an analyzer to convert the string into a list of individual terms before being indexed.&lt;code class=&quot;prettyprint&quot;&gt;Full text fields are not used for sorting and seldom used for aggregations&lt;/code&gt;，分词的字段不能排序和做聚合操作。&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;Keywords&lt;/code&gt;,通常用来被&lt;code class=&quot;prettyprint&quot;&gt;filtering&lt;/code&gt;，&lt;code class=&quot;prettyprint&quot;&gt;sorting&lt;/code&gt;，&lt;code class=&quot;prettyprint&quot;&gt;aggregations&lt;/code&gt;，关键词都是&lt;code class=&quot;prettyprint&quot;&gt;not_analyzed&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html&lt;/a&gt;&lt;br&gt;
+创建多级字段，允许同一字段同时被分词用来全局搜索或者不分词用来聚合和排序&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;prettyprint&quot;&gt;boost&lt;/code&gt; &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;properties&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;string&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;boost&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+          &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;string&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;When querying the _all field, words that originated in the title field are twice as relevant as words that originated in the content field.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;prettyprint&quot;&gt;mapping-parent-field.html#_global_ordinals&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Parent and child documents must be indexed on the same shard. The parent ID is used as the routing value for the child, to ensure that the child is indexed on the same shard as the parent. This means that the same parent value needs to be provided when getting, deleting, or updating a child document.&lt;/p&gt;
+
+&lt;h2&gt;Query DSL&lt;/h2&gt;
+
+&lt;p&gt;Leaf query clauses 叶子查询子句&lt;br&gt;
+Compound query clauses 复合查询&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;Query context&lt;/code&gt;&lt;br&gt;
+“How well does this document match this query clause?”&lt;br&gt;
+查询文档的匹配程度，用&lt;code class=&quot;prettyprint&quot;&gt;_score&lt;/code&gt;用来表示匹配度&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;Filter context&lt;/code&gt;&lt;br&gt;
+“Does this document match this query clause?” &lt;br&gt;
+查询文档是否匹配，&lt;code class=&quot;prettyprint&quot;&gt;yes&lt;/code&gt;or&lt;code class=&quot;prettyprint&quot;&gt;no&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3&gt;Full text queries&lt;/h3&gt;
+
+&lt;h3&gt;Term level queries&lt;/h3&gt;
+
+&lt;p&gt;倒排索引（英语：Inverted index），也常被称为反向索引、置入档案或反向档案，是一种索引方法，被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。&lt;br&gt;
+the term-level queries operate on the exact terms that are stored in the inverted index.通常用来存储numbers,dates,enums，而非full text fields&lt;br&gt;
+term代表完全匹配，如&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/2.3/query-dsl-term-query.html&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/reference/2.3/query-dsl-term-query.html&lt;/a&gt; 里面的例子，设置exact_value的index为not_analyzed，那么&amp;quot;full_text&amp;quot;:   &amp;quot;Quick Foxes!&amp;quot;存的索引将是quick/foxes, &amp;quot;exact_value&amp;quot;: &amp;quot;Quick Foxes!&amp;quot;&lt;br&gt;
+存的索引是Quick Foxes&lt;/p&gt;
+
+&lt;h3&gt;Range Query&lt;/h3&gt;
+
+&lt;p&gt;gte gt lte lt boost&lt;br&gt;
+包含日期的格式&lt;br&gt;
+&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/2.3/query-dsl-range-query.html&quot;&gt;https://www.elastic.co/guide/en/elasticsearch/reference/2.3/query-dsl-range-query.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Exists Query&lt;/h3&gt;
+
+&lt;h3&gt;Whildcard Query&lt;/h3&gt;
+
+&lt;p&gt;通配符匹配&lt;br&gt;
+{&lt;br&gt;
+    &amp;quot;wildcard&amp;quot; : { &amp;quot;user&amp;quot; : { &amp;quot;wildcard&amp;quot; : &amp;quot;ki*y&amp;quot;, &amp;quot;boost&amp;quot; : 2.0 } }&lt;br&gt;
+}&lt;/p&gt;
+
+&lt;h3&gt;Regexp Query&lt;/h3&gt;
+
+&lt;p&gt;正则表达式匹配&lt;br&gt;
+{&lt;br&gt;
+    &amp;quot;regexp&amp;quot;: {&lt;br&gt;
+        &amp;quot;username&amp;quot;: {&lt;br&gt;
+            &amp;quot;value&amp;quot;: &amp;quot;john~athon&lt;1-5&gt;&amp;quot;,&lt;br&gt;
+            &amp;quot;flags&amp;quot;: &amp;quot;COMPLEMENT|INTERVAL&amp;quot;&lt;br&gt;
+        }&lt;br&gt;
+    }&lt;br&gt;
+}&lt;br&gt;
+complement 补充&lt;br&gt;
+interval 间隔&lt;/p&gt;
+
+&lt;h3&gt;Bool query&lt;/h3&gt;
+
+&lt;p&gt;{&lt;br&gt;
+    &amp;quot;bool&amp;quot; : {&lt;br&gt;
+        &amp;quot;must&amp;quot; : {&lt;br&gt;
+            &amp;quot;term&amp;quot; : { &amp;quot;user&amp;quot; : &amp;quot;kimchy&amp;quot; }&lt;br&gt;
+        },&lt;br&gt;
+        &amp;quot;filter&amp;quot;: {&lt;br&gt;
+            &amp;quot;term&amp;quot; : { &amp;quot;tag&amp;quot; : &amp;quot;tech&amp;quot; }&lt;br&gt;
+        },&lt;br&gt;
+        &amp;quot;must_not&amp;quot; : {&lt;br&gt;
+            &amp;quot;range&amp;quot; : {&lt;br&gt;
+                &amp;quot;age&amp;quot; : { &amp;quot;from&amp;quot; : 10, &amp;quot;to&amp;quot; : 20 }&lt;br&gt;
+            }&lt;br&gt;
+        },&lt;br&gt;
+        &amp;quot;should&amp;quot; : [&lt;br&gt;
+            {&lt;br&gt;
+                &amp;quot;term&amp;quot; : { &amp;quot;tag&amp;quot; : &amp;quot;wow&amp;quot; }&lt;br&gt;
+            },&lt;br&gt;
+            {&lt;br&gt;
+                &amp;quot;term&amp;quot; : { &amp;quot;tag&amp;quot; : &amp;quot;elasticsearch&amp;quot; }&lt;br&gt;
+            }&lt;br&gt;
+        ],&lt;br&gt;
+        &amp;quot;minimum_should_match&amp;quot; : 1,&lt;br&gt;
+        &amp;quot;boost&amp;quot; : 1.0&lt;br&gt;
+    }&lt;br&gt;
+}&lt;/p&gt;
+
+&lt;h5&gt;elasticsearch put和post的区别？&lt;/h5&gt;
+
+&lt;p&gt;The only difference I&amp;#39;m aware of is that a POST can be used to achieve auto-generation of ids whereas a PUT is used when you want to specify an id. See the following for more details:&lt;/p&gt;
+
+&lt;h1&gt;文档阅读笔记&lt;/h1&gt;
+
+&lt;h2&gt;Mapping&lt;/h2&gt;
+
+&lt;h3&gt;Meta-Fields&lt;/h3&gt;
+
+&lt;h4&gt;_all&lt;/h4&gt;
+
+&lt;h1&gt;问题分析&lt;/h1&gt;
+
+&lt;p&gt;一般情况下在es的启动参数里面有log目录，通常通过log日志来定位具体的问题,&lt;code class=&quot;prettyprint&quot;&gt;es.default.path.logs=/var/log/elasticsearch&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2016&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;06&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;457&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DEBUG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;search&lt;/span&gt;            &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Jebediah&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Guthrie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13170&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Failed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;RemoteTransportException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Jebediah&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Guthrie&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;10.24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;10.225&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9300&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;indices:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]]];&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;nested:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IllegalStateException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Field&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loading&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forbidden&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;highdiskDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Caused&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;by:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;IllegalStateException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Field&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loading&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forbidden&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;highdiskDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       <link>http://javahuang.github.io/2016/06/14/elasticsearch/</link>
       <guid>http://javahuang.github.io/2016/06/14/elasticsearch/</guid>
       <pubDate>2016-06-14T00:00:00+08:00</pubDate>
@@ -148,15 +418,18 @@ service kibana start
 
 &lt;p&gt;logstash引擎根据&lt;code class=&quot;prettyprint&quot;&gt;inode&lt;/code&gt;和&lt;code class=&quot;prettyprint&quot;&gt;byte offset&lt;/code&gt;来确定一个日志文件是否已经被读取，如果想重新解析某个日志文件，可以修改这个sincedb文件来操作，max_open_files是在同一时间监视的日志数量，默认是4096，我给设置成100000之后，开始没有设置close_older(关闭时间，默认是一个小时)，导致打开的文件数量过多，且没有关闭，就出现了读取新的日志文件&lt;code class=&quot;prettyprint&quot;&gt;Permission denied&lt;/code&gt;，然后我添加了&lt;code class=&quot;prettyprint&quot;&gt;close_older&lt;/code&gt;参数，设置为1s，解析完某个日志文件之后就自动关闭，开始解析其他的日志文件，&lt;code class=&quot;prettyprint&quot;&gt;ignore_older&lt;/code&gt;，测试的时候，有些日志一直没有解析，看文档发现这个参数默认是1天，file插件会忽略时间戳为1天之前的文件。加入codec，将以&lt;code class=&quot;prettyprint&quot;&gt;====&lt;/code&gt;结尾的多行当做一个event来处理。&lt;br&gt;
 最终的配置如下&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;file &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;/data/xmls/**/error*&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;input &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  stdin &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  file &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;/data/xmls/**/sysCode*&amp;quot;&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;start_position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;beginning&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;sincedb_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;/data/sincedb_error&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;exclude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;*.zip&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;max_open_files&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; 100000
-    &lt;span class=&quot;nv&quot;&gt;close_older&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; 1
     &lt;span class=&quot;nv&quot;&gt;ignore_older&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt;94608000
+    &lt;span class=&quot;nv&quot;&gt;close_older&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; 1
+    &lt;span class=&quot;nv&quot;&gt;max_open_files&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; 10000
+    &lt;span class=&quot;nv&quot;&gt;sincedb_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;/data/sincedb_syscode&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;sysCode&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;exclude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;*.zip&amp;quot;&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;add_field&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
       &lt;span class=&quot;s2&quot;&gt;&amp;quot;system&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;gwsc&amp;quot;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -166,8 +439,37 @@ service kibana start
       &lt;span class=&quot;nv&quot;&gt;negate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;what&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; next
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+filter &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;sysCode&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    grok &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;patterns_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/usr/local/etc/logstash/patterns&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;message&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;%{SYSCODE}&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  date &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;logTime&amp;quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&amp;quot;ISO8601&amp;quot;&lt;/span&gt;,  &lt;span class=&quot;s2&quot;&gt;&amp;quot;yyyy-MM-dd HH:mm:ss&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;logTime&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+output &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;_grokparsefailure&amp;quot;&lt;/span&gt; not in &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;tags&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    elasticsearch &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;hosts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;localhost:9200&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  stdout &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;codec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; rubydebug &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;遇到问题&lt;/h3&gt;
+
+&lt;p&gt;需要按&lt;code class=&quot;prettyprint&quot;&gt;logTime&lt;/code&gt;来查询区间内的日志，默认情况所有字段都是string类型，按照上面添加&lt;code class=&quot;prettyprint&quot;&gt;date&lt;/code&gt;filter之后，再查看索引里面的mapping里面字段类型就变成了&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;&amp;quot;logTime&amp;quot;: {&amp;quot;type&amp;quot;: &amp;quot;date&amp;quot;, &amp;quot;format&amp;quot;: &amp;quot;strict_date_optional_time||epoch_millis&amp;quot;}&lt;/code&gt;&lt;/p&gt;
+
 &lt;h1&gt;参考&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/index.html&quot;&gt;logstash reference&lt;/a&gt;&lt;/p&gt;
@@ -1386,12 +1688,32 @@ lsof -i TCP:8080
 
 &lt;span class=&quot;c&quot;&gt;# 统计文件行数 -c（bytes）-l（line）-w（words）-m（characters）&lt;/span&gt;
 wc 
+&lt;span class=&quot;c&quot;&gt;## 统计某个文件夹有多少文件 &lt;/span&gt;
+find . -type f &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; wc -l
+
+&lt;span class=&quot;c&quot;&gt;# 查看文件夹大小 -s(-d0 只显示当前文件夹大小) -h(转化为B,K,M,G的形式)&lt;/span&gt;
+du -sh
+
 
 &lt;span class=&quot;c&quot;&gt;# 从远程服务器获取数据&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# 递归复制(r)保留源文件属性(p)&lt;/span&gt;
 scp -rp /usr/local/ root@192.168.1.99:/usr/local/
 &lt;span class=&quot;c&quot;&gt;# -u只更新,不覆盖已经存在的文件 -r对子目录递归处理 -a递归方式拷贝文件，并保持原文件属性 --progress查看拷贝的过程 -z对数据传输压缩&lt;/span&gt;
 rsync -auv /src/foo /dest
+
+
+ &lt;span class=&quot;c&quot;&gt;# 下载文件&lt;/span&gt;
+ curl -O 
+ wget --no-check-certificate --no-cookies --header &lt;span class=&quot;s2&quot;&gt;&amp;quot;Cookie: oraclelicense=accept-securebackup-cookie&amp;quot;&lt;/span&gt; http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz
+
+&lt;span class=&quot;c&quot;&gt;# crontab linux执行定时任务&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## -u设定某个用户cron任务 -l(列出任务内容) -r(删除任务) -e(编辑任务)&lt;/span&gt;
+crontab -e
+&lt;span class=&quot;c&quot;&gt;## 格式如下 每晚21：30重启Apache&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## 30 21 * * * /usr/local/etc/rc.d/lighttpd restart&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 端口映射&lt;/span&gt;
+iptables -t nat -A PREROUTING -p tcp --dport &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt; -j REDIRECT --to-port 8080
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;xargs&lt;/h4&gt;
 
@@ -1436,7 +1758,40 @@ cat id_rsa.pub &amp;gt;&amp;gt; authorized_keys
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;vim /etc/resolv-conf
 &lt;span class=&quot;c&quot;&gt;# nameserver 114.114.114.114&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# search localdomain&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 data&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# fdisk -l&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;VIM&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/spf13/spf13-vim&quot;&gt;https://github.com/spf13/spf13-vim&lt;/a&gt;&lt;br&gt;
+通用的VIM配置，已经定义了一系列的vim插件&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# set clident 设置缩进&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;vim插件&lt;/h4&gt;
+
+&lt;p&gt;我在github上直接fork的&lt;a href=&quot;https://github.com/spf13/spf13-vim&quot;&gt;https://github.com/spf13/spf13-vim&lt;/a&gt; 这个vim通用配置，一键配置VIM环境。环境配置完之后，我看了&lt;code class=&quot;prettyprint&quot;&gt;~&lt;/code&gt;目录里面有好几个&lt;code class=&quot;prettyprint&quot;&gt;.vim&lt;/code&gt;开头的文件，其中&lt;code class=&quot;prettyprint&quot;&gt;.vimrc&lt;/code&gt;是vim启动加载文件，使用的&lt;a href=&quot;https://github.com/VundleVim/Vundle.vim&quot;&gt;vundle&lt;/a&gt;来管理vim插件，vundle使用的配置是&lt;code class=&quot;prettyprint&quot;&gt;.vimrc.bundles&lt;/code&gt;&lt;br&gt;
+添加插件，比如我想添加一个&lt;a href=&quot;https://github.com/vim-ruby/vim-ruby&quot;&gt;ruby&lt;/a&gt;的vim插件，找到如下地方添加一行&lt;br&gt;
+&lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/linux-vim-vundle.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+添加&lt;code class=&quot;prettyprint&quot;&gt;Bundle vim-ruby/vim-ruby&lt;/code&gt;，然后进入vim的normal环境，执行&lt;code class=&quot;prettyprint&quot;&gt;:PluginInstall&lt;/code&gt;&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;:h vundle&lt;/code&gt; 来查看帮助&lt;/p&gt;
+
+&lt;p&gt;NERDTree&lt;br&gt;
+&lt;a href=&quot;http://www.vim.org/scripts/script.php?script_id=1658&quot;&gt;http://www.vim.org/scripts/script.php?script_id=1658&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;VIM折叠&lt;br&gt;
+:help folding&lt;br&gt;
+命令小结&lt;br&gt;
+zc  关闭当前打开的折叠&lt;br&gt;
+zo  打开当前的折叠&lt;br&gt;
+zm  关闭所有折叠&lt;br&gt;
+zM  关闭所有折叠及其嵌套的折叠&lt;br&gt;
+zr  打开所有折叠&lt;br&gt;
+zR  打开所有折叠及其嵌套的折叠&lt;br&gt;
+zd  删除当前折叠&lt;br&gt;
+zE  删除所有折叠&lt;br&gt;
+zj  移动至下一个折叠&lt;br&gt;
+zk  移动至上一个折叠&lt;br&gt;
+zn  禁用折叠&lt;br&gt;
+zN  启用折叠&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@vmcentos00 data&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# fdisk -l&lt;/span&gt;
 
 Disk /dev/sda: 107.4 GB, &lt;span class=&quot;m&quot;&gt;107374182400&lt;/span&gt; bytes
 &lt;span class=&quot;m&quot;&gt;255&lt;/span&gt; heads, &lt;span class=&quot;m&quot;&gt;63&lt;/span&gt; sectors/track, &lt;span class=&quot;m&quot;&gt;13054&lt;/span&gt; cylinders

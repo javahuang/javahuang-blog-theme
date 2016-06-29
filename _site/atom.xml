@@ -4,7 +4,7 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-06-17T15:15:09+08:00</updated>
+  <updated>2016-06-29T18:30:42+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
@@ -12,18 +12,41 @@
 
   
   <entry>
+    <title>elasticsearch-java实践</title>
+    <link href="/2016/06/27/elasticsearch-java/"/>
+    <updated>2016-06-27T00:00:00+08:00</updated>
+    <id>/2016/06/27/elasticsearch-java</id>
+    <content type="html">API
+
+https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html
+
+目前我使用的查询操作，主要是Query String Query
+public String responseByKeywords(SysCodeRequest request) {
+        QueryBuilder qb = queryStringQuery(parseRequestToQueryString(request));
+        Client client = ESUtils.getCli...</content>
+  </entry>
+  
+  <entry>
+    <title>ruby 学习</title>
+    <link href="/2016/06/20/ruby-learning/"/>
+    <updated>2016-06-20T00:00:00+08:00</updated>
+    <id>/2016/06/20/ruby-learning</id>
+    <content type="html">开始学习ruby，最开始是从Ruby菜鸟教程上面熟悉了一遍基础语法，编辑器开始使用的是idea，idea有ruby的自动补全、代码高亮等功能，最近给自己的vim收拾了一遍
+</content>
+  </entry>
+  
+  <entry>
     <title>elasticsearch 系统搭建</title>
     <link href="/2016/06/14/elasticsearch/"/>
     <updated>2016-06-14T00:00:00+08:00</updated>
     <id>/2016/06/14/elasticsearch</id>
-    <content type="html">环境准备
+    <content type="html">学习elasticsearch最好的方式就是看官方的Elasticsearch Reference了，这里我只是记录下我在使用过程中遇到的一些问题和解决方式。
+
+环境准备
 # java环境准备
 yum remove java-1.6.0-openjdk
 yum remove java-1.7.0-openjdk
-wget --no-check-certificate --no-cookies --header &amp;quot;Cookie: oraclelicense=accept-securebackup-cookie&amp;quot; http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz
-# 设置环境变量
-vim /etc/profile
-# JAV...</content>
+wget --no-check-certificate --no-cookies --header &amp;quot;Cookie: oraclelicense=accept-securebackup-cookie&amp;quot; http://download.oracle.com/ot...</content>
   </entry>
   
   <entry>
