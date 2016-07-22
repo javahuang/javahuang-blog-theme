@@ -1,77 +1,146 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Our Love Story</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<style type="text/css">
-		@font-face {
-			font-family: digit;
-			src: url('digital-7_mono.ttf') format("truetype");
-		}
-	</style>
-	<link href="css/default.css" type="text/css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/garden.js"></script>
+    <title>Our Love Story</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        @font-face {
+            font-family: digit;
+            src: url('digital-7_mono.ttf') format("truetype");
+        }
+    </style>
+    <link href="css/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/garden.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
 <body>
-	<div id="mainDiv">
-		<div id="content">
-			<div id="code">
-				<span class="string">亲爱的</span><br />
+<div id="mainDiv">
+    <div id="content">
+        <div id="code">
+            <span class="keyword">by:2016-02-09</span><br/>
+            <span class="string">有幸能在今天这个早晨认识你</span><br/>
+            <span class="string">已经被你深深的迷上</span><br/>
+            <span class="keyword">2016-02-14</span><br/>
+            <span class="string"> 准备订婚的前夜</span><br/>
+             因为某些事情，我没有说晚安<br/>
+            <span class="keyword"> 2016-02-15</span><br/>
+            <span class="string"> 我们订婚了</span><br/>
+            <span class="string"> 没有山盟海誓，只有媒妁之言</span><br/>
+            <span class="string"> 虽然我们都还不了解彼此</span><br/>
+            <span class="string"> 但是我相信我做了一个最正确的决定</span><br/>
+            <span class="string"> 今天第一次牵了你的手</span><br/>
+            <span class="keyword"> 2016-04-16</span><br/>
+            <span class="string">  我们第二次见面</span><br/>
+            <span class="string">  满怀期待的在泰安火车站等着你的身影出现</span><br/>
+            <span class="string">    你背个背包，穿着牛仔衣服，出站下雨一起撑把伞</span><br/>
+            <span class="keyword">  2016-04-17</span><br/>
+            <span class="string">  一起爬了泰山</span><br/>
+            <span class="string">   从红门爬到了南天门</span><br/>
+            <span class="string">   经历了天晴，天阴和风雪</span><br/>
+            <span class="string">   2016-04-19</span><br/>
+            <span class="string">   一起来到了北京</span><br/>
+            <span class="keyword">    2016-04-20</span><br/>
+            <span class="string">    一起去了颐和园</span><br/>
+            <span class="keyword">    2016-04-22</span><br/>
+            <span class="string">    一起去了故宫</span><br/>
+            <span class="keyword">     2016-04-23</span><br/>
+            <span class="string">    早晨送你去南站</span><br/>
+            <span class="string">    出门晚差点错过了高铁</span><br/>
+            <span class="string">    带着你从候车室一楼穿插过拥挤的人群到三楼</span><br/>
+            <span class="string">    庆幸在车开前几分钟进了站</span><br/>
+            <span class="string">    可我目送着你的身影渐渐消失</span><br/>
+            <span class="string">    却一直在责怪自己没有算好时间</span><br/>
+            <span class="string">     以至于都没有说再见</span><br/>
+            <span class="keyword">     2016-06-30</span><br/>
+            <span class="string">     我们第三次见面</span><br/>
+            <span class="string">     心疼的看着你背着鼓鼓的背包出现</span><br/>
+            <span class="string">      晚上一起去吃了海底捞</span><br/>
+            <span class="string">      你却不是太喜欢</span><br/>
 
-			</div>
-			<div id="loveHeart">
-				<canvas id="garden"></canvas>
-				<div id="words">
-					<div id="messages">
-						小艳, 我们已经相识了
-						<div id="elapseClock"></div>
-					</div>
-					<div id="loveu">
-						永远爱你的<br/>
-						<div class="signature">- 汝鹏</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="copyright">
-			Copyright © 2016 <a href='http://hrps.me'>hrps.me</a> 2006-2016
-		</div>
-	</div>
-	<script type="text/javascript">
-		var offsetX = $("#loveHeart").width() / 2;
-		var offsetY = $("#loveHeart").height() / 2 - 55;
-		var together = new Date();
-		together.setFullYear(2016, 2, 9);
-		together.setHours(9);
-		together.setMinutes(0);
-		together.setSeconds(0);
-		together.setMilliseconds(0);
-		
-		if (!document.createElement('canvas').getContext) {
-			var msg = document.createElement("div");
-			msg.id = "errorMsg";
-			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
-			document.body.appendChild(msg);
-			$("#code").css("display", "none")
-			$("#copyright").css("position", "absolute");
-			$("#copyright").css("bottom", "10px");
-		    document.execCommand("stop");
-		} else {
-			setTimeout(function () {
-				startHeartAnimation();
-			}, 2000);
+            <span class="keyword">     2016-07-01</span><br/>
+            <span class="string">     一起去了北海公园</span><br/>
+            <span class="string">     第一次在朋友圈发了你的照片 收到了很多赞</span><br/>
+            <span class="string">     晚上一起去看独立日，走之前我却忘了带上你的眼镜</span><br/>
+            <span class="string">     带你去寿司，你不太喜欢</span><br/>
+            <span class="string">     你不喜欢吃一些奇怪的东西</span><br/>
+            <span class="keyword">     2016-07-02</span><br/>
+            <span class="string">     晚上一起去看忍者神龟</span><br/>
+            <span class="keyword">     2016-07-03</span><br/>
+            <span class="string">    一起去了鸟巢 水立方 奥林匹克公园</span><br/>
+            <span class="string">     你拖了鞋光着脚在水里面嬉戏</span><br/>
+            <span class="string">     天真的像个孩子</span><br/>
+            <span class="string">    给你擦干脚上的水穿上鞋子</span><br/>
+            <span class="string">    我自己开始觉得这一切都很自然</span><br/>
+            <span class="keyword">     2016-07-04</span><br/>
+            <span class="string">   送你回信阳</span><br/>
+            <span class="string">     这次临行前也终于有时间来了一个拥抱</span><br/>
+            <span class="string">     目送着你再次消失在检票口</span><br/>
+            <span class="keyword">     2016-07-20 – 2016-07-22</span><br/>
+            这两天是自己认识你以来最黑暗的两天<br/>
+            木纳的我只是焦急的等待着<br/>
+            却想不出我该做些什么<br/>
+            在你心情最不好的时候<br/>
+            不知道怎么哄你<br/>
+            不知道该怎么关心你<br/>
+            我不应该只是一味的说对不起<br/>
+            你不开心的时候我需要的是理智一些<br/>
+            想想你现在最需要的是什么<br/>
+            我该好好反思下自己<br/>
 
-			timeElapse(together);
-			setInterval(function () {
-				timeElapse(together);
-			}, 500);
 
-			adjustCodePosition();
-			$("#code").typewriter();
-		}
-	</script>
+        </div>
+        <div id="loveHeart">
+            <canvas id="garden"></canvas>
+            <div id="words">
+                <div id="messages">
+                    小艳, 我们已经相识了
+                    <div id="elapseClock"></div>
+                </div>
+                <div id="loveu">
+                    永远爱你的<br/>
+                    <div class="signature">- 汝鹏</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="copyright">
+        Copyright © 2016 <a href='http://hrps.me'>hrps.me</a> 2006-2016
+    </div>
+</div>
+<script type="text/javascript">
+    var offsetX = $("#loveHeart").width() / 2;
+    var offsetY = $("#loveHeart").height() / 2 - 55;
+    var together = new Date();
+    together.setFullYear(2016, 2, 9);
+    together.setHours(9);
+    together.setMinutes(0);
+    together.setSeconds(0);
+    together.setMilliseconds(0);
+
+    if (!document.createElement('canvas').getContext) {
+        var msg = document.createElement("div");
+        msg.id = "errorMsg";
+        msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+        document.body.appendChild(msg);
+        $("#code").css("display", "none")
+        $("#copyright").css("position", "absolute");
+        $("#copyright").css("bottom", "10px");
+        document.execCommand("stop");
+    } else {
+        setTimeout(function () {
+            startHeartAnimation();
+        }, 2000);
+
+        timeElapse(together);
+        setInterval(function () {
+            timeElapse(together);
+        }, 50);
+
+        adjustCodePosition();
+        $("#code").typewriter();
+    }
+</script>
 </body>
 </html>

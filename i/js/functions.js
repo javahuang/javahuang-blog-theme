@@ -76,7 +76,7 @@ function startHeartAnimation() {
                 if (b >= c.length) {
                     clearInterval(e)
                 }
-            }, 75)
+            }, 25)
         });
         return this
     }
