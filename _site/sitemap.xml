@@ -5,6 +5,55 @@
 
   
   <url>
+    <loc>http://javahuang.github.io/2016/07/21/tomcat/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-07-21T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/07/21/linux-mysql/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-07-21T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/07/20/spring-boot/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-07-20T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/07/19/ruby-metaprograming/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-07-19T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/07/19/ruby-class_eval-instance_eval/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-07-19T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/07/15/oracle-tnslistener/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-07-15T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://javahuang.github.io/2016/07/11/lasy-half-2016/</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2016-07-11T00:00:00+08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://javahuang.github.io/2016/06/27/elasticsearch-java/</loc>
     <changefreq>daily</changefreq>
     <lastmod>2016-06-27T00:00:00+08:00</lastmod>

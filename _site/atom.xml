@@ -4,12 +4,108 @@
   <title>进击的大黄</title>
   <link href="//atom.xml" rel="self"/>
   <link href=""/>
-  <updated>2016-06-29T18:30:42+08:00</updated>
+  <updated>2016-07-22T22:41:13+08:00</updated>
   <id></id>
   <author>
     <name>Huang rp</name>
   </author>
 
+  
+  <entry>
+    <title>tomcat使用问题注意事项</title>
+    <link href="/2016/07/21/tomcat/"/>
+    <updated>2016-07-21T00:00:00+08:00</updated>
+    <id>/2016/07/21/tomcat</id>
+    <content type="html">下午在使用Jenkins部署程序的时候，最后一步，部署到远程的tomcat上一直失败，我看了tomcat的启动日志也没报其他的错误，就是有如下一段，开始不怎么当回事，后来给pdf2img-0.0.1-SNAPSHOT.jar这个依赖去掉之后，启动才正常的。slf4j和log4j不能并存，之前一直都是给依赖的log4j给exclude掉。仔细查看日志的话其实分分钟就解决了这个错误，我却一直在查看是否其他代码导致的问题，唉。
+Detected both log4j-over-slf4j.jar AND slf4j-log4j12.jar on the class path, preempti...</content>
+  </entry>
+  
+  <entry>
+    <title>zabbix 环境搭建</title>
+    <link href="/2016/07/21/linux-mysql/"/>
+    <updated>2016-07-21T00:00:00+08:00</updated>
+    <id>/2016/07/21/linux-mysql</id>
+    <content type="html">安装jdk
+
+卸载自带的openjdk
+[root@oracle ~]# rpm -qa|grep jdk
+java-1.7.0-openjdk-1.7.0.45-2.4.3.3.el6.x86_64
+java-1.7.0-openjdk-devel-1.7.0.45-2.4.3.3.el6.x86_64
+java-1.6.0-openjdk-devel-1.6.0.0-1.66.1.13.0.el6.x86_64
+java-1.6.0-openjdk-1.6.0.0-1.66.1.13.0.el6.x86_64
+[root@oracle ~]# rpm -e --nodeps java...</content>
+  </entry>
+  
+  <entry>
+    <title>spring-boot学习笔记-基础</title>
+    <link href="/2016/07/20/spring-boot/"/>
+    <updated>2016-07-20T00:00:00+08:00</updated>
+    <id>/2016/07/20/spring-boot</id>
+    <content type="html">将spring-boot项目打包成一个jar文件时，遇到了如下错误
+
+
+repackage failed: Source must refer to an existing file
+
+
+执行 mvn clean install spring-boot:repackage 打包
+
+reference
+
+http://docs.spring.io/spring-boot/docs/1.3.6.RELEASE/maven-plugin/usage.html
+http://docs.spring.io/spring-boot/docs/current/reference/html/
+</content>
+  </entry>
+  
+  <entry>
+    <title>ruby学习笔记-元编程</title>
+    <link href="/2016/07/19/ruby-metaprograming/"/>
+    <updated>2016-07-19T00:00:00+08:00</updated>
+    <id>/2016/07/19/ruby-metaprograming</id>
+    <content type="html">Ruby中的元编程
+
+Ruby中的元编程，是可以在运行时动态地操作语言结构（如类、模块、实例变量等）的技术。你甚至于可以在不用重启的情况下，在运行时直接键入一段新的Ruby代码，并执行它。
+
+实例变量/类/方法
+
+实例变量（Instance Variables）
+实例方法（Instance Methods）
+一个实例只存储了他的实例变量和所属类的引用，所以同一个类的多个实例能共享类中的方法，不能共享实例。
+类也是对象，类和任何对象一样，也有它自己的类，Class类是Calss类的实例。
+puts Class.ancestors # Class Module Object Kernel B...</content>
+  </entry>
+  
+  <entry>
+    <title>ruby学习笔记之instance_eval与class_eval的区别</title>
+    <link href="/2016/07/19/ruby-class_eval-instance_eval/"/>
+    <updated>2016-07-19T00:00:00+08:00</updated>
+    <id>/2016/07/19/ruby-class_eval-instance_eval</id>
+    <content type="html">ruby是一个完全面向对象语言,即使对于某个实际的类也是如此,ruby的任何类都是Class类的实例
+</content>
+  </entry>
+  
+  <entry>
+    <title>oracle 监听启动错误</title>
+    <link href="/2016/07/15/oracle-tnslistener/"/>
+    <updated>2016-07-15T00:00:00+08:00</updated>
+    <id>/2016/07/15/oracle-tnslistener</id>
+    <content type="html">上午启动应用连接测试数据库的时候一直显示连接已满,然后上网查需要修改数据库最大连接数
+SQL&amp;gt; alter system set processes=1000 scope=spfile;
+然后重启数据库,但是
+➜ /Users/huangrupeng &amp;gt;ssh root@172.31.201.155
+root@172.31.201.155&amp;#39;s password:
+Last login: Fri Jul 15 10:52:39 2016 from 172.31.131.154
+[root@localhost ~]# sqlplus
+-bash: sqlplus: com...</content>
+  </entry>
+  
+  <entry>
+    <title>2016上半年微总结</title>
+    <link href="/2016/07/11/lasy-half-2016/"/>
+    <updated>2016-07-11T00:00:00+08:00</updated>
+    <id>/2016/07/11/lasy-half-2016</id>
+    <content type="html">待续。
+</content>
+  </entry>
   
   <entry>
     <title>elasticsearch-java实践</title>
@@ -31,8 +127,14 @@ public String responseByKeywords(SysCodeRequest request) {
     <link href="/2016/06/20/ruby-learning/"/>
     <updated>2016-06-20T00:00:00+08:00</updated>
     <id>/2016/06/20/ruby-learning</id>
-    <content type="html">开始学习ruby，最开始是从Ruby菜鸟教程上面熟悉了一遍基础语法，编辑器开始使用的是idea，idea有ruby的自动补全、代码高亮等功能，最近给自己的vim收拾了一遍
-</content>
+    <content type="html">开始学习ruby，最开始是从Ruby菜鸟教程上面熟悉了一遍基础语法，编辑器开始使用的是idea，idea有ruby的自动补全、代码高亮等功能，最近给自己的vim收拾了一遍，添加了vim-ruby插件
+
+ruby里面的:是啥意思？
+http://stackoverflow.com/questions/30315021/colon-placement-in-ruby-on-rails/30315118#30315118
+
+ruby数据类型
+http://www.cnblogs.com/andriod-html5/archive/2010/06/04/2539360.html
+Hash 散列表...</content>
   </entry>
   
   <entry>

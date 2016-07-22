@@ -4,10 +4,452 @@
     <title>进击的大黄</title>
     <description></description>
     <link>http://javahuang.github.io/rss.xml</link>
-    <lastBuildDate>2016-06-29T18:30:42+08:00</lastBuildDate>
-    <pubDate>2016-06-29T18:30:42+08:00</pubDate>
+    <lastBuildDate>2016-07-22T22:41:13+08:00</lastBuildDate>
+    <pubDate>2016-07-22T22:41:13+08:00</pubDate>
     <ttl>1800</ttl>
 
+    
+    <item>
+      <title>tomcat使用问题注意事项</title>
+      <description>&lt;p&gt;下午在使用Jenkins部署程序的时候，最后一步，部署到远程的tomcat上一直失败，我看了tomcat的启动日志也没报其他的错误，就是有如下一段，开始不怎么当回事，后来给&lt;code class=&quot;prettyprint&quot;&gt;pdf2img-0.0.1-SNAPSHOT.jar&lt;/code&gt;这个依赖去掉之后，启动才正常的。slf4j和log4j不能并存，之前一直都是给依赖的log4j给exclude掉。仔细查看日志的话其实分分钟就解决了这个错误，我却一直在查看是否其他代码导致的问题，唉。&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;Detected both log4j-over-slf4j.jar AND slf4j-log4j12.jar on the class path, preempting StackOverflowError&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;21-Jul-2016 14:43:34.360 INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;localhost-startStop-1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; TLDs yet contained no TLDs. Enable debug logging &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; this logger &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; a &lt;span class=&quot;nb&quot;&gt;complete &lt;/span&gt;list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;and JSP compilation time.
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;jar:file:/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/pdf2img-0.0.1-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+SLF4J: Found binding in &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;jar:file:/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/logback-classic-1.1.2.jar!/org/slf4j/impl/StaticLoggerBinder.class&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+SLF4J: Found binding in &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;jar:file:/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; an explanation.
+SLF4J: Detected both log4j-over-slf4j.jar AND slf4j-log4j12.jar on the class path, preempting StackOverflowError.
+SLF4J: See also http://www.slf4j.org/codes.html#log4jDelegationLoop &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; more details.
+21-Jul-2016 14:43:34.441 SEVERE &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;localhost-startStop-1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+21-Jul-2016 14:43:34.469 SEVERE &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;localhost-startStop-1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; org.apache.catalina.core.StandardContext.startInternal Context &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; startup failed due to previous errors
+21-Jul-2016 14:43:34.503 INFO &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;localhost-startStop-1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /usr/local/tomcat/webapps/ROOT.war has finished in 9,734 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <link>http://javahuang.github.io/2016/07/21/tomcat/</link>
+      <guid>http://javahuang.github.io/2016/07/21/tomcat/</guid>
+      <pubDate>2016-07-21T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>zabbix 环境搭建</title>
+      <description>&lt;h1&gt;安装jdk&lt;/h1&gt;
+
+&lt;h2&gt;卸载自带的openjdk&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# rpm -qa|grep jdk&lt;/span&gt;
+java-1.7.0-openjdk-1.7.0.45-2.4.3.3.el6.x86_64
+java-1.7.0-openjdk-devel-1.7.0.45-2.4.3.3.el6.x86_64
+java-1.6.0-openjdk-devel-1.6.0.0-1.66.1.13.0.el6.x86_64
+java-1.6.0-openjdk-1.6.0.0-1.66.1.13.0.el6.x86_64
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# rpm -e --nodeps java-1.7.0-openjdk-1.7.0.45-2.4.3.3.el6.x86_64&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# rpm -e --nodeps java-1.7.0-openjdk-devel-1.7.0.45-2.4.3.3.el6.x86_64&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# rpm -e --nodeps java-1.6.0-openjdk-devel-1.6.0.0-1.66.1.13.0.el6.x86_64&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# rpm -e --nodeps java-1.6.0-openjdk-1.6.0.0-1.66.1.13.0.el6.x86_64&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# rpm -qa|grep jdk  &lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle software&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# wget --no-check-certificate --no-cookies --header &amp;quot;Cookie: oraclelicense=accept-securebackup-cookie&amp;quot; http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle java&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# tar -zxvf jdk-8u92-linux-x64.tar.gz  -C /usr/java&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;rpm卸载包时，如果该软件包被别的依赖，会卸载不掉，加上 &lt;code class=&quot;prettyprint&quot;&gt;--nodeps&lt;/code&gt;会强制卸载&lt;br&gt;
+通过&lt;code class=&quot;prettyprint&quot;&gt;wegt&lt;/code&gt;下载jdk，添加报文头，相当于页面&lt;code class=&quot;prettyprint&quot;&gt;Accept License Agreement&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle java&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# vim /etc/profile&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle java&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# source /etc/profile&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 在文件尾设置java环境变量&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;jdk1.8.0_92 
+&lt;span class=&quot;nv&quot;&gt;CLASSPATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;.:&lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/lib.tools.jar  
+&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;  
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;JAVA_HOME CLASSPATH PATH 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;安装php+apache&lt;/h1&gt;
+
+&lt;h1&gt;安装zabbix&lt;/h1&gt;
+
+&lt;p&gt;使用&lt;code class=&quot;prettyprint&quot;&gt;yum&lt;/code&gt; 的方式安装mysql&lt;br&gt;
+&lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html&quot;&gt;http://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html&lt;/a&gt;&lt;br&gt;
+按照教程所说，执行如下命令，并没有找到临时秘密啊&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;sudo grep &amp;#39;temporary password&amp;#39; /var/log/mysqld.log&lt;/code&gt;&lt;br&gt;
+执行这个设置初始密码&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;mysqladmin -u root password 123456&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;prettyprint&quot;&gt;service httpd start&lt;/code&gt;报错&lt;br&gt;
+httpd: Could not reliably determine the server&amp;#39;s fully qualified domain name&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;vi /etc/httpd/conf/httpd.conf&lt;/code&gt;&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;ServerName 10.24.10.225:80&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;zabbix&lt;br&gt;
+初始化时连接数据库错误失败&lt;br&gt;
+Error connecting to database: Access denied for user &amp;#39;zabbix_user&amp;#39;@&amp;#39;localhost&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;prettyprint&quot;&gt;grant all privileges on zabbix.* to zabbix_user@&amp;#39;localhost&amp;#39; identified by &amp;#39;123456&amp;#39;;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;报错:&lt;br&gt;
+you most likely middpelled the timezone&lt;br&gt;
+修改&lt;code class=&quot;prettyprint&quot;&gt;/etc/php.ini&lt;/code&gt;&lt;br&gt;
+设置:&lt;br&gt;
+date.timezone = Asia/Chongqing&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/07/21/linux-mysql/</link>
+      <guid>http://javahuang.github.io/2016/07/21/linux-mysql/</guid>
+      <pubDate>2016-07-21T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>spring-boot学习笔记-基础</title>
+      <description>&lt;p&gt;将spring-boot项目打包成一个jar文件时，遇到了如下错误&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;repackage failed: Source must refer to an existing file&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;执行 &lt;code class=&quot;prettyprint&quot;&gt;mvn clean install spring-boot:repackage&lt;/code&gt; 打包&lt;/p&gt;
+
+&lt;h1&gt;reference&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://docs.spring.io/spring-boot/docs/1.3.6.RELEASE/maven-plugin/usage.html&quot;&gt;http://docs.spring.io/spring-boot/docs/1.3.6.RELEASE/maven-plugin/usage.html&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;http://docs.spring.io/spring-boot/docs/current/reference/html/&quot;&gt;http://docs.spring.io/spring-boot/docs/current/reference/html/&lt;/a&gt;&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/07/20/spring-boot/</link>
+      <guid>http://javahuang.github.io/2016/07/20/spring-boot/</guid>
+      <pubDate>2016-07-20T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>ruby学习笔记-元编程</title>
+      <description>&lt;h2&gt;Ruby中的元编程&lt;/h2&gt;
+
+&lt;p&gt;Ruby中的元编程，是可以在运行时动态地操作语言结构（如类、模块、实例变量等）的技术。你甚至于可以在不用重启的情况下，在运行时直接键入一段新的Ruby代码，并执行它。&lt;/p&gt;
+
+&lt;h3&gt;实例变量/类/方法&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;实例变量（Instance Variables）&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;实例方法（Instance Methods）&lt;/strong&gt;&lt;br&gt;
+一个&lt;strong&gt;实例&lt;/strong&gt;只存储了他的实例变量和所属类的引用，所以同一个类的多个实例能共享类中的方法，不能共享实例。&lt;br&gt;
+&lt;strong&gt;类&lt;/strong&gt;也是对象，类和任何对象一样，也有它自己的类，&lt;code class=&quot;prettyprint&quot;&gt;Class&lt;/code&gt;类是&lt;code class=&quot;prettyprint&quot;&gt;Calss&lt;/code&gt;类的实例。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ancestors&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Class Module Object Kernel BasicObject&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ancestors&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Module Object Kernel BasicObject&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ancestors&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Object Kernel BasicObject&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Kernel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ancestors&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Kernel&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;对象的方法即他所属类的实例方法&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tt&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello tt&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance_methods&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# true 不包含tt&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 包含tt ...&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance_methods&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# true&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 得到A&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;&lt;strong&gt;class_eval&lt;/strong&gt; 和 &lt;strong&gt;instance_eval&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;当作用于类时，class_eval将会定义实例方法，而instance_eval定义类方法,这个其实蛮好理解的，如上面所说，&lt;code class=&quot;prettyprint&quot;&gt;Class&lt;/code&gt;类是&lt;code class=&quot;prettyprint&quot;&gt;Calss&lt;/code&gt;类的实例，所以它能同时调用&lt;code class=&quot;prettyprint&quot;&gt;class_eval&lt;/code&gt;和&lt;code class=&quot;prettyprint&quot;&gt;instance_eval&lt;/code&gt;，&lt;code class=&quot;prettyprint&quot;&gt;class_eval&lt;/code&gt;只能由class调用。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Test&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ti&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;test instance_eval&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;tc&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;test class_eval&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class_eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;t1&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello class_eval&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance_eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;t2&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello instance_eval&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# hello class_eval&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# p t.t2 undeined method &amp;#39;t2&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t2&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# hello instance_eval&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class_eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;t3&lt;/span&gt;
+   &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello, instance-&amp;gt;class_eval&amp;quot;&lt;/span&gt; 
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance_eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;t4&lt;/span&gt;
+   &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello, instance-&amp;gt;instance_eval &amp;quot;&lt;/span&gt; 
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;quot;hello, instance-&amp;gt;class_eval&amp;quot; &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t4&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;quot;hello, instance-&amp;gt;instance_eval &amp;quot; &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;&lt;strong&gt;singleton_methods&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;单例方法，下面是测试代码，&lt;code class=&quot;prettyprint&quot;&gt;Single&lt;/code&gt;也是一个Class实例，singleton单例即唯一，而&lt;code class=&quot;prettyprint&quot;&gt;five&lt;/code&gt;并不是被对象唯一拥有。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Other&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;three&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Single&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;four&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;five&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;five&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Single&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Other&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;two&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Single&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;singleton_methods&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [:four]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;singleton_methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [:two, :one]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;singleton_methods&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [:two, :one, :three]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;匿名类&lt;/h4&gt;
+
+&lt;p&gt;Ruby 中每个对象都有自己的匿名类，当对一个具体的对象添加方法时，Ruby会插入一个新的匿名类于父类之间，来容纳这个新建立的方法。class关键字后面紧接着&lt;code class=&quot;prettyprint&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;，你就应该确信这里为&amp;lt;&amp;lt;右边的对象打开了一个匿名类。&lt;br&gt;
+&lt;strong&gt;Anonymous Class&lt;/strong&gt; 匿名类&lt;br&gt;
+&lt;strong&gt;Singleton Class&lt;/strong&gt; 单例类&lt;br&gt;
+&lt;strong&gt;Eigenclass&lt;/strong&gt; 特征类&lt;br&gt;
+&lt;strong&gt;Metaclass&lt;/strong&gt; 元类&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;who&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;燕子&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;who0&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;燕子-0&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 为B打开了一个匿名类&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;who1&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;燕子-1&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance_eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;who2&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;燕子-2&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;who3&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&amp;#39;燕子-3&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;who&lt;/span&gt; 
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;who0&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;who1&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;who2&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;who3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;slef&lt;/h4&gt;
+
+&lt;p&gt;Ruby中，&lt;code class=&quot;prettyprint&quot;&gt;self&lt;/code&gt;指向当前对象（current object)&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;obj.do_method(param)&lt;/code&gt;&lt;br&gt;
+将self指向obj；&lt;br&gt;
+在self所属的类中查找do_method(param)方法（方法是存放在类中，而不是实例中！）；&lt;br&gt;
+调用方法do_method(param)；&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;C&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 指向类对象&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 指向实例对象&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;reference&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://deathking.gitbooks.io/metaprogramming-in-ruby/content/&quot;&gt;https://deathking.gitbooks.io/metaprogramming-in-ruby/content/&lt;/a&gt;&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/07/19/ruby-metaprograming/</link>
+      <guid>http://javahuang.github.io/2016/07/19/ruby-metaprograming/</guid>
+      <pubDate>2016-07-19T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>ruby学习笔记之instance_eval与class_eval的区别</title>
+      <description>&lt;p&gt;ruby是一个完全面向对象语言,即使对于某个实际的类也是如此,ruby的任何类都是Class类的实例&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/07/19/ruby-class_eval-instance_eval/</link>
+      <guid>http://javahuang.github.io/2016/07/19/ruby-class_eval-instance_eval/</guid>
+      <pubDate>2016-07-19T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>oracle 监听启动错误</title>
+      <description>&lt;p&gt;上午启动应用连接测试数据库的时候一直显示连接已满,然后上网查需要修改数据库最大连接数&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;SQL&amp;gt; alter system set processes=1000 scope=spfile;&lt;/code&gt;&lt;br&gt;
+然后重启数据库,但是&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;➜ /Users/huangrupeng &amp;gt;ssh root@172.31.201.155
+root@172.31.201.155&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;s password:
+Last login: Fri Jul &lt;span class=&quot;m&quot;&gt;15&lt;/span&gt; 10:52:39 &lt;span class=&quot;m&quot;&gt;2016&lt;/span&gt; from 172.31.131.154
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# sqlplus&lt;/span&gt;
+-bash: sqlplus: &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;not found
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# su - oracle&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sqlplus
+
+SQL*Plus: Release 11.2.0.1.0 Production on Fri Jul &lt;span class=&quot;m&quot;&gt;15&lt;/span&gt; 10:55:07 2016
+
+Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1982, 2009, Oracle.  All rights reserved.
+
+Enter user-name: &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ORACLE_SID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;bdcor2
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sqlplus /nolog
+
+SQL*Plus: Release 11.2.0.1.0 Production on Fri Jul &lt;span class=&quot;m&quot;&gt;15&lt;/span&gt; 10:55:25 2016
+
+Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1982, 2009, Oracle.  All rights reserved.
+
+SQL&amp;gt; conn /as sysdba
+ERROR:
+ORA-00020: maximum number of processes &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;500&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; exceeded
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;但是进入sqlplus也没法连接到数据库,我想直接&lt;code class=&quot;prettyprint&quot;&gt;kill -9 pid&lt;/code&gt;,没搞定&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ps -ef&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;grep oracle
+root       &lt;span class=&quot;m&quot;&gt;941&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;882&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; 10:55 pts/2    00:00:00 su - oracle
+oracle     &lt;span class=&quot;m&quot;&gt;942&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;941&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; 10:55 pts/2    00:00:00 -bash
+oracle    &lt;span class=&quot;m&quot;&gt;3425&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;942&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; 10:59 pts/2    00:00:00 ps -ef
+oracle    &lt;span class=&quot;m&quot;&gt;3426&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;942&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; 10:59 pts/2    00:00:00 grep oracle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;索性直接&lt;code class=&quot;prettyprint&quot;&gt;reboot&lt;/code&gt;了,重启完之后,正常启动数据库,但是监听却启动不了了&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ORACLE_SID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;bdcor2
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sqlplus /nolog
+
+SQL*Plus: Release 11.2.0.1.0 Production on Fri Jul &lt;span class=&quot;m&quot;&gt;15&lt;/span&gt; 11:33:05 2016
+
+Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1982, 2009, Oracle.  All rights reserved.
+
+SQL&amp;gt; conn /as sysdba
+Connected.
+SQL&amp;gt; &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; instance_name from v&lt;span class=&quot;nv&quot;&gt;$instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+INSTANCE_NAME
+----------------
+bdcor2
+
+SQL&amp;gt; &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;lsn
+lsnodes   lsnrctl   lsnrctl0
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;lsnrctl status
+
+LSNRCTL &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; Linux: Version 11.2.0.1.0 - Production on 15-JUL-2016 11:33:44
+
+Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1991, 2009, Oracle.  All rights reserved.
+
+Connecting to &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DESCRIPTION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROTOCOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;IPC&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;EXTPROC1521&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+TNS-12541: TNS:no listener
+ TNS-12560: TNS:protocol adapter error
+  TNS-00511: No listener
+   Linux Error: 111: Connection refused
+Connecting to &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DESCRIPTION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROTOCOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;TCP&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;localhost.localdomain&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1521&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+TNS-12541: TNS:no listener
+ TNS-12560: TNS:protocol adapter error
+  TNS-00511: No listener
+   Linux Error: 111: Connection refused
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;按照网上找的,修改&lt;code class=&quot;prettyprint&quot;&gt;hostname&lt;/code&gt;, &lt;code class=&quot;prettyprint&quot;&gt;/etc/hosts&lt;/code&gt;, &lt;code class=&quot;prettyprint&quot;&gt;/etc/sysconfig/network&lt;/code&gt;,然后重启,果然启动了&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@localhost ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /u01/app/oracle/product/11.2.0/dbhome_l/network/admin/
+listener.ora  samples/      shrept.lst    sqlnet.ora    tnsnames.ora
+
+root@localhost oracle&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# hostname oracle&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@localhost oracle&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# hostname&lt;/span&gt;
+oracle
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@localhost oracle&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# vim /etc/hosts&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@localhost oracle&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# vim /etc/sysconfig/network&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@localhost oracle&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# source /etc/sysconfig/network&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# cat /etc/hosts&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Do not remove the following line, or various programs&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# that require network functionality will fail.&lt;/span&gt;
+127.0.0.1   localhost localhost.domain
+::1     localhost6.localdomain6 localhost6
+172.31.201.155  oracle
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# cat /etc/sysconfig/network&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;NETWORKING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;yes
+&lt;span class=&quot;nv&quot;&gt;NETWORKING_IPV6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;yes
+&lt;span class=&quot;nv&quot;&gt;HOSTNAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;oracle
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# hostname&lt;/span&gt;
+oracle
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@localhost oracle&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# su - oracle&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;oracle@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;lsnrctl start
+
+LSNRCTL &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; Linux: Version 11.2.0.1.0 - Production on 15-JUL-2016 12:26:30
+
+Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;c&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 1991, 2009, Oracle.  All rights reserved.
+
+Starting /u01/app/oracle/product/11.2.0/dbhome_l/bin/tnslsnr: please wait...
+
+TNSLSNR &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; Linux: Version 11.2.0.1.0 - Production
+System parameter file is /u01/app/oracle/product/11.2.0/dbhome_l/network/admin/listener.ora
+Log messages written to /u01/app/oracle/diag/tnslsnr/oracle/listener/alert/log.xml
+Listening on: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DESCRIPTION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROTOCOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ipc&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;EXTPROC1521&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+Listening on: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DESCRIPTION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROTOCOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;tcp&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;127.0.0.1&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1521&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+
+Connecting to &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DESCRIPTION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROTOCOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;IPC&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;EXTPROC1521&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; Linux: Version 11.2.0.1.0 - Production
+Start Date                15-JUL-2016 12:26:32
+Uptime                    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; days &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; hr. &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; min. &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Parameter File   /u01/app/oracle/product/11.2.0/dbhome_l/network/admin/listener.ora
+Listener Log File         /u01/app/oracle/diag/tnslsnr/oracle/listener/alert/log.xml
+Listening Endpoints Summary...
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DESCRIPTION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROTOCOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ipc&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;EXTPROC1521&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DESCRIPTION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROTOCOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;tcp&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;127.0.0.1&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1521&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
+The listener supports no services
+The &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;completed successfully
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;但是,此时我在本地telnet oracle服务器的1521端口却不通,而且防火墙是关着的,但是服务器的1521端口已经是启动的&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# netstat -apn|grep 1521&lt;/span&gt;
+tcp        &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; 127.0.0.1:1521              0.0.0.0:*                   LISTEN      6428/tnslsnr
+tcp        &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; 127.0.0.1:12746             127.0.0.1:1521              ESTABLISHED 4580/ora_pmon_bdcor
+tcp        &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; 127.0.0.1:12761             127.0.0.1:1521              ESTABLISHED 4419/ora_pmon_orcl
+tcp        &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; 127.0.0.1:1521              127.0.0.1:12746             ESTABLISHED 6428/tnslsnr
+tcp        &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; 127.0.0.1:1521              127.0.0.1:12761             ESTABLISHED 6428/tnslsnr
+unix  &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ACC &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;     STREAM     LISTENING     &lt;span class=&quot;m&quot;&gt;23791&lt;/span&gt;  6428/tnslsnr        /var/tmp/.oracle/sEXTPROC1521
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# service iptables status&lt;/span&gt;
+防火墙已停
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我找到oracle的监听文件,将&lt;code class=&quot;prettyprint&quot;&gt;HOST = localhost&lt;/code&gt; 修改为 &lt;code class=&quot;prettyprint&quot;&gt;HOST = oracle&lt;/code&gt;,重启监听,问题得到了解决&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle ~&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# cd /u01/app/oracle/product/11.2.0/dbhome_l/network/admin/&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@oracle admin&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# cat listener.ora&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# listener.ora Network Configuration File: /u01/app/oracle/product/11.2.0/dbhome_l/network/admin/listener.ora&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Generated by Oracle configuration tools.&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;LISTENER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DESCRIPTION_LIST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DESCRIPTION&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ADDRESS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROTOCOL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; IPC&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; EXTPROC1521&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ADDRESS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROTOCOL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; TCP&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; oracle&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1521&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;ADR_BASE_LISTENER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /u01/app/oracle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <link>http://javahuang.github.io/2016/07/15/oracle-tnslistener/</link>
+      <guid>http://javahuang.github.io/2016/07/15/oracle-tnslistener/</guid>
+      <pubDate>2016-07-15T00:00:00+08:00</pubDate>
+    </item>
+    
+    <item>
+      <title>2016上半年微总结</title>
+      <description>&lt;p&gt;待续。&lt;/p&gt;
+</description>
+      <link>http://javahuang.github.io/2016/07/11/lasy-half-2016/</link>
+      <guid>http://javahuang.github.io/2016/07/11/lasy-half-2016/</guid>
+      <pubDate>2016-07-11T00:00:00+08:00</pubDate>
+    </item>
     
     <item>
       <title>elasticsearch-java实践</title>
@@ -87,8 +529,58 @@
     
     <item>
       <title>ruby 学习</title>
-      <description>&lt;p&gt;开始学习ruby，最开始是从&lt;a href=&quot;http://www.runoob.com/ruby/ruby-tutorial.html&quot;&gt;Ruby菜鸟教程&lt;/a&gt;上面熟悉了一遍基础语法，编辑器开始使用的是idea，idea有ruby的自动补全、代码高亮等功能，最近给自己的vim收拾了一遍&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;开始学习ruby，最开始是从&lt;a href=&quot;http://www.runoob.com/ruby/ruby-tutorial.html&quot;&gt;Ruby菜鸟教程&lt;/a&gt;上面熟悉了一遍基础语法，编辑器开始使用的是idea，idea有ruby的自动补全、代码高亮等功能，最近给自己的vim&lt;a href=&quot;http://hrps.me/2016/05/25/linux&quot;&gt;收拾了&lt;/a&gt;一遍，添加了&lt;a href=&quot;https://github.com/vim-ruby/vim-ruby&quot;&gt;vim-ruby&lt;/a&gt;插件&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ruby里面的&lt;code class=&quot;prettyprint&quot;&gt;:&lt;/code&gt;是啥意思？&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;http://stackoverflow.com/questions/30315021/colon-placement-in-ruby-on-rails/30315118#30315118&quot;&gt;http://stackoverflow.com/questions/30315021/colon-placement-in-ruby-on-rails/30315118#30315118&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ruby数据类型&lt;/strong&gt;&lt;br&gt;
+&lt;a href=&quot;http://www.cnblogs.com/andriod-html5/archive/2010/06/04/2539360.html&quot;&gt;http://www.cnblogs.com/andriod-html5/archive/2010/06/04/2539360.html&lt;/a&gt;&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;Hash&lt;/code&gt; 散列表的初始化有两种方式：{}中用key=&amp;gt;value的形式，[]中连续放置key,value，中间用逗号隔开。&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;Symbol&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1&gt;基础知识&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/q/1010000000266437&quot;&gt;https://segmentfault.com/q/1010000000266437&lt;/a&gt;&lt;br&gt;
+ruby中&lt;code class=&quot;prettyprint&quot;&gt;:xxx&lt;/code&gt;表示一个symbol，可以理解为string(&amp;quot;a&amp;quot;!=&amp;quot;a&amp;quot; :a==:a)，symbol是不变的&lt;br&gt;
+ruby中所有东西都是对象(唯一的object_id)，整数的object_id相同&lt;br&gt;
+ruby中函数调用的括号可以省略，&lt;code class=&quot;prettyprint&quot;&gt;f.label :price 实际是 f.label(:price)&lt;/code&gt;&lt;br&gt;
+ruby中hash的{}可以省略，&lt;code class=&quot;prettyprint&quot;&gt;:xx=&amp;gt;xx和{xx:xx}等价,key是一个symbol&lt;/code&gt;&lt;br&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;do|x|...end&lt;/code&gt;没有什么特殊的意义和&lt;code class=&quot;prettyprint&quot;&gt;{|x|}&lt;/code&gt;一样，代表一个block,|x|是块变量,作用和一个正常方法的参数一样&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://guides.rubygems.org/specification-reference/&quot;&gt;http://guides.rubygems.org/specification-reference/&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The Specification class contains the information for a Gem. Typically defined in a .gemspec file or a Rakefile,&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Gem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Specification&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;example&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_development_dependency&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rspec-sequencing&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;模块和类的区别&lt;br&gt;
+模块不能实例化,类不能include&lt;/p&gt;
+
+&lt;h1&gt;插件&lt;/h1&gt;
+
+&lt;p&gt;Gemfile and gemspec&lt;br&gt;
+bundler &lt;a href=&quot;http://bundler.io/v1.3/rubygems.html&quot;&gt;http://bundler.io/v1.3/rubygems.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;ruby插件管理器 Bundler&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;prettyprint&quot;&gt;bundle gem my_gem&lt;/code&gt;&lt;br&gt;
+初始化一个gem skeleton&lt;br&gt;
+&lt;img src=&quot;http://o6mo1i54c.bkt.clouddn.com/ruby-bundle-gem-my_gem.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+创建一个Gemfile,格式如下&lt;/p&gt;
+
+&lt;p&gt;``` ruby Gemfile&lt;br&gt;
+source &amp;#39;&lt;a href=&quot;https://rubygems.org&quot;&gt;https://rubygems.org&lt;/a&gt;&amp;#39;&lt;/p&gt;
+
+&lt;p&gt;gem &amp;#39;rails&amp;#39;, &amp;#39;4.1.0.rc2&amp;#39;&lt;br&gt;
+gem &amp;#39;rack-cache&amp;#39;&lt;br&gt;
+gem &amp;#39;nokogiri&amp;#39;, &amp;#39;~&amp;gt; 1.6.1&amp;#39;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;执行`bundle install`安装gems
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       <link>http://javahuang.github.io/2016/06/20/ruby-learning/</link>
       <guid>http://javahuang.github.io/2016/06/20/ruby-learning/</guid>
       <pubDate>2016-06-20T00:00:00+08:00</pubDate>
@@ -1763,8 +2255,25 @@ cat id_rsa.pub &amp;gt;&amp;gt; authorized_keys
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/spf13/spf13-vim&quot;&gt;https://github.com/spf13/spf13-vim&lt;/a&gt;&lt;br&gt;
 通用的VIM配置，已经定义了一系列的vim插件&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# set clident 设置缩进&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;使用map定义快捷键&lt;/h4&gt;
+
+&lt;p&gt;键表&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;lt;k0&amp;gt; - &amp;lt;k9&amp;gt; 小键盘 0-9&lt;br&gt;
+&amp;lt;S-...&amp;gt; Shift + 键&lt;br&gt;
+&amp;lt;C-&amp;gt; Control+ 键&lt;br&gt;
+&amp;lt;M-...&amp;gt; Alt+ 键&lt;br&gt;
+&amp;lt;Esc&amp;gt; Escape键&lt;br&gt;
+&amp;lt;Up&amp;gt; 光标上移键&lt;br&gt;
+&amp;lt;Space&amp;gt; 插入空格&lt;br&gt;
+&amp;lt;Tab&amp;gt; 插入Tab&lt;br&gt;
+&amp;lt;CR&amp;gt; 等于&amp;lt;Enter&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code class=&quot;prettyprint&quot;&gt;map &amp;lt;C-n&amp;gt; :NERDTreeToggle&amp;lt;CR&amp;gt;&lt;/code&gt; 定义将ctrl+n 映射为:&lt;code class=&quot;prettyprint&quot;&gt;NERDTreeToggle&lt;/code&gt;&lt;/p&gt;
+
 &lt;h4&gt;vim插件&lt;/h4&gt;
 
 &lt;p&gt;我在github上直接fork的&lt;a href=&quot;https://github.com/spf13/spf13-vim&quot;&gt;https://github.com/spf13/spf13-vim&lt;/a&gt; 这个vim通用配置，一键配置VIM环境。环境配置完之后，我看了&lt;code class=&quot;prettyprint&quot;&gt;~&lt;/code&gt;目录里面有好几个&lt;code class=&quot;prettyprint&quot;&gt;.vim&lt;/code&gt;开头的文件，其中&lt;code class=&quot;prettyprint&quot;&gt;.vimrc&lt;/code&gt;是vim启动加载文件，使用的&lt;a href=&quot;https://github.com/VundleVim/Vundle.vim&quot;&gt;vundle&lt;/a&gt;来管理vim插件，vundle使用的配置是&lt;code class=&quot;prettyprint&quot;&gt;.vimrc.bundles&lt;/code&gt;&lt;br&gt;
